@@ -26,3 +26,10 @@ We provide two ways to catch fraud, ensuring the verifier has full confidence.
 
 
 
+###sample request to verify a receipt:
+
+
+ http://localhost:3000/verify-receipt?transactionId=TXN123456789&amount=48000&currency=EGP&from=mina0@instopay&to=mina1@instopay&timestamp=2026-05-08T14:33:00&status=SUCCESS&signature=xyz
+
+
+
