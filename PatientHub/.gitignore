@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+*.iml
+
+# Frontend build artifacts are ignored in frontend/.gitignore
+# Backend build artifacts are ignored in backend/.gitignore

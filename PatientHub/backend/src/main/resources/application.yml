@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: patienthub-backend
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+patienthub:
+  cors:
+    allowed-origins:
+      - http://localhost:3000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
+
+logging:
+  level:
+    com.patienthub: INFO
+    root: INFO
