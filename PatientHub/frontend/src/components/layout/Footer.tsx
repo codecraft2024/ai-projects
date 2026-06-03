@@ -1,86 +1,113 @@
-import Link from "next/link";
-import { CONTACT, NAV_LINKS, SITE } from "@/constants/site";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { CONTACT } from "@/data/clinic";
 import { Container } from "@/components/ui/Container";
+import { SocialLinks } from "@/components/social/SocialLinks";
+
+const NAV_ITEMS = [
+  { href: "/", key: "home" as const },
+  { href: "/#about", key: "about" as const },
+  { href: "/doctor", key: "doctor" as const },
+  { href: "/cases", key: "cases" as const },
+  { href: "/#contact", key: "contact" as const },
+];
 
 export function Footer() {
+  const t = useTranslations("footer");
+  const tNav = useTranslations("nav");
+  const tSite = useTranslations("site");
+  const tContact = useTranslations("contact");
   const year = new Date().getFullYear();
 
+  const hours = tContact.raw("hours") as { days: string; time: string }[];
+
   return (
-    <footer className="border-t border-slate-200 bg-slate-900 text-slate-300">
-      <Container className="py-12 lg:py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-1">
-            <Link href="#home" className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-500 text-lg font-bold text-white">
+    <footer className="border-t border-slate-800 bg-slate-950 text-slate-300">
+      <Container className="py-12 sm:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-lg font-bold text-white">
                 PH
               </span>
-              <span className="text-lg font-bold text-white">{SITE.name}</span>
+              <div>
+                <span className="block font-bold text-white">{tSite("portalName")}</span>
+                <span className="text-xs text-brand-light">{tSite("clinicName")}</span>
+              </div>
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-slate-400">
-              {SITE.description}
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
+              {tSite("description")}
             </p>
+            <div className="mt-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                {t("followUs")}
+              </p>
+              <SocialLinks variant="footer" />
+            </div>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Quick Links
+              {t("quickLinks")}
             </h3>
             <ul className="mt-4 space-y-2">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-slate-400 transition-colors hover:text-teal-400"
+              {NAV_ITEMS.map((item) => (
+                <li key={item.key}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-slate-400 transition hover:text-brand-light"
                   >
-                    {link.label}
-                  </a>
+                    {tNav(item.key)}
+                  </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Contact
-            </h3>
-            <ul className="mt-4 space-y-2 text-sm text-slate-400">
-              <li>{CONTACT.address}</li>
-              <li>{CONTACT.city}</li>
               <li>
-                <a href={`tel:${CONTACT.phone}`} className="hover:text-teal-400">
-                  {CONTACT.phone}
-                </a>
-              </li>
-              <li>
-                <a href={`mailto:${CONTACT.email}`} className="hover:text-teal-400">
-                  {CONTACT.email}
-                </a>
+                <Link
+                  href="/admin/login"
+                  className="text-sm text-slate-400 transition hover:text-brand-light"
+                >
+                  {tNav("adminLogin")}
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-              Hours
+              {t("contact")}
             </h3>
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
-              {CONTACT.hours.map((item) => (
+              <li>{tContact("addressLine1")}</li>
+              <li>{tContact("city")}</li>
+              <li>
+                <a href={`tel:${CONTACT.phone}`} className="hover:text-brand-light">
+                  {CONTACT.phoneDisplay}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+              {t("hours")}
+            </h3>
+            <ul className="mt-4 space-y-2 text-sm text-slate-400">
+              {hours.map((item) => (
                 <li key={item.days}>
-                  <span className="font-medium text-slate-300">{item.days}:</span>{" "}
-                  {item.time}
+                  <span className="font-medium text-slate-300">{item.days}:</span> {item.time}
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-slate-800 pt-8 text-center sm:flex-row sm:text-start">
           <p className="text-sm text-slate-500">
-            © {year} {SITE.name} Portal. All rights reserved.
+            © {year} {tSite("portalName")} · {tSite("clinicName")}. {t("rights")}
           </p>
-          <p className="text-xs text-slate-600">
-            For medical emergencies, call 911.
-          </p>
+          <p className="text-xs text-slate-600">{t("tagline")}</p>
         </div>
       </Container>
     </footer>

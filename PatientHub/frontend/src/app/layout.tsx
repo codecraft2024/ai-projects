@@ -1,28 +1,6 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { ReactNode } from "react";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-export const metadata: Metadata = {
-  title: "PatientHub Portal | Healthcare Clinic",
-  description:
-    "PatientHub Portal — compassionate healthcare, experienced physicians, and modern clinic services.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <body className="min-h-screen bg-white font-sans text-slate-900 antialiased">
-        {children}
-      </body>
-    </html>
-  );
+/** Root layout — locale-specific html/body in [locale]/layout.tsx */
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return children;
 }

@@ -1,98 +1,117 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { NAV_LINKS, SITE } from "@/constants/site";
+import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
+import { SocialLinks } from "@/components/social/SocialLinks";
+import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { cn } from "@/utils/cn";
+
+const NAV_ITEMS = [
+  { href: "/", key: "home" as const },
+  { href: "/#about", key: "about" as const },
+  { href: "/#services", key: "services" as const },
+  { href: "/doctor", key: "doctor" as const },
+  { href: "/cases", key: "cases" as const },
+  { href: "/#contact", key: "contact" as const },
+];
 
 export function Header() {
+  const t = useTranslations("nav");
+  const tSite = useTranslations("site");
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/95 backdrop-blur-md">
       <Container>
-        <div className="flex h-16 items-center justify-between lg:h-18">
-          <Link href="#home" className="flex items-center gap-2.5">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-600 text-lg font-bold text-white shadow-sm">
+        <div className="flex h-16 items-center justify-between gap-2 sm:h-[4.5rem]">
+          <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-2.5">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-sm font-bold text-white shadow-brand sm:h-10 sm:w-10">
               PH
             </span>
-            <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-slate-900">
-                {SITE.name}
+            <div className="min-w-0 leading-tight">
+              <span className="block truncate text-sm font-bold text-slate-900 sm:text-base">
+                {tSite("portalName")}
               </span>
-              <span className="hidden text-xs text-slate-500 sm:block">
-                Portal
+              <span className="hidden truncate text-xs text-brand sm:block">
+                {tSite("clinicName")}
               </span>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-teal-700"
+          <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Main">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                className="rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 transition hover:bg-brand-soft hover:text-brand"
               >
-                {link.label}
-              </a>
+                {t(item.key)}
+              </Link>
             ))}
           </nav>
 
-          <div className="hidden items-center gap-3 md:flex">
-            <a
-              href="#contact"
-              className="rounded-lg border border-teal-600 px-4 py-2 text-sm font-semibold text-teal-700 transition-colors hover:bg-teal-50"
-            >
-              Book Appointment
-            </a>
+          <div className="hidden items-center gap-2 lg:flex">
+            <LanguageSwitcher />
+            <SocialLinks variant="header" />
+            <Button href="/#contact" variant="outline" size="sm">
+              {t("bookVisit")}
+            </Button>
+            <Button href="/admin/login" variant="ghost" size="sm">
+              {t("admin")}
+            </Button>
           </div>
 
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-slate-600 hover:bg-slate-100 md:hidden"
-            aria-expanded={menuOpen}
-            aria-label="Toggle navigation menu"
-            onClick={() => setMenuOpen(!menuOpen)}
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {menuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          <div className="flex items-center gap-1 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              type="button"
+              className="touch-target inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 hover:bg-muted"
+              aria-expanded={menuOpen}
+              aria-label="Menu"
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {menuOpen && (
-          <nav
-            className="border-t border-slate-100 py-4 md:hidden"
-            aria-label="Mobile"
-          >
-            <ul className="flex flex-col gap-3">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="block py-2 text-base font-medium text-slate-700"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a
-                  href="#contact"
-                  className="mt-2 block rounded-lg bg-teal-600 px-4 py-3 text-center text-sm font-semibold text-white"
-                  onClick={() => setMenuOpen(false)}
+        <nav
+          className={cn(
+            "overflow-hidden border-t border-[var(--border)] transition-all lg:hidden",
+            menuOpen ? "max-h-[40rem] pb-4 opacity-100" : "max-h-0 opacity-0",
+          )}
+          aria-hidden={!menuOpen}
+        >
+          <ul className="flex flex-col gap-1 pt-3">
+            {NAV_ITEMS.map((item) => (
+              <li key={item.key}>
+                <Link
+                  href={item.href}
+                  className="block rounded-lg px-3 py-3 text-base font-medium text-slate-700 hover:bg-brand-soft"
+                  onClick={closeMenu}
                 >
-                  Book Appointment
-                </a>
+                  {t(item.key)}
+                </Link>
               </li>
-            </ul>
-          </nav>
-        )}
+            ))}
+            <li className="mt-3 space-y-3 border-t border-[var(--border)] pt-4">
+              <SocialLinks variant="contact" className="justify-center" />
+              <Button href="/#contact" variant="primary" className="w-full" onClick={closeMenu}>
+                {t("bookVisit")}
+              </Button>
+            </li>
+          </ul>
+        </nav>
       </Container>
     </header>
   );

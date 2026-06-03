@@ -14,11 +14,18 @@ PatientHub/
 ### Frontend (`frontend/`)
 
 - **Stack:** Next.js (App Router), React, TypeScript, ESLint, Tailwind CSS
-- **Purpose:** Patient-facing landing page and future portal UI
+- **Purpose:** PatientHub Portal for **Dr. Mina Merzek Clinic** (orthopedic & bone clinic, Heliopolis, Cairo)
+- **Features:** Responsive landing page, WhatsApp integration, admin login (demo), admin dashboard (mock data)
 - **Key folders:**
-  - `src/app/` — routes and layout
-  - `src/components/` — layout, sections, UI, icons
-  - `src/constants/` — site content and configuration
+  - `src/app/` — routes (`/`, `/admin/login`, `/admin/dashboard`)
+  - `src/components/` — layout, sections, admin, UI, icons
+  - `src/messages/` — `en.json` / `ar.json` translations
+  - `src/i18n/` — routing, navigation, middleware
+  - `src/data/` — mock admin data
+  - `src/types/` — TypeScript types
+  - `src/hooks/` — React hooks (e.g. auth)
+  - `src/services/` — client services (e.g. auth)
+  - `src/utils/` — helpers (WhatsApp URLs, `cn`)
 
 ### Backend (`backend/`)
 
@@ -46,7 +53,35 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the PatientHub landing page.
+Open [http://localhost:3000/en](http://localhost:3000/en) (English) or [http://localhost:3000/ar](http://localhost:3000/ar) (Arabic — RTL).
+
+**Admin demo login:** `/en/admin/login` or `/ar/admin/login` — username `test`, password `test`
+
+### Languages & branding
+
+- **Locales:** `/en` and `/ar` with `hreflang`, localized metadata, and `sitemap.xml` entries
+- **Fonts:** Inter (English), Cairo (Arabic)
+- **Brand colors:** Purple `#6D4AFF`, accent `#FFC107`
+- **Language switcher:** Client-side navigation + cookie/localStorage persistence
+- **SEO:** JSON-LD (MedicalClinic, Physician, FAQ, LocalBusiness), `robots.txt`, dynamic OG images
+- **Analytics (optional):** Set `NEXT_PUBLIC_GA_ID` and/or `NEXT_PUBLIC_GTM_ID` in `frontend/.env.local`
+
+**WhatsApp:** Links open chat with Mina Clinic at +20 122 192 6646.
+
+### Social media configuration
+
+All social URLs are centralized in `frontend/src/config/social-links.ts`:
+
+| Constant | Purpose |
+|----------|---------|
+| `FACEBOOK_URL` | Clinic Facebook page |
+| `INSTAGRAM_URL` | Instagram profile (empty = hidden) |
+| `TWITTER_URL` | X (Twitter) profile (empty = hidden) |
+| `WHATSAPP_URL` | Official `wa.me` deep link |
+
+Set `NEXT_PUBLIC_SITE_URL` in `frontend/.env.local` for correct Open Graph previews when sharing (see `.env.example`).
+
+**Pages with sharing:** `/`, `/doctor`, `/cases`
 
 ### Other frontend commands
 

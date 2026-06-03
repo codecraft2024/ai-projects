@@ -1,134 +1,109 @@
 "use client";
 
-import { CONTACT } from "@/constants/site";
+import { useTranslations } from "next-intl";
+import { CONTACT } from "@/data/clinic";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Button } from "@/components/ui/Button";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { SocialLinks } from "@/components/social/SocialLinks";
+import { WHATSAPP_URL } from "@/utils/whatsapp";
 
 export function Contact() {
+  const t = useTranslations("contact");
+  const hours = t.raw("hours") as { days: string; time: string }[];
+
   return (
-    <section id="contact" className="bg-white py-16 sm:py-24">
+    <section id="contact" className="bg-muted py-14 sm:py-20">
       <Container>
-        <SectionHeading
-          eyebrow="Contact Us"
-          title="We're here to help"
-          description="Reach out to schedule an appointment, ask a question, or learn more about our services."
-        />
+        <SectionHeading eyebrow={t("eyebrow")} title={t("title")} description={t("description")} />
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2">
-          <div className="space-y-8">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
-                <LocationIcon />
-                Visit Us
-              </h3>
-              <address className="mt-4 not-italic text-slate-600">
-                <p>{CONTACT.address}</p>
-                <p>{CONTACT.city}</p>
+        <div className="mt-12 grid gap-8 lg:grid-cols-2">
+          <div className="space-y-5">
+            <ContactCard title={t("addressTitle")}>
+              <address className="not-italic text-slate-600">
+                <p className="font-medium text-slate-900">{CONTACT.clinicName}</p>
+                <p className="mt-2">{t("addressLine1")}</p>
+                <p>{t("city")}</p>
               </address>
-            </div>
+            </ContactCard>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
-                <PhoneIcon />
-                Get in Touch
-              </h3>
-              <ul className="mt-4 space-y-2 text-slate-600">
-                <li>
-                  <a
-                    href={`tel:${CONTACT.phone.replace(/\D/g, "")}`}
-                    className="font-medium text-teal-700 hover:underline"
-                  >
-                    {CONTACT.phone}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={`mailto:${CONTACT.email}`}
-                    className="font-medium text-teal-700 hover:underline"
-                  >
-                    {CONTACT.email}
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <ContactCard title={t("phoneTitle")}>
+              <a
+                href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
+                className="text-lg font-semibold text-brand hover:underline"
+              >
+                {CONTACT.phoneDisplay}
+              </a>
+              <p className="mt-1 text-sm text-slate-500">{t("phoneHint")}</p>
+            </ContactCard>
 
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
-              <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900">
-                <ClockIcon />
-                Office Hours
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {CONTACT.hours.map((item) => (
+            <ContactCard title={t("whatsappTitle")}>
+              <p className="text-slate-600">{CONTACT.whatsappDisplay}</p>
+              <WhatsAppButton label={t("whatsappCta")} className="mt-4" />
+            </ContactCard>
+
+            <ContactCard title={t("socialTitle")}>
+              <p className="text-sm text-slate-600">{t("socialDescription")}</p>
+              <SocialLinks variant="contact" className="mt-4" />
+            </ContactCard>
+
+            <ContactCard title={t("hoursTitle")}>
+              <ul className="space-y-3">
+                {hours.map((item) => (
                   <li
                     key={item.days}
-                    className="flex justify-between gap-4 text-sm text-slate-600"
+                    className="flex flex-col justify-between gap-1 border-b border-[var(--border)] pb-3 last:border-0 sm:flex-row"
                   >
                     <span className="font-medium text-slate-800">{item.days}</span>
-                    <span>{item.time}</span>
+                    <span className="text-slate-600">{item.time}</span>
                   </li>
                 ))}
               </ul>
-            </div>
+            </ContactCard>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-gradient-to-br from-teal-600 to-teal-800 p-8 text-white shadow-xl lg:p-10">
-            <h3 className="text-2xl font-bold">Request an appointment</h3>
-            <p className="mt-2 text-teal-100">
-              Fill out the form below and our team will contact you within one
-              business day.
-            </p>
-            <form className="mt-8 space-y-5" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid gap-5 sm:grid-cols-2">
-                <label className="block">
-                  <span className="text-sm font-medium text-teal-50">First name</span>
-                  <input
-                    type="text"
-                    name="firstName"
-                    required
-                    className="mt-1.5 w-full rounded-lg border-0 bg-white/10 px-4 py-2.5 text-white placeholder:text-teal-200/70 focus:ring-2 focus:ring-white/50"
-                    placeholder="Jane"
-                  />
-                </label>
-                <label className="block">
-                  <span className="text-sm font-medium text-teal-50">Last name</span>
-                  <input
-                    type="text"
-                    name="lastName"
-                    required
-                    className="mt-1.5 w-full rounded-lg border-0 bg-white/10 px-4 py-2.5 text-white placeholder:text-teal-200/70 focus:ring-2 focus:ring-white/50"
-                    placeholder="Doe"
-                  />
-                </label>
+          <div className="card-premium p-6 sm:p-8">
+            <h3 className="text-xl font-bold text-slate-900 sm:text-2xl">{t("formTitle")}</h3>
+            <p className="mt-2 text-sm text-slate-600">{t("formDescription")}</p>
+            <form
+              className="mt-6 space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                window.open(WHATSAPP_URL, "_blank", "noopener,noreferrer");
+              }}
+            >
+              <div className="grid gap-4 sm:grid-cols-2">
+                <FormField label={t("firstName")} name="firstName" required />
+                <FormField label={t("lastName")} name="lastName" required />
               </div>
+              <FormField label={t("phone")} name="phone" type="tel" required />
               <label className="block">
-                <span className="text-sm font-medium text-teal-50">Email</span>
-                <input
-                  type="email"
-                  name="email"
+                <span className="text-sm font-medium text-slate-700">{t("reason")}</span>
+                <select
+                  name="reason"
+                  className="mt-1.5 w-full rounded-xl border border-[var(--border)] px-4 py-3 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+                  defaultValue=""
                   required
-                  className="mt-1.5 w-full rounded-lg border-0 bg-white/10 px-4 py-2.5 text-white placeholder:text-teal-200/70 focus:ring-2 focus:ring-white/50"
-                  placeholder="you@example.com"
-                />
+                >
+                  <option value="" disabled>
+                    {t("selectService")}
+                  </option>
+                  <option value="consultation">{t("consultation")}</option>
+                  <option value="pediatric">{t("pediatric")}</option>
+                  <option value="sports">{t("sports")}</option>
+                  <option value="joint">{t("joint")}</option>
+                  <option value="follow-up">{t("followUp")}</option>
+                </select>
               </label>
-              <label className="block">
-                <span className="text-sm font-medium text-teal-50">Message</span>
-                <textarea
-                  name="message"
-                  rows={4}
-                  className="mt-1.5 w-full resize-none rounded-lg border-0 bg-white/10 px-4 py-2.5 text-white placeholder:text-teal-200/70 focus:ring-2 focus:ring-white/50"
-                  placeholder="How can we help you?"
-                />
-              </label>
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-white py-3.5 text-base font-semibold text-teal-800 transition hover:bg-teal-50"
-              >
-                Submit Request
-              </button>
-              <p className="text-center text-xs text-teal-200">
-                This form is for demonstration. Connect to the PatientHub API for
-                production submissions.
-              </p>
+              <FormField label={t("message")} name="message" as="textarea" />
+              <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+                <Button type="submit" variant="primary" size="lg" className="sm:flex-1">
+                  {t("submitWhatsApp")}
+                </Button>
+                <WhatsAppButton label="WhatsApp" size="lg" />
+              </div>
+              <p className="text-center text-xs text-slate-500">{t("formNote")}</p>
             </form>
           </div>
         </div>
@@ -137,27 +112,44 @@ export function Contact() {
   );
 }
 
-function LocationIcon() {
+function ContactCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <svg className="h-5 w-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
+    <div className="card-premium p-5 sm:p-6">
+      <h3 className="text-base font-semibold text-slate-900 sm:text-lg">{title}</h3>
+      <div className="mt-4">{children}</div>
+    </div>
   );
 }
 
-function PhoneIcon() {
+function FormField({
+  label,
+  name,
+  required,
+  type = "text",
+  as,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  type?: string;
+  as?: "textarea";
+}) {
+  const cls =
+    "mt-1.5 w-full rounded-xl border border-[var(--border)] px-4 py-3 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20";
   return (
-    <svg className="h-5 w-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg className="h-5 w-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
+    <label className="block">
+      <span className="text-sm font-medium text-slate-700">{label}</span>
+      {as === "textarea" ? (
+        <textarea name={name} rows={4} className={`${cls} resize-none`} />
+      ) : (
+        <input type={type} name={name} required={required} className={cls} />
+      )}
+    </label>
   );
 }

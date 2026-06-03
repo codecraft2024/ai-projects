@@ -1,38 +1,40 @@
-import { SERVICES } from "@/constants/site";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import {
-  ServiceIcon,
-  type ServiceIconName,
-} from "@/components/icons/ServiceIcons";
+import { ServiceIcon } from "@/components/icons/ServiceIcons";
+import type { ServiceIconName } from "@/types/clinic";
+
+const SERVICE_KEYS: { id: ServiceIconName; key: string }[] = [
+  { id: "pediatric", key: "pediatric" },
+  { id: "joint", key: "joint" },
+  { id: "sports", key: "sports" },
+  { id: "bone", key: "bone" },
+  { id: "foot", key: "foot" },
+  { id: "hand", key: "hand" },
+];
 
 export function Services() {
+  const t = useTranslations("services");
+
   return (
-    <section id="services" className="bg-white py-16 sm:py-24">
+    <section id="services" className="bg-muted py-14 sm:py-20">
       <Container>
         <SectionHeading
-          eyebrow="Our Services"
-          title="Comprehensive healthcare under one roof"
-          description="From routine checkups to specialized support, our clinic delivers coordinated care designed around your health goals."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
         />
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((service) => (
-            <article
-              key={service.id}
-              className="group rounded-2xl border border-slate-200 bg-slate-50/50 p-6 transition hover:border-teal-200 hover:bg-white hover:shadow-lg hover:shadow-teal-900/5"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-100 text-teal-700 transition group-hover:bg-teal-600 group-hover:text-white">
-                <ServiceIcon
-                  name={service.icon as ServiceIconName}
-                  className="h-6 w-6"
-                />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {SERVICE_KEYS.map(({ id, key }) => (
+            <article key={key} className="card-premium group p-6">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-soft text-brand transition group-hover:bg-brand group-hover:text-white">
+                <ServiceIcon name={id} className="h-6 w-6" />
               </div>
               <h3 className="mt-5 text-lg font-semibold text-slate-900">
-                {service.title}
+                {t(`items.${key}.title`)}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {service.description}
+                {t(`items.${key}.description`)}
               </p>
             </article>
           ))}
