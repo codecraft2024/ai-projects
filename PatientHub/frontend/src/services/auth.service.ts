@@ -1,6 +1,6 @@
-import type { AuthSession } from "@/types/admin";
+type Session = { username: string };
 
-let session: { username: string } = null;
+let session: Session | null = null;
 const listeners = new Set<() => void>();
 
 export function getSession() {
@@ -29,13 +29,13 @@ export function initSession() {
 export function saveSession(username: string) {
   session = { username };
   localStorage.setItem("session", JSON.stringify(session));
-  emitChange(); // ONLY HERE
+  emitChange();
 }
 
 export function clearSession() {
   session = null;
   localStorage.removeItem("session");
-  emitChange(); // ONLY HERE
+  emitChange();
 }
 
 export function validateCredentials(credentials: {
