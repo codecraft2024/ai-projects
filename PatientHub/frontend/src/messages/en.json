@@ -1,0 +1,308 @@
+{
+  "site": {
+    "portalName": "PatientHub Portal",
+    "clinicName": "Dr. Mina Merzek Clinic",
+    "tagline": "Orthopedic & Bone Care You Can Trust",
+    "description": "PatientHub Portal is the digital gateway to Dr. Mina Merzek Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
+    "mission": "To provide world-class orthopedic care with compassion, precision, and a commitment to every patient's long-term recovery and quality of life.",
+    "location": "Heliopolis, Cairo, Egypt",
+    "roles": {
+      "founder": "Founder & Lead Consultant",
+      "leadSurgeon": "Lead Orthopedic Surgeon",
+      "faceOfClinic": "Face of the Clinic"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "doctor": "Dr. Mina",
+    "cases": "Cases",
+    "contact": "Contact",
+    "bookVisit": "Book Visit",
+    "admin": "Admin",
+    "adminLogin": "Admin Login"
+  },
+  "lang": {
+    "en": "English",
+    "ar": "العربية",
+    "switch": "Language"
+  },
+  "hero": {
+    "badge": "Premium Orthopedic Center · Cairo",
+    "viaPortal": "via PatientHub Portal",
+    "ctaAppointment": "Request Appointment",
+    "ctaWhatsApp": "WhatsApp Us",
+    "premiumTitle": "Expert bone, joint & pediatric orthopedic surgery in Heliopolis.",
+    "accepting": "Accepting new patients"
+  },
+  "executive": {
+    "eyebrow": "Lead Surgeon",
+    "title": "Dr. Mina Merzek",
+    "subtitle": "Founder · Lead Consultant · Lead Orthopedic Surgeon",
+    "bio": "The central figure of our clinic — combining advanced surgical skill with a warm, patient-first philosophy trusted by thousands of families across Egypt.",
+    "ctaProfile": "View Full Profile",
+    "ctaCases": "See Case Highlights",
+    "stats": {
+      "experience": "Years of Experience",
+      "patients": "Patients Treated",
+      "surgeries": "Surgeries Performed",
+      "satisfaction": "Patient Satisfaction"
+    }
+  },
+  "about": {
+    "eyebrow": "About the Clinic",
+    "title": "Mission & patient-centered care",
+    "careApproach": [
+      "Patient-centered consultations with clear treatment plans",
+      "Advanced orthopedic and pediatric bone surgery expertise",
+      "Minimally invasive and arthroscopic techniques when appropriate",
+      "Continuous follow-up and rehabilitation guidance"
+    ]
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Orthopedic & bone clinic services",
+    "description": "Comprehensive surgical and non-surgical care for bones, joints, and musculoskeletal conditions for adults and children.",
+    "items": {
+      "pediatric": {
+        "title": "Pediatric Orthopedic Surgery",
+        "description": "Specialized diagnosis and treatment for bone and joint conditions in children, including congenital deformities and growth-related disorders."
+      },
+      "joint": {
+        "title": "Joint Replacement",
+        "description": "Comprehensive hip, knee, and joint replacement procedures designed to restore function and reduce chronic pain."
+      },
+      "sports": {
+        "title": "Arthroscopy & Sports Injuries",
+        "description": "Minimally invasive arthroscopic surgery for ligament tears, meniscus injuries, and athletic trauma recovery."
+      },
+      "bone": {
+        "title": "Bone Deformities",
+        "description": "Corrective treatment for limb alignment issues, hip dysplasia, and structural bone abnormalities."
+      },
+      "foot": {
+        "title": "Foot & Ankle Orthopedics",
+        "description": "Expert care for foot and ankle fractures, instability, and chronic conditions affecting mobility."
+      },
+      "hand": {
+        "title": "Hand & Upper Limb Surgery",
+        "description": "Precision surgical care for hand, wrist, and upper limb injuries, fractures, and nerve-related conditions."
+      }
+    }
+  },
+  "doctor": {
+    "eyebrow": "Meet Your Surgeon",
+    "pageTitle": "Doctor Profile",
+    "name": "Dr. Mina Merzek",
+    "title": "Consultant Orthopedic Surgeon",
+    "introduction": "Dr. Mina Merzek is a highly experienced orthopedic surgeon specializing in bone surgery, joint care, and pediatric orthopedics. With advanced training from Egypt's National Institute for Motor and Nerve System, Dr. Merzek combines surgical excellence with a warm, patient-first approach at the Bone Clinic in Heliopolis, Cairo.",
+    "photoPlaceholder": "Professional photo placeholder — replace with clinic asset",
+    "qualificationsTitle": "Qualifications",
+    "specializationsTitle": "Specializations",
+    "experienceTitle": "Professional Experience",
+    "expertiseTitle": "Areas of Expertise",
+    "awardsTitle": "Awards & Recognition",
+    "certificationsTitle": "Certifications",
+    "biographyTitle": "Professional Biography",
+    "biography": "As founder and lead consultant, Dr. Merzek has built Dr. Mina Merzek Clinic into a trusted destination for orthopedic excellence in Cairo — from pediatric hip conditions to complex joint replacement and sports injury recovery.",
+    "qualifications": [
+      { "title": "Master's Degree in Orthopedic Surgery & Joint Surgery", "institution": "National Institute for Motor and Nerve System, Egypt" },
+      { "title": "Professional Diploma in Pediatric Orthopedic Surgery", "institution": "National Institute for Motor and Nerve System, Egypt" },
+      { "title": "Consultant Orthopedic Surgeon", "institution": "Dr. Mina Merzek Clinic — Bone Clinic, Heliopolis" }
+    ],
+    "specializations": [
+      "Pediatric Orthopedic Surgery",
+      "Arthroscopy & Sports Injuries",
+      "Bone Deformities",
+      "Foot & Ankle Orthopedics",
+      "Joint Replacement",
+      "Hand & Upper Limb Surgery",
+      "Adult Orthopedic Surgery"
+    ],
+    "experience": [
+      "Extensive experience in orthopedic trauma and fracture management",
+      "Specialized practice in pediatric hip conditions and congenital bone disorders",
+      "Performing arthroscopic knee and shoulder procedures",
+      "Long-standing private practice serving patients across Cairo and Egypt"
+    ],
+    "expertise": [
+      "Pediatric hip dysplasia & congenital dislocation",
+      "Knee arthroscopy & ligament reconstruction",
+      "Joint replacement & arthritis management",
+      "Sports injury rehabilitation planning",
+      "Foot and ankle corrective surgery",
+      "Upper limb fracture fixation"
+    ],
+    "awards": [
+      { "title": "Excellence in Pediatric Orthopedics", "description": "Recognized for advanced care in congenital and developmental bone conditions." },
+      { "title": "Leading Private Orthopedic Practice", "description": "Trusted by patients across Greater Cairo for surgical outcomes and follow-up care." }
+    ],
+    "certifications": [
+      "Board-level training — National Institute for Motor and Nerve System",
+      "Pediatric Orthopedic Surgery Professional Diploma",
+      "Advanced Arthroscopy & Sports Medicine procedures"
+    ],
+    "videosComingSoon": "Procedure and educational videos — coming soon"
+  },
+  "experience": {
+    "eyebrow": "Experience & Achievements",
+    "title": "Surgical excellence & clinic milestones",
+    "description": "A trusted record of orthopedic care, successful outcomes, and dedication to patient recovery.",
+    "milestonesTitle": "Clinic Milestones",
+    "highlightsTitle": "Patient Care Highlights",
+    "highlights": "Every treatment plan is tailored to the individual — from first consultation through surgery, rehabilitation, and long-term follow-up. Our clinic prioritizes clear communication, minimally invasive options when possible, and outcomes that restore mobility and confidence.",
+    "milestones": [
+      { "year": "2010", "title": "Orthopedic Specialization", "description": "Completed advanced orthopedic and joint surgery training at Egypt's premier motor and nerve institute." },
+      { "year": "2014", "title": "Pediatric Orthopedics Diploma", "description": "Earned professional diploma in pediatric orthopedic surgery, expanding care for young patients." },
+      { "year": "2016", "title": "Bone Clinic Established", "description": "Opened the Bone Clinic in Heliopolis, Cairo — now Dr. Mina Merzek Clinic." },
+      { "year": "2024", "title": "PatientHub Portal Launch", "description": "Digital patient portal launched to streamline appointments, records, and clinic communication." }
+    ],
+    "achievements": [
+      { "title": "Pediatric Orthopedic Excellence", "description": "Recognized expertise in treating congenital bone conditions and pediatric hip disorders across Cairo." },
+      { "title": "Advanced Arthroscopic Surgery", "description": "Minimally invasive joint procedures enabling faster recovery for sports and trauma patients." },
+      { "title": "Comprehensive Bone Care", "description": "Full-spectrum orthopedic services from diagnosis through surgery and long-term follow-up." },
+      { "title": "Trusted Community Practice", "description": "An established Heliopolis clinic known for attentive care and clear patient communication." }
+    ],
+    "stats": {
+      "experience": "15+",
+      "experienceLabel": "Years of Experience",
+      "patients": "8,000+",
+      "patientsLabel": "Patients Treated",
+      "surgeries": "2,500+",
+      "surgeriesLabel": "Surgeries Performed",
+      "satisfaction": "98%",
+      "satisfactionLabel": "Patient Satisfaction"
+    }
+  },
+  "gallery": {
+    "updates": {
+      "eyebrow": "Latest Clinic Updates",
+      "title": "News from Dr. Mina Merzek Clinic",
+      "description": "Stay informed about services, care tips, and clinic announcements.",
+      "facebookMore": "More updates on Facebook"
+    },
+    "cases": {
+      "eyebrow": "Case Highlights",
+      "title": "Treatment success stories",
+      "description": "Representative orthopedic outcomes from our practice.",
+      "cta": "View All Patient Cases"
+    },
+    "clinic": {
+      "eyebrow": "Clinic Gallery",
+      "title": "Our clinic & care environment",
+      "description": "A glimpse of Dr. Mina Merzek Clinic in Heliopolis."
+    },
+    "items": {
+      "update1": { "title": "Welcome to PatientHub Portal", "caption": "Our new digital portal makes it easier to book visits and stay connected." },
+      "update2": { "title": "Pediatric Orthopedic Care", "caption": "Specialized care for children with bone and joint conditions." },
+      "update3": { "title": "Sports Injury & Arthroscopy", "caption": "Minimally invasive procedures for faster athletic recovery." },
+      "case1": { "title": "Pediatric Hip Dysplasia", "caption": "Successful management with a tailored pediatric treatment plan." },
+      "case2": { "title": "Knee Arthroscopy Recovery", "caption": "ACL reconstruction — restoring mobility for an active patient." },
+      "case3": { "title": "Joint Replacement Outcome", "caption": "Total knee replacement with excellent post-operative function." },
+      "case4": { "title": "Ankle Fracture Fixation", "caption": "Stable fracture fixation with structured rehabilitation protocol." },
+      "case5": { "title": "Congenital Foot Correction", "caption": "Corrective pediatric procedure with ongoing growth monitoring." },
+      "case6": { "title": "Shoulder Arthroscopy", "caption": "Minimally invasive shoulder repair for rotator cuff injury." },
+      "gal1": { "title": "Bone Clinic — Heliopolis", "caption": "Dr. Mina Merzek Clinic, Saint Fatima Square, Cairo." },
+      "gal2": { "title": "Consultation Room", "caption": "Private, comfortable consultations with clear treatment planning." },
+      "gal3": { "title": "Orthopedic Excellence", "caption": "Modern facilities supporting advanced bone and joint care." },
+      "gal4": { "title": "Patient-Centered Care", "caption": "Every visit focused on your recovery and long-term health." }
+    }
+  },
+  "cases": {
+    "pageTitle": "Patient Cases",
+    "eyebrow": "Patient Cases",
+    "title": "Orthopedic case library",
+    "description": "Anonymized highlights illustrating the scope of surgical and non-surgical care. Individual results vary; consult Dr. Merzek for personal assessment."
+  },
+  "contact": {
+    "eyebrow": "Contact Us",
+    "title": "Book your visit today",
+    "description": "Reach Dr. Mina Merzek Clinic by WhatsApp, phone, or appointment request.",
+    "addressLine1": "70 Abdel Aziz Fahmy Street, Saint Fatima Square",
+    "city": "Heliopolis, Cairo, Egypt",
+    "addressTitle": "Clinic Address",
+    "phoneTitle": "Phone",
+    "phoneHint": "Tap to call the clinic",
+    "whatsappTitle": "WhatsApp — Mina Clinic",
+    "whatsappCta": "Open WhatsApp Chat",
+    "hoursTitle": "Working Hours",
+    "socialTitle": "Social Media",
+    "socialDescription": "Connect with us for updates, case highlights, and clinic news.",
+    "formTitle": "Request an appointment",
+    "formDescription": "Submit your details and we will contact you to confirm.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "reason": "Reason for visit",
+    "selectService": "Select a service",
+    "consultation": "General Consultation",
+    "pediatric": "Pediatric Orthopedics",
+    "sports": "Sports Injury / Arthroscopy",
+    "joint": "Joint Replacement",
+    "followUp": "Follow-up Visit",
+    "message": "Message",
+    "submitWhatsApp": "Send via WhatsApp",
+    "formNote": "Demo form — opens WhatsApp. Backend integration coming soon.",
+    "hours": [
+      { "days": "Saturday – Thursday", "time": "10:00 AM – 8:00 PM" },
+      { "days": "Friday", "time": "Closed" },
+      { "days": "Emergency", "time": "Contact via WhatsApp" }
+    ]
+  },
+  "share": {
+    "label": "Share",
+    "copied": "Copied!",
+    "instagramHint": "Link copied — paste in Instagram."
+  },
+  "footer": {
+    "followUs": "Follow us",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hours": "Hours",
+    "tagline": "Orthopedic & Bone Clinic · Heliopolis, Cairo",
+    "rights": "All rights reserved."
+  },
+  "admin": {
+    "signIn": "Sign in to dashboard",
+    "demoNote": "Temporary demo access — backend authentication coming soon.",
+    "username": "Username",
+    "password": "Password",
+    "signInButton": "Sign In",
+    "signingIn": "Signing in...",
+    "invalidCredentials": "Invalid username or password. Please try again.",
+    "demoCredentials": "Demo credentials",
+    "backToSite": "Back to PatientHub Portal",
+    "dashboard": "Clinic Dashboard",
+    "dashboardSubtitle": "Mock data for future API integration",
+    "viewSite": "View Site",
+    "logout": "Logout",
+    "loading": "Loading dashboard...",
+    "searchPatients": "Search Patients",
+    "searchPlaceholder": "Name, ID, condition...",
+    "patientsList": "Patients List",
+    "appointments": "Appointments",
+    "patientHistory": "Patient History",
+    "medicalRecords": "Patient Medical Records",
+    "recentActivities": "Recent Activities",
+    "noPatients": "No patients found.",
+    "adminLabel": "Admin"
+  },
+  "seo": {
+    "homeTitle": "PatientHub Portal | Dr. Mina Merzek Clinic — Orthopedic Surgeon Cairo",
+    "homeDescription": "Dr. Mina Merzek — orthopedic surgeon & bone clinic in Heliopolis, Cairo. Joint replacement, sports injuries, pediatric orthopedics, knee surgery. Book via PatientHub Portal.",
+    "doctorTitle": "Dr. Mina Merzek — Orthopedic Surgeon | Consultant Cairo",
+    "doctorDescription": "Meet Dr. Mina Merzek: founder, lead orthopedic surgeon. Qualifications, awards, surgical expertise at Dr. Mina Merzek Clinic, Heliopolis.",
+    "casesTitle": "Orthopedic Case Highlights | Dr. Mina Merzek Clinic",
+    "casesDescription": "Patient case highlights: joint replacement, sports injuries, pediatric orthopedics. Dr. Mina Merzek bone clinic, Cairo.",
+    "keywords": "Dr Mina Merzek, orthopedic doctor, orthopedic surgeon, bone clinic, joint replacement, sports injuries, knee surgery, Cairo, Heliopolis, دكتور مينا مرزق"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      { "question": "What conditions does Dr. Mina Merzek treat?", "answer": "Orthopedic and bone conditions including joint replacement, sports injuries, pediatric hip disorders, fractures, and foot and ankle surgery." },
+      { "question": "Where is the clinic located?", "answer": "70 Abdel Aziz Fahmy Street, Saint Fatima Square, Heliopolis, Cairo, Egypt." },
+      { "question": "How can I book an appointment?", "answer": "Contact us via WhatsApp at +20 122 192 6646 or use the appointment form on this portal." }
+    ]
+  }
+}
