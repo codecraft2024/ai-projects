@@ -6,13 +6,13 @@
   "scripts": {
     "dev": "concurrently -n backend,frontend -c blue,green \"pnpm dev:backend\" \"pnpm dev:frontend\"",
     "dev:frontend": "pnpm --filter @twinzy/frontend dev",
-    "dev:backend": "cd backend && mvn spring-boot:run",
+    "dev:backend": "cd backend && mvn spring-boot:run -Dspring-boot.run.jvmArguments=-Xmx2g",
     "build": "pnpm --filter @twinzy/frontend build && cd backend && mvn -q package -DskipTests",
     "lint": "pnpm --filter @twinzy/frontend lint",
     "typecheck": "pnpm --filter @twinzy/frontend typecheck",
-    "seed": "pnpm --filter @twinzy/seed run seed",
-    "seed:small": "pnpm --filter @twinzy/seed run seed:small",
-    "setup": "pnpm install && pnpm seed:small"
+    "seed": "cd backend && mvn -q spring-boot:run -Dspring-boot.run.profiles=seed -Dspring-boot.run.jvmArguments=-Xmx2g",
+    "seed:small": "cd backend && TWINZY_SEED_TOTAL=500 mvn -q spring-boot:run -Dspring-boot.run.profiles=seed -Dspring-boot.run.jvmArguments=-Xmx1g",
+    "setup": "pnpm install && pnpm seed"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

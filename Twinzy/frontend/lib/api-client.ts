@@ -43,13 +43,48 @@ export interface ProfileSummary {
   primaryImageUrl: string;
 }
 
-export async function fetchAllProfiles(funnyOnly?: boolean): Promise<ProfileSummary[]> {
-  const params = funnyOnly !== undefined ? `?funnyOnly=${funnyOnly}` : "";
-  const response = await fetch(`${getApiBaseUrl()}/api/profiles${params}`, {
-    next: { revalidate: 3600 },
+export interface ProfilePage {
+  items: ProfileSummary[];
+  page: number;
+  size: number;
+  total: number;
+  totalPages: number;
+}
+
+export async function fetchProfilesPage(
+  page = 0,
+  size = 48,
+  funnyOnly?: boolean,
+): Promise<ProfilePage> {
+  const params = new URLSearchParams({
+    page: String(page),
+    size: String(size),
+  });
+  if (funnyOnly !== undefined) params.set("funnyOnly", String(funnyOnly));
+
+  const response = await fetch(`${getApiBaseUrl()}/api/profiles?${params.toString()}`, {
+    cache: "no-store",
   });
   if (!response.ok) throw new Error("Failed to load profiles");
   return response.json();
+}
+
+export async function fetchProfileCount(): Promise<{ total: number; humans: number; funny: number }> {
+  const response = await fetch(`${getApiBaseUrl()}/api/profiles/count`, { cache: "no-store" });
+  if (!response.ok) throw new Error("Failed to load profile count");
+  return response.json();
+}
+
+export async function fetchAllProfiles(funnyOnly?: boolean): Promise<ProfileSummary[]> {
+  const first = await fetchProfilesPage(0, 200, funnyOnly);
+  if (first.totalPages <= 1) return first.items;
+
+  const all = [...first.items];
+  for (let page = 1; page < first.totalPages; page++) {
+    const next = await fetchProfilesPage(page, 200, funnyOnly);
+    all.push(...next.items);
+  }
+  return all;
 }
 
 export async function fetchProfile(

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.twinzy.dto.ErrorResponseDto;
 import com.twinzy.dto.ProfileDetailResponseDto;
 import com.twinzy.dto.ProfileMatchDto;
+import com.twinzy.dto.ProfilePageDto;
 import com.twinzy.dto.ProfileSummaryDto;
 import com.twinzy.dto.RelatedProfileDto;
 import com.twinzy.dto.SearchResponseDto;
@@ -32,10 +33,15 @@ public class ProfileController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProfileSummaryDto>> listProfiles(
-            @RequestParam(value = "funnyOnly", required = false) Boolean funnyOnly
+    public ResponseEntity<ProfilePageDto> listProfiles(
+            @RequestParam(value = "funnyOnly", required = false) Boolean funnyOnly,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "48") int size
     ) {
-        List<StoredProfile> profiles = profileRepository.findAll().stream()
+        int safePage = Math.max(0, page);
+        int safeSize = Math.min(200, Math.max(1, size));
+
+        List<StoredProfile> filtered = profileRepository.findAll().stream()
                 .filter(profile -> {
                     if (funnyOnly == null) {
                         return true;
@@ -44,21 +50,33 @@ public class ProfileController {
                 })
                 .toList();
 
-        return ResponseEntity.ok(profiles.stream()
-                .map(profile -> new ProfileSummaryDto(
-                        profile,
-                        profile.getImages().stream()
-                                .filter(image -> image.isPrimary())
-                                .map(image -> image.getUrl())
-                                .findFirst()
-                                .orElse(profile.getImages().isEmpty() ? null : profile.getImages().get(0).getUrl())
-                ))
-                .toList());
+        int from = Math.min(safePage * safeSize, filtered.size());
+        int to = Math.min(from + safeSize, filtered.size());
+
+        List<ProfileSummaryDto> items = filtered.subList(from, to).stream()
+                .map(this::toSummary)
+                .toList();
+
+        return ResponseEntity.ok(new ProfilePageDto(items, safePage, safeSize, filtered.size()));
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<?> countProfiles() {
+        long humans = profileRepository.findAllHumans().size();
+        long funny = profileRepository.findAllFunny().size();
+        return ResponseEntity.ok(java.util.Map.of(
+                "total", profileRepository.count(),
+                "humans", humans,
+                "funny", funny
+        ));
     }
 
     @GetMapping("/slugs")
-    public ResponseEntity<List<String>> slugs() {
-        return ResponseEntity.ok(profileRepository.findAllSlugs());
+    public ResponseEntity<List<String>> slugs(
+            @RequestParam(value = "limit", defaultValue = "500") int limit
+    ) {
+        int safeLimit = Math.min(5000, Math.max(1, limit));
+        return ResponseEntity.ok(profileRepository.findAllSlugs().stream().limit(safeLimit).toList());
     }
 
     @GetMapping("/{slug}")
@@ -89,5 +107,16 @@ public class ProfileController {
         }
 
         return ResponseEntity.ok(response);
+    }
+
+    private ProfileSummaryDto toSummary(StoredProfile profile) {
+        return new ProfileSummaryDto(
+                profile,
+                profile.getImages().stream()
+                        .filter(image -> image.isPrimary())
+                        .map(image -> image.getUrl())
+                        .findFirst()
+                        .orElse(profile.getImages().isEmpty() ? null : profile.getImages().get(0).getUrl())
+        );
     }
 }

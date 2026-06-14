@@ -11,7 +11,12 @@ server:
 
 twinzy:
   data-path: ${TWINZY_DATA_PATH:../data/profiles.json}
-  face-provider: ${FACE_PROVIDER:mock}
+  face-provider: ${FACE_PROVIDER:analysis}
+  match-limit: 12
+  match-candidate-pool: 300
+  seed:
+    total-profiles: 20000
+    funny-count: 20
   cors:
     allowed-origins:
       - http://localhost:3000

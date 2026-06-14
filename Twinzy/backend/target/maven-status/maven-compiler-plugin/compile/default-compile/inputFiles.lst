@@ -12,6 +12,7 @@
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/HealthResponseDto.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/ProfileDetailResponseDto.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/ProfileMatchDto.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/ProfilePageDto.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/ProfileSummaryDto.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/RelatedProfileDto.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/dto/SearchResponseDto.java
@@ -24,6 +25,14 @@
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/model/ProfileImage.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/model/StoredProfile.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/repository/ProfileRepository.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/DatasetSeedService.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/ImageDownloadService.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/ProfileMetadataGenerator.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedApplicationRunner.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedCelebrityRecord.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedFunnyRecord.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedVectorUtils.java
+/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/WikimediaImageFetcher.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/service/ProfileLoaderService.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/service/SearchSessionService.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/service/SimilarityService.java
