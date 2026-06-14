@@ -2,18 +2,18 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1a1625;
+  --foreground: #0f172a;
   --brand: #6d4aff;
-  --brand-dark: #5a3ad9;
-  --brand-light: #ede9fe;
+  --brand-dark: #5a3de6;
+  --brand-light: #ebe6ff;
   --brand-soft: #f5f3ff;
   --accent: #ffc107;
   --accent-dark: #e6ac00;
-  --accent-soft: #fff8e1;
-  --muted: #f4f4f6;
+  --accent-soft: #fffbeb;
+  --muted: #f8fafc;
   --muted-foreground: #64748b;
   --card: #ffffff;
-  --border: #e8e6ef;
+  --border: #e2e8f0;
 }
 
 @theme inline {
@@ -58,7 +58,7 @@ html[dir="ltr"] body {
   background-color: var(--brand);
 }
 .bg-brand-gradient {
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 55%, #4c2db8 100%);
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
 }
 .shadow-brand {
   box-shadow: 0 10px 40px -12px rgb(109 74 255 / 0.35);
@@ -72,6 +72,11 @@ html[dir="ltr"] body {
 }
 .card-premium:hover {
   box-shadow: 0 12px 32px -10px rgb(109 74 255 / 0.2);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 @media (max-width: 640px) {

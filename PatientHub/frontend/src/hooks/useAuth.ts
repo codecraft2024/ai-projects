@@ -8,7 +8,12 @@ import {
   saveSession,
   clearSession,
   validateCredentials,
+  initSession,
 } from "@/services/auth.service";
+
+if (typeof window !== "undefined") {
+  initSession();
+}
 
 export function useAuth() {
   const session = useSyncExternalStore(

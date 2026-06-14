@@ -11,7 +11,7 @@ export function SiteChrome({ children, showFloatingWhatsApp = true }: SiteChrome
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <Footer />
       {showFloatingWhatsApp && <HomePageExtras />}
     </>

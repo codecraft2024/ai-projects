@@ -1,31 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { useRouter } from "@/i18n/navigation";
 import dynamic from "next/dynamic";
-import { useAuth } from "@/hooks/useAuth";
+import { AdminAuthGuard } from "@/components/admin/AdminAuthGuard";
 import { AdminShell } from "@/components/admin/AdminShell";
+import { Button } from "@/components/ui/Button";
 import { DashboardStatsGrid } from "@/components/admin/DashboardPanels";
 
-const PatientSearchPanel = dynamic(
-  () => import("@/components/admin/DashboardPanels").then((m) => ({ default: m.PatientSearchPanel })),
-  { loading: () => <PanelSkeleton /> },
-);
-const PatientsListPanel = dynamic(
-  () => import("@/components/admin/DashboardPanels").then((m) => ({ default: m.PatientsListPanel })),
-  { loading: () => <PanelSkeleton /> },
-);
 const AppointmentsPanel = dynamic(
   () => import("@/components/admin/DashboardPanels").then((m) => ({ default: m.AppointmentsPanel })),
-  { loading: () => <PanelSkeleton /> },
-);
-const PatientHistoryPanel = dynamic(
-  () => import("@/components/admin/DashboardPanels").then((m) => ({ default: m.PatientHistoryPanel })),
-  { loading: () => <PanelSkeleton /> },
-);
-const MedicalRecordsPanel = dynamic(
-  () => import("@/components/admin/DashboardPanels").then((m) => ({ default: m.MedicalRecordsPanel })),
   { loading: () => <PanelSkeleton /> },
 );
 const RecentActivitiesPanel = dynamic(
@@ -39,38 +22,27 @@ function PanelSkeleton() {
 
 export default function AdminDashboardPage() {
   const t = useTranslations("admin");
-  const { isAuthenticated } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.replace("/admin/login");
-    }
-  }, [isAuthenticated, router]);
-
-  if (!isAuthenticated) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-muted">
-        <p className="text-slate-600">{t("loading")}</p>
-      </div>
-    );
-  }
 
   return (
-    <AdminShell title={t("dashboard")} subtitle={t("dashboardSubtitle")}>
-      <div className="space-y-6">
-        <DashboardStatsGrid />
-        <PatientSearchPanel />
-        <div className="grid gap-6 xl:grid-cols-2">
-          <PatientsListPanel />
-          <AppointmentsPanel />
+    <AdminAuthGuard>
+      <AdminShell title={t("dashboard")} subtitle={t("dashboardSubtitle")} activeNav="dashboard">
+        <div className="space-y-6">
+          <div className="flex flex-col gap-4 rounded-2xl border border-brand/20 bg-brand-soft p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-lg font-semibold text-slate-900">{t("patientsHubTitle")}</h2>
+              <p className="mt-1 text-sm text-slate-600">{t("patientsHubDesc")}</p>
+            </div>
+            <Button href="/admin/patients" variant="primary">
+              {t("openPatients")}
+            </Button>
+          </div>
+          <DashboardStatsGrid />
+          <div className="grid gap-6 xl:grid-cols-2">
+            <AppointmentsPanel />
+            <RecentActivitiesPanel />
+          </div>
         </div>
-        <div className="grid gap-6 xl:grid-cols-2">
-          <PatientHistoryPanel />
-          <MedicalRecordsPanel />
-        </div>
-        <RecentActivitiesPanel />
-      </div>
-    </AdminShell>
+      </AdminShell>
+    </AdminAuthGuard>
   );
 }

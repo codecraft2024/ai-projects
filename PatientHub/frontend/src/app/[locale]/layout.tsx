@@ -1,4 +1,3 @@
-import type { Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -19,12 +18,6 @@ const cairo = Cairo({
   variable: "--font-cairo",
   display: "swap",
 });
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#6D4AFF",
-};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -66,6 +59,12 @@ export default async function LocaleLayout({ children, params }: Props) {
         <AnalyticsScripts />
       </head>
       <body className="min-h-screen bg-white text-[var(--foreground)] antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:shadow-lg focus:outline focus:outline-2 focus:outline-brand"
+        >
+          Skip to content
+        </a>
         <JsonLd
           locale={locale as Locale}
           t={{

@@ -19,7 +19,7 @@ export default function AdminLoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      router.replace("/admin/dashboard");
+      router.replace("/admin/patients");
     }
   }, [isAuthenticated, router]);
 
@@ -30,7 +30,7 @@ export default function AdminLoginPage() {
 
     const success = login({ username, password });
     if (success) {
-      router.push("/admin/dashboard");
+      router.push("/admin/patients");
     } else {
       setError(t("invalidCredentials"));
       setSubmitting(false);

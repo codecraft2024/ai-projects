@@ -71,7 +71,8 @@ export function Header() {
               type="button"
               className="touch-target inline-flex h-11 w-11 items-center justify-center rounded-xl text-slate-700 hover:bg-muted"
               aria-expanded={menuOpen}
-              aria-label="Menu"
+              aria-controls="mobile-nav"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((o) => !o)}
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -86,6 +87,7 @@ export function Header() {
         </div>
 
         <nav
+          id="mobile-nav"
           className={cn(
             "overflow-hidden border-t border-[var(--border)] transition-all lg:hidden",
             menuOpen ? "max-h-[40rem] pb-4 opacity-100" : "max-h-0 opacity-0",

@@ -17,6 +17,9 @@ export function JsonLd({ locale, t }: JsonLdProps) {
   const base = SITE_BASE_URL.replace(/\/$/, "");
   const clinicUrl = `${base}/${locale}`;
 
+  const clinicOg = `${base}/${locale}/opengraph-image`;
+  const doctorOg = `${base}/${locale}/doctor/opengraph-image`;
+
   const medicalClinic = {
     "@context": "https://schema.org",
     "@type": "MedicalClinic",
@@ -26,8 +29,8 @@ export function JsonLd({ locale, t }: JsonLdProps) {
     url: clinicUrl,
     telephone: CONTACT.phone,
     email: CONTACT.email,
-    image: `${base}/og/clinic-hero.png`,
-    logo: `${base}/og/clinic-logo.png`,
+    image: clinicOg,
+    logo: clinicOg,
     address: {
       "@type": "PostalAddress",
       streetAddress: CONTACT.address,
@@ -61,7 +64,7 @@ export function JsonLd({ locale, t }: JsonLdProps) {
     medicalSpecialty: "Orthopedic Surgery",
     worksFor: { "@id": `${clinicUrl}#clinic` },
     url: `${base}/${locale}/doctor`,
-    image: `${base}/og/doctor-profile.png`,
+    image: doctorOg,
   };
 
   const organization = {
@@ -69,7 +72,7 @@ export function JsonLd({ locale, t }: JsonLdProps) {
     "@type": "Organization",
     name: t.clinicName,
     url: clinicUrl,
-    logo: `${base}/og/clinic-logo.png`,
+    logo: clinicOg,
     founder: { "@id": `${clinicUrl}#physician` },
   };
 

@@ -10,9 +10,10 @@ type AdminShellProps = {
   children: React.ReactNode;
   title: string;
   subtitle?: string;
+  activeNav?: "dashboard" | "patients";
 };
 
-export function AdminShell({ children, title, subtitle }: AdminShellProps) {
+export function AdminShell({ children, title, subtitle, activeNav }: AdminShellProps) {
   const t = useTranslations("admin");
   const tSite = useTranslations("site");
   const { session, logout } = useAuth();
@@ -62,6 +63,14 @@ export function AdminShell({ children, title, subtitle }: AdminShellProps) {
       </header>
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+        <nav className="mb-6 flex flex-wrap gap-2 border-b border-[var(--border)] pb-4">
+          <NavLink href="/admin/dashboard" active={activeNav === "dashboard"}>
+            {t("nav.dashboard")}
+          </NavLink>
+          <NavLink href="/admin/patients" active={activeNav === "patients"}>
+            {t("nav.patients")}
+          </NavLink>
+        </nav>
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl font-bold text-slate-900 sm:text-3xl">{title}</h1>
           {subtitle && <p className="mt-1 text-slate-600">{subtitle}</p>}
@@ -69,6 +78,30 @@ export function AdminShell({ children, title, subtitle }: AdminShellProps) {
         {children}
       </main>
     </div>
+  );
+}
+
+function NavLink({
+  href,
+  active,
+  children,
+}: {
+  href: string;
+  active?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        "rounded-lg px-4 py-2 text-sm font-medium transition",
+        active
+          ? "bg-brand text-white shadow-sm"
+          : "text-slate-600 hover:bg-white hover:text-brand",
+      )}
+    >
+      {children}
+    </Link>
   );
 }
 
