@@ -4,11 +4,18 @@
   "private": true,
   "description": "Celebrity lookalike search with rich profile similarity",
   "scripts": {
-    "dev": "pnpm --filter @twinzy/web dev",
-    "build": "pnpm -r build",
-    "lint": "pnpm -r lint",
-    "typecheck": "pnpm -r typecheck",
-    "seed": "pnpm --filter @twinzy/seed run seed"
+    "dev": "concurrently -n backend,frontend -c blue,green \"pnpm dev:backend\" \"pnpm dev:frontend\"",
+    "dev:frontend": "pnpm --filter @twinzy/frontend dev",
+    "dev:backend": "cd backend && mvn spring-boot:run",
+    "build": "pnpm --filter @twinzy/frontend build && cd backend && mvn -q package -DskipTests",
+    "lint": "pnpm --filter @twinzy/frontend lint",
+    "typecheck": "pnpm --filter @twinzy/frontend typecheck",
+    "seed": "pnpm --filter @twinzy/seed run seed",
+    "seed:small": "pnpm --filter @twinzy/seed run seed:small",
+    "setup": "pnpm install && pnpm seed:small"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   },
   "engines": {
     "node": ">=20"
