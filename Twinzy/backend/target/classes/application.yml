@@ -5,18 +5,39 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 12MB
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/twinzy}
+    username: ${POSTGRES_USER:twinzy}
+    password: ${POSTGRES_PASSWORD:twinzy}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+    locations: filesystem:${TWINZY_DB_MIGRATIONS:../database/migrations}
 
 server:
   port: 8081
 
 twinzy:
-  data-path: ${TWINZY_DATA_PATH:../data/profiles.json}
   face-provider: ${FACE_PROVIDER:analysis}
   match-limit: 12
   match-candidate-pool: 300
+  database:
+    seed-path: ${TWINZY_SEED_PATH:../database/seed}
+    migrations-path: ${TWINZY_DB_MIGRATIONS:../database/migrations}
   seed:
     total-profiles: 20000
     funny-count: 20
+  media:
+    storage-path: ${TWINZY_MEDIA_PATH:../database/images}
+    public-base-url: ${TWINZY_MEDIA_BASE_URL:http://localhost:8081}
   cors:
     allowed-origins:
       - http://localhost:3000

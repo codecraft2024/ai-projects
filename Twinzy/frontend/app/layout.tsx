@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
@@ -16,6 +16,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = buildDefaultMetadata();
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: "#4a7c6f",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

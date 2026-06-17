@@ -18,7 +18,7 @@ export function RelatedMatches({
       <CardHeader>
         <CardTitle>Related Matches</CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <CardContent className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
         {related.map(({ profile, score }) => {
           const image = profile.images.find((item) => item.isPrimary) ?? profile.images[0];
           const href = sessionId

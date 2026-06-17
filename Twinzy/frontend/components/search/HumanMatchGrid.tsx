@@ -54,7 +54,7 @@ export function HumanMatchGrid({
               <CardHeader className="space-y-3">
                 <div className="flex items-start justify-between gap-3">
                   <div>
-                    <CardTitle className="display-title text-xl">{match.profile.fullName}</CardTitle>
+                    <CardTitle className="display-title text-lg leading-snug sm:text-xl">{match.profile.fullName}</CardTitle>
                     <CardDescription className="font-medium">
                       {match.profile.occupation} · {match.profile.country}
                     </CardDescription>

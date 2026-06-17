@@ -11,7 +11,7 @@ export function LanguageSwitcher() {
       <Button
         size="sm"
         variant={locale === "en" ? "default" : "ghost"}
-        className="h-8 rounded-full px-3 text-xs"
+        className="h-9 min-w-[44px] touch-target rounded-full px-3 text-xs"
         onClick={() => setLocale("en")}
       >
         EN
@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
       <Button
         size="sm"
         variant={locale === "ar" ? "default" : "ghost"}
-        className="h-8 rounded-full px-3 text-xs"
+        className="h-9 min-w-[44px] touch-target rounded-full px-3 text-xs"
         onClick={() => setLocale("ar")}
       >
         عربي

@@ -7,20 +7,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "twinzy")
 public class TwinzyProperties {
 
-    private String dataPath = "../data/profiles.json";
-    private String faceProvider = "mock";
+    private String faceProvider = "analysis";
     private int matchLimit = 12;
     private int matchCandidatePool = 300;
     private Cors cors = new Cors();
+    private Database database = new Database();
     private Seed seed = new Seed();
-
-    public String getDataPath() {
-        return dataPath;
-    }
-
-    public void setDataPath(String dataPath) {
-        this.dataPath = dataPath;
-    }
+    private Media media = new Media();
 
     public String getFaceProvider() {
         return faceProvider;
@@ -54,12 +47,28 @@ public class TwinzyProperties {
         this.cors = cors;
     }
 
+    public Database getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(Database database) {
+        this.database = database;
+    }
+
     public Seed getSeed() {
         return seed;
     }
 
     public void setSeed(Seed seed) {
         this.seed = seed;
+    }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
     }
 
     public static class Cors {
@@ -71,6 +80,48 @@ public class TwinzyProperties {
 
         public void setAllowedOrigins(List<String> allowedOrigins) {
             this.allowedOrigins = allowedOrigins;
+        }
+    }
+
+    public static class Database {
+        private String seedPath = "../database/seed";
+        private String migrationsPath = "../database/migrations";
+
+        public String getSeedPath() {
+            return seedPath;
+        }
+
+        public void setSeedPath(String seedPath) {
+            this.seedPath = seedPath;
+        }
+
+        public String getMigrationsPath() {
+            return migrationsPath;
+        }
+
+        public void setMigrationsPath(String migrationsPath) {
+            this.migrationsPath = migrationsPath;
+        }
+    }
+
+    public static class Media {
+        private String storagePath = "../database/images";
+        private String publicBaseUrl = "http://localhost:8081";
+
+        public String getStoragePath() {
+            return storagePath;
+        }
+
+        public void setStoragePath(String storagePath) {
+            this.storagePath = storagePath;
+        }
+
+        public String getPublicBaseUrl() {
+            return publicBaseUrl;
+        }
+
+        public void setPublicBaseUrl(String publicBaseUrl) {
+            this.publicBaseUrl = publicBaseUrl;
         }
     }
 

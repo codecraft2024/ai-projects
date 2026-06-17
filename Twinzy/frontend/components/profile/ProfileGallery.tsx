@@ -5,7 +5,7 @@ import type { Profile } from "@/types/profile";
 
 export function ProfileGallery({ profile }: { profile: Profile }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
       {profile.images.map((image) => (
         <div key={image.id} className="shell-card relative aspect-[4/5] overflow-hidden">
           <SafeImage

@@ -83,14 +83,14 @@ export function ImageUploadForm() {
         />
       ) : null}
 
-      <Card className="shell-card mx-auto max-w-2xl border-primary/40">
-        <CardHeader className="text-center">
-          <CardTitle className="display-title text-3xl">{t("uploadTitle")}</CardTitle>
-          <CardDescription className="text-base font-medium">{t("uploadSubtitle")}</CardDescription>
+      <Card className="shell-card mx-auto w-full max-w-2xl border-primary/40">
+        <CardHeader className="px-4 text-center sm:px-6">
+          <CardTitle className="display-title text-2xl sm:text-3xl">{t("uploadTitle")}</CardTitle>
+          <CardDescription className="text-sm font-medium sm:text-base">{t("uploadSubtitle")}</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-5 px-4 sm:space-y-6 sm:px-6">
           <div
-            className="flex min-h-64 cursor-pointer flex-col items-center justify-center rounded-3xl border-4 border-dashed border-primary/50 bg-muted/60 p-8 transition hover:scale-[1.01] hover:bg-muted"
+            className="flex min-h-52 cursor-pointer touch-manipulation flex-col items-center justify-center rounded-2xl border-4 border-dashed border-primary/50 bg-muted/60 p-6 transition active:scale-[0.99] hover:bg-muted sm:min-h-64 sm:rounded-3xl sm:p-8"
             onClick={() => !mutation.isPending && inputRef.current?.click()}
             onDragOver={(event) => event.preventDefault()}
             onDrop={(event) => {
@@ -99,7 +99,7 @@ export function ImageUploadForm() {
             }}
           >
             {preview ? (
-              <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-foreground shadow-[6px_6px_0_0_hsl(var(--primary))]">
+              <div className="relative h-36 w-36 overflow-hidden rounded-full border-4 border-foreground shadow-[6px_6px_0_0_hsl(var(--primary))] sm:h-48 sm:w-48">
                 <Image src={preview} alt="Preview" fill className="object-cover" unoptimized />
               </div>
             ) : (
@@ -122,6 +122,7 @@ export function ImageUploadForm() {
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
               size="lg"
+              className="h-12 w-full touch-target sm:w-auto"
               onClick={() => inputRef.current?.click()}
               disabled={mutation.isPending || Boolean(cropSource)}
             >

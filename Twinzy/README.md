@@ -1,75 +1,58 @@
 # Twinzy
 
-Celebrity lookalike search powered by rich profile similarity — not name matching.
+Celebrity lookalike search — upload a selfie, get your top 12 matches plus a funny twin.
 
-## Stack
-
-- **Frontend:** Next.js 15, TypeScript, Tailwind CSS, Framer Motion, React Query (`frontend/`)
-- **Backend:** Java 17, Spring Boot 3 (`backend/`)
-- **Data:** JSON profile dataset with vector similarity search (`data/profiles.json`)
-
-## Project Structure
+## Project layout
 
 ```
 Twinzy/
-├── frontend/           # Next.js UI
-├── backend/            # Spring Boot REST API
-├── data/               # Generated profile dataset
-└── scripts/seed/       # Demo data generator
+├── backend/     # Spring Boot API (Java 17)
+├── frontend/    # Next.js 15 app
+└── database/    # PostgreSQL, migrations, seed catalogs
 ```
 
-## Getting Started
+## Quick start (local)
 
-### 1. Install dependencies and seed data
+**Requirements:** Node 20+, Java 17+, Maven, Docker
 
 ```bash
 pnpm install
-pnpm seed:small   # fast demo dataset (210 profiles)
-# pnpm seed       # full dataset (2100 profiles)
+pnpm db:up        # Start Postgres
+pnpm seed:small   # Seed 500 profiles (first time)
+pnpm dev          # backend :8081 + frontend :3001
 ```
 
-### 2. Run both services
+- Frontend: http://localhost:3001
+- Backend: http://localhost:8081
+- Postgres: `localhost:5433` (user/pass/db: `twinzy`)
 
-**Option A — single command (recommended):**
+## Quick start (Docker)
 
 ```bash
-pnpm dev
+pnpm docker:build
+pnpm docker:up
+pnpm docker:seed  # Seed 500 profiles (first time)
 ```
 
-**Option B — separate terminals:**
+- Frontend: http://localhost:3001
+- Backend: http://localhost:8081
+- Postgres: `localhost:5433`
+
+## Database
 
 ```bash
-# Terminal 1 — Spring Boot API on :8081
-cd backend && mvn spring-boot:run
-
-# Terminal 2 — Next.js UI on :3001
-cd frontend && pnpm dev
+pnpm db:up        # Start PostgreSQL
+pnpm db:down      # Stop PostgreSQL
+pnpm seed:small   # Seed 500 profiles (dev)
+pnpm seed         # Seed 20,000 profiles (full, ~30–60 min)
 ```
 
-Open [http://localhost:3001](http://localhost:3001), upload a photo, and browse your lookalike matches.
+See [database/README.md](database/README.md) for schema and connection details.
 
-### Environment
+## Features
 
-Frontend (`frontend/.env.local`):
-
-```
-NEXT_PUBLIC_API_URL=http://localhost:8081
-NEXT_PUBLIC_SITE_URL=http://localhost:3001
-```
-
-Backend (`backend/src/main/resources/application.yml`):
-
-- `twinzy.data-path` — path to `data/profiles.json` (default: `../data/profiles.json`)
-- `twinzy.cors.allowed-origins` — frontend origins
-
-## API Endpoints (Spring Boot)
-
-- `GET /api/health` — service health and profile count
-- `POST /api/search` — upload image (`multipart/form-data`, field: `image`)
-- `GET /api/search?sessionId=` — retrieve search session
-- `GET /api/profiles/slugs` — all profile slugs (for sitemap/SSG)
-- `GET /api/profiles/{slug}` — profile details with optional `sessionId` for similarity breakdown
-
-## License
-
-Proprietary
+- Multi-signal face matching (pixel embedding + features + traits)
+- Top **12** celebrity matches per search
+- 74 curated celebrities + Wikimedia portrait bulk seed
+- EN/AR language switch, image crop, share buttons
+- Paginated discover gallery

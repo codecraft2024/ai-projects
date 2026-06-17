@@ -2,7 +2,7 @@ export type Locale = "en" | "ar";
 
 export const translations = {
   en: {
-    brand: "Twinzy 😂",
+    brand: "Twinzy",
     navHome: "Home",
     navDiscover: "Discover",
     navScan: "Scan Face",
@@ -86,7 +86,7 @@ export const translations = {
     langAr: "العربية",
   },
   ar: {
-    brand: "توينزي 😂",
+    brand: "توينزي",
     navHome: "الرئيسية",
     navDiscover: "استكشف",
     navScan: "امسح وجهك",
