@@ -2,9 +2,8 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { Camera, Loader2, Upload } from "lucide-react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageCropModal } from "@/components/search/ImageCropModal";
 import { searchByImage } from "@/lib/api-client";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
@@ -23,20 +22,18 @@ export function ImageUploadForm() {
 
   const mutation = useMutation({
     mutationFn: searchByImage,
-    onSuccess: (data) => {
-      const payload = {
-        sessionId: data.sessionId,
-        funnyMatch: data.funnyMatch,
-        humanMatches: data.humanMatches,
-        userImageDataUrl: data.userImageDataUrl ?? preview,
-      };
-      sessionStorage.setItem(SEARCH_SESSION_KEY, JSON.stringify(payload));
-      router.push(`/results?sessionId=${data.sessionId}`);
-    },
     onError: (err: Error) => {
       setError(err.message);
     },
   });
+
+  useEffect(() => {
+    return () => {
+      if (preview?.startsWith("blob:")) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
 
   function openCropper(file: File) {
     setError(null);
@@ -57,9 +54,23 @@ export function ImageUploadForm() {
     if (cropSource?.src) {
       URL.revokeObjectURL(cropSource.src);
     }
+    if (preview?.startsWith("blob:")) {
+      URL.revokeObjectURL(preview);
+    }
     setCropSource(null);
     setPreview(previewUrl);
-    mutation.mutate(file);
+    mutation.mutate(file, {
+      onSuccess: (data) => {
+        const payload = {
+          sessionId: data.sessionId,
+          funnyMatch: data.funnyMatch,
+          humanMatches: data.humanMatches,
+          userImageDataUrl: data.userImageDataUrl ?? previewUrl,
+        };
+        sessionStorage.setItem(SEARCH_SESSION_KEY, JSON.stringify(payload));
+        router.push(`/results?sessionId=${data.sessionId}`);
+      },
+    });
   }
 
   function handleCropCancel() {
@@ -100,7 +111,13 @@ export function ImageUploadForm() {
           >
             {preview ? (
               <div className="relative h-36 w-36 overflow-hidden rounded-full border-4 border-foreground shadow-[6px_6px_0_0_hsl(var(--primary))] sm:h-48 sm:w-48">
-                <Image src={preview} alt="Preview" fill className="object-cover" unoptimized />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  key={preview}
+                  src={preview}
+                  alt="Preview"
+                  className="h-full w-full object-cover"
+                />
               </div>
             ) : (
               <>
