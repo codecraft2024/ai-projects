@@ -9,43 +9,48 @@ import org.springframework.stereotype.Repository;
 
 import com.twinzy.model.FeatureBreakdown;
 import com.twinzy.model.StoredProfile;
+import com.twinzy.persistence.ProfilePersistenceService;
 import com.twinzy.similarity.FeatureWeights;
 
 @Repository
 public class ProfileRepository {
 
-    private final List<StoredProfile> profiles;
+    private final ProfilePersistenceService profilePersistenceService;
 
-    public ProfileRepository(List<StoredProfile> profiles) {
-        this.profiles = List.copyOf(profiles);
+    public ProfileRepository(ProfilePersistenceService profilePersistenceService) {
+        this.profilePersistenceService = profilePersistenceService;
+    }
+
+    private List<StoredProfile> allProfiles() {
+        return profilePersistenceService.loadAllProfiles();
     }
 
     public int count() {
-        return profiles.size();
+        return allProfiles().size();
     }
 
     public List<String> findAllSlugs() {
-        return profiles.stream().map(StoredProfile::getSlug).toList();
+        return allProfiles().stream().map(StoredProfile::getSlug).toList();
     }
 
     public Optional<StoredProfile> findBySlug(String slug) {
-        return profiles.stream().filter(profile -> profile.getSlug().equals(slug)).findFirst();
+        return allProfiles().stream().filter(profile -> profile.getSlug().equals(slug)).findFirst();
     }
 
     public List<StoredProfile> findAllFunny() {
-        return profiles.stream().filter(StoredProfile::isFunnyObject).toList();
+        return allProfiles().stream().filter(StoredProfile::isFunnyObject).toList();
     }
 
     public List<StoredProfile> findAllHumans() {
-        return profiles.stream().filter(profile -> !profile.isFunnyObject()).toList();
+        return allProfiles().stream().filter(profile -> !profile.isFunnyObject()).toList();
     }
 
     public List<StoredProfile> findAll() {
-        return profiles;
+        return allProfiles();
     }
 
     public List<RankedProfile> findTopK(double[] embedding, int limit, boolean funnyOnly) {
-        return profiles.stream()
+        return allProfiles().stream()
                 .filter(profile -> funnyOnly ? profile.isFunnyObject() : !profile.isFunnyObject())
                 .map(profile -> new RankedProfile(
                         profile,
@@ -58,6 +63,7 @@ public class ProfileRepository {
     }
 
     public List<RankedProfile> findRelated(String profileId, int limit) {
+        List<StoredProfile> profiles = allProfiles();
         Optional<StoredProfile> source = profiles.stream()
                 .filter(profile -> profile.getId().equals(profileId))
                 .findFirst();

@@ -1,5 +1,4 @@
 com/twinzy/service/SearchSessionService$SessionEntry.class
-com/twinzy/seed/PlaceholderImageGenerator.class
 com/twinzy/persistence/ProfilePersistenceService.class
 com/twinzy/analysis/FaceAnalysisService.class
 com/twinzy/model/StoredProfile.class
@@ -17,7 +16,6 @@ com/twinzy/config/TwinzyProperties$Database.class
 com/twinzy/seed/DatasetSeedService.class
 com/twinzy/dto/HealthResponseDto.class
 com/twinzy/analysis/ImageAnalyzer.class
-com/twinzy/service/ProfileLoaderService.class
 com/twinzy/model/ProfileImage.class
 com/twinzy/exception/GlobalExceptionHandler.class
 com/twinzy/service/SimilarityService.class

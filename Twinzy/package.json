@@ -19,6 +19,8 @@
     "docker:logs": "docker compose logs -f",
     "docker:seed": "docker compose run --rm seed",
     "docker:seed:full": "TWINZY_SEED_TOTAL=20000 docker compose run --rm seed",
+    "docker:tag": "sh -c 'test -n \"$DOCKERHUB_USER\" || (echo \"Set DOCKERHUB_USER first\" && exit 1); docker tag twinzy-backend ${DOCKERHUB_USER}/twinzy-backend:latest && docker tag twinzy-frontend ${DOCKERHUB_USER}/twinzy-frontend:latest'",
+    "docker:push": "sh -c 'test -n \"$DOCKERHUB_USER\" || (echo \"Set DOCKERHUB_USER first\" && exit 1); docker push ${DOCKERHUB_USER}/twinzy-backend:latest && docker push ${DOCKERHUB_USER}/twinzy-frontend:latest'",
     "seed": "cd backend && mvn -q spring-boot:run -Dspring-boot.run.profiles=seed -Dspring-boot.run.jvmArguments=-Xmx2g",
     "seed:small": "cd backend && TWINZY_SEED_TOTAL=500 mvn -q spring-boot:run -Dspring-boot.run.profiles=seed -Dspring-boot.run.jvmArguments=-Xmx1g",
     "setup": "pnpm install && pnpm db:up && sleep 4 && pnpm seed:small"

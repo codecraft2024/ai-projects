@@ -5,6 +5,7 @@ import { SafeImage } from "@/components/ui/SafeImage";
 import type { ProfileMatch } from "@/types/profile";
 import { FUNNY_EMOJI } from "@/lib/api-client";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { resolveProfileImage } from "@/lib/profile-image";
 import { formatPercent } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -15,11 +16,10 @@ interface FaceComparisonProps {
 
 export function FaceComparison({ userImage, topMatch }: FaceComparisonProps) {
   const { t } = useLanguage();
-  const twinImage =
-    topMatch.profile.images.find((image) => image.isPrimary) ?? topMatch.profile.images[0];
+  const twinImage = resolveProfileImage(topMatch.profile);
   const emoji = FUNNY_EMOJI[topMatch.profile.fullName] ?? "⭐";
 
-  if (!userImage) return null;
+  if (!userImage || !twinImage) return null;
 
   return (
     <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
@@ -43,9 +43,7 @@ export function FaceComparison({ userImage, topMatch }: FaceComparisonProps) {
           <div className="text-center">
             <p className="mb-2 text-base font-bold sm:mb-3 sm:text-lg">{t("yourTwin")} 🌟</p>
             <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border-4 border-accent/50 shadow-lg shadow-accent/20 sm:h-48 sm:w-48 md:h-56 md:w-56">
-              {twinImage ? (
-                <SafeImage src={twinImage.url} alt={topMatch.profile.fullName} fill className="object-cover" sizes="(max-width: 768px) 144px, 224px" />
-              ) : null}
+              <SafeImage src={twinImage.src} alt={twinImage.alt} fill className="object-cover" sizes="(max-width: 768px) 144px, 224px" />
             </div>
             <p className="mt-2 max-w-[16rem] truncate font-semibold sm:mt-3 sm:max-w-none">{topMatch.profile.fullName}</p>
           </div>

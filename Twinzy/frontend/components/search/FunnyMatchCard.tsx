@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { ProfileMatch } from "@/types/profile";
 import { FUNNY_EMOJI } from "@/lib/api-client";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { resolveProfileImage } from "@/lib/profile-image";
 import { SafeImage } from "@/components/ui/SafeImage";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +20,8 @@ export function FunnyMatchCard({
 }) {
   const { t } = useLanguage();
   const emoji = FUNNY_EMOJI[match.profile.fullName] ?? "✨";
-  const image = match.profile.images.find((item) => item.isPrimary) ?? match.profile.images[0];
+  const image = resolveProfileImage(match.profile);
+  if (!image) return null;
 
   return (
     <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -42,11 +44,9 @@ export function FunnyMatchCard({
                 <SafeImage src={userImage} alt="You" fill className="object-cover" unoptimized />
               </div>
             ) : null}
-            {image ? (
-              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border-4 border-accent/40 sm:h-36 sm:w-36">
-                <SafeImage src={image.url} alt={image.alt} fill className="object-cover" sizes="(max-width: 640px) 112px, 144px" priority />
-              </div>
-            ) : null}
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl border-4 border-accent/40 sm:h-36 sm:w-36">
+              <SafeImage src={image.src} alt={image.alt} fill className="object-cover" sizes="(max-width: 640px) 112px, 144px" priority />
+            </div>
           </div>
           <div className="flex flex-col justify-center gap-3 sm:gap-4">
             <p className="text-base font-medium text-muted-foreground sm:text-lg">{match.reason}</p>

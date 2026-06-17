@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { ProfileMatch } from "@/types/profile";
 import { computeAge } from "@/types/profile";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { resolveProfileImage } from "@/lib/profile-image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatPercent, truncate } from "@/lib/utils";
@@ -24,11 +25,12 @@ export function HumanMatchGrid({
   return (
     <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
       {matches.map((match, index) => {
-        const image =
-          match.profile.images.find((item) => item.isPrimary) ?? match.profile.images[0];
+        const image = resolveProfileImage(match.profile);
         const href = sessionId
           ? `/celebrity/${match.profile.slug}?sessionId=${sessionId}`
           : `/celebrity/${match.profile.slug}`;
+
+        if (!image) return null;
 
         return (
           <motion.div
@@ -45,11 +47,9 @@ export function HumanMatchGrid({
                   </div>
                 ) : null}
                 <span className="text-sm font-black text-primary">VS</span>
-                {image ? (
-                  <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-foreground">
-                    <SafeImage src={image.url} alt={image.alt} fill className="object-cover" sizes="64px" />
-                  </div>
-                ) : null}
+                <div className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-foreground">
+                  <SafeImage src={image.src} alt={image.alt} fill className="object-cover" sizes="64px" />
+                </div>
               </div>
               <CardHeader className="space-y-3">
                 <div className="flex items-start justify-between gap-3">

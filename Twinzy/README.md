@@ -38,6 +38,21 @@ pnpm docker:seed  # Seed 500 profiles (first time)
 - Backend: http://localhost:8081
 - Postgres: `localhost:5433`
 
+### Publish images to Docker Hub
+
+```bash
+docker login
+export DOCKERHUB_USER=your-dockerhub-username
+pnpm docker:build
+pnpm docker:tag
+pnpm docker:push
+```
+
+This publishes:
+
+- `${DOCKERHUB_USER}/twinzy-backend:latest`
+- `${DOCKERHUB_USER}/twinzy-frontend:latest`
+
 ## Database
 
 ```bash

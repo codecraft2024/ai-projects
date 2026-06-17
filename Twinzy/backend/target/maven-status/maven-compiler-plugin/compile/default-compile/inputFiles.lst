@@ -34,7 +34,6 @@
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/repository/ProfileRepository.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/DatasetSeedService.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/ImageDownloadService.java
-/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/PlaceholderImageGenerator.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/ProfileMetadataGenerator.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedApplicationRunner.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedCelebrityRecord.java
@@ -42,7 +41,6 @@
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/SeedVectorUtils.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/WikimediaImageFetcher.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/seed/WikipediaImageResolver.java
-/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/service/ProfileLoaderService.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/service/SearchSessionService.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/service/SimilarityService.java
 /Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/Twinzy/backend/src/main/java/com/twinzy/similarity/FeatureWeights.java

@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: 36 33% 97%;
-  --foreground: 24 18% 18%;
+  --background: 240 20% 99%;
+  --foreground: 224 47% 11%;
   --card: 0 0% 100%;
-  --card-foreground: 24 18% 18%;
-  --primary: 158 32% 38%;
+  --card-foreground: 224 47% 11%;
+  --primary: 262 83% 58%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 24 28% 92%;
-  --secondary-foreground: 24 18% 22%;
-  --muted: 32 24% 94%;
-  --muted-foreground: 24 10% 42%;
-  --accent: 18 72% 58%;
+  --secondary: 240 20% 96%;
+  --secondary-foreground: 224 30% 25%;
+  --muted: 240 16% 95%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 199 89% 48%;
   --accent-foreground: 0 0% 100%;
-  --border: 32 18% 88%;
-  --input: 32 18% 90%;
-  --ring: 158 32% 38%;
-  --radius: 0.875rem;
+  --border: 240 12% 90%;
+  --input: 240 12% 92%;
+  --ring: 262 83% 58%;
+  --radius: 1rem;
 }
 
 * {
@@ -28,8 +28,9 @@
 body {
   @apply bg-background text-foreground antialiased overflow-x-hidden;
   background-image:
-    radial-gradient(ellipse 70% 45% at 50% -10%, hsl(158 32% 38% / 0.08), transparent),
-    radial-gradient(ellipse 50% 35% at 100% 0%, hsl(18 72% 58% / 0.06), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -20%, hsl(262 83% 58% / 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, hsl(199 89% 48% / 0.08), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 100%, hsl(262 83% 58% / 0.06), transparent);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -51,16 +52,25 @@ a {
 }
 
 .shell-card {
-  @apply rounded-2xl border border-border bg-card shadow-sm;
+  @apply rounded-2xl border border-border/70 bg-card/90 shadow-sm backdrop-blur-sm;
   box-shadow:
-    0 1px 2px hsl(24 18% 18% / 0.04),
-    0 12px 32px -16px hsl(24 18% 18% / 0.12);
+    0 1px 2px hsl(224 47% 11% / 0.04),
+    0 8px 24px -8px hsl(262 83% 58% / 0.1);
 }
 
 .display-title {
   @apply font-bold tracking-tight text-foreground;
+  letter-spacing: -0.02em;
 }
 
 .pill {
-  @apply inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-primary;
+  @apply inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+}
+
+.btn-glow {
+  box-shadow: 0 4px 20px -4px hsl(262 83% 58% / 0.45);
 }
