@@ -31,7 +31,10 @@ export function AdminShell({ children, title, subtitle, activeNav }: AdminShellP
         <div className="mx-auto flex h-14 max-w-7xl flex-wrap items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center gap-3">
             <Link href="/" className="flex shrink-0 items-center gap-2">
-              <Logo height={36} />
+              <Logo variant="icon" height={34} className="shrink-0" />
+              <span className="hidden truncate text-sm font-bold text-slate-900 sm:block">
+                {tSite("portalName")}
+              </span>
             </Link>
             <span className="text-slate-300">|</span>
             <span className="truncate text-sm font-medium text-slate-600">{t("adminLabel")}</span>

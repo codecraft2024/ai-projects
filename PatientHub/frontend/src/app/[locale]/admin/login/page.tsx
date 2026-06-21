@@ -46,7 +46,7 @@ export default function AdminLoginPage() {
         <div className="w-full max-w-md">
           <div className="mb-8 text-center">
             <Link href="/" className="inline-flex justify-center">
-              <Logo height={72} priority />
+              <Logo variant="full" height={96} priority withShadow />
             </Link>
             <p className="mt-4 text-brand-light">{t("signIn")}</p>
           </div>

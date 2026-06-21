@@ -29,11 +29,14 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-white/95 backdrop-blur-md">
       <Container>
         <div className="flex h-16 items-center justify-between gap-2 sm:h-[4.5rem]">
-          <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-2.5">
-            <Logo height={40} priority className="shrink-0" />
-            <div className="min-w-0 leading-tight sm:hidden">
-              <span className="block truncate text-sm font-bold text-slate-900">
+          <Link href="/" className="flex min-w-0 shrink items-center gap-2.5 sm:gap-3">
+            <Logo variant="icon" height={42} priority className="shrink-0" />
+            <div className="min-w-0 leading-tight">
+              <span className="block truncate text-sm font-bold text-slate-900 sm:text-base">
                 {tSite("portalName")}
+              </span>
+              <span className="hidden truncate text-xs text-brand sm:block">
+                {tSite("brandTagline")}
               </span>
             </div>
           </Link>

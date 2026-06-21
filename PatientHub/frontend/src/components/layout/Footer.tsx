@@ -29,8 +29,12 @@ export function Footer() {
       <Container className="py-12 sm:py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <Logo height={48} />
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Logo variant="icon" height={44} withShadow className="shrink-0" />
+              <div className="min-w-0">
+                <span className="block font-bold text-white">{tSite("portalName")}</span>
+                <span className="text-xs text-brand-light">{tSite("brandTagline")}</span>
+              </div>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
               {tSite("description")}
