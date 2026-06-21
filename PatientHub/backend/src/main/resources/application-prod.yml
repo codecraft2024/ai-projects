@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:postgres}:${POSTGRES_PORT:5432}/${POSTGRES_DB:patienthub}
+    username: ${POSTGRES_USER:patienthub}
+    password: ${POSTGRES_PASSWORD:patienthub}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+patienthub:
+  cors:
+    allowed-origins:
+      - ${FRONTEND_PUBLIC_URL:http://localhost:3000}
+  storage:
+    upload-dir: /app/uploads
+
+management:
+  endpoint:
+    health:
+      show-details: never
+
+logging:
+  level:
+    com.patienthub: INFO
+    root: WARN
