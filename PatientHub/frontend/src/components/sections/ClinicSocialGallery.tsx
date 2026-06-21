@@ -1,5 +1,10 @@
 import { useTranslations } from "next-intl";
-import { FACEBOOK_URL } from "@/config/social-links";
+import { FACEBOOK_CLINIC_URL } from "@/config/social-links";
+import {
+  GALLERY_CASE_IMAGES,
+  GALLERY_CLINIC_IMAGES,
+  GALLERY_UPDATE_IMAGES,
+} from "@/data/gallery-images";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GalleryCard } from "@/components/social/GalleryCard";
@@ -10,6 +15,7 @@ function buildItems(
   tg: (key: string) => string,
   keys: string[],
   category: GalleryItem["category"],
+  images: Record<string, string>,
 ): GalleryItem[] {
   return keys.map((key) => ({
     id: `${category}-${key}`,
@@ -17,14 +23,14 @@ function buildItems(
     title: tg(`items.${key}.title`),
     caption: tg(`items.${key}.caption`),
     date: "2026",
-    imageSrc: "/gallery/placeholder.svg",
+    imageSrc: images[key] ?? "/gallery/placeholder.svg",
     imageAlt: tg(`items.${key}.title`),
   }));
 }
 
 export function LatestClinicUpdates() {
   const t = useTranslations("gallery");
-  const items = buildItems(t, ["update1", "update2", "update3"], "update");
+  const items = buildItems(t, ["update1", "update2", "update3"], "update", GALLERY_UPDATE_IMAGES);
 
   return (
     <section id="updates" className="bg-white py-14 sm:py-20">
@@ -39,11 +45,11 @@ export function LatestClinicUpdates() {
             <GalleryCard key={item.id} item={item} />
           ))}
         </div>
-        {FACEBOOK_URL && (
+        {FACEBOOK_CLINIC_URL && (
           <p className="mt-8 text-center text-sm text-slate-600">
             {t("updates.facebookMore")}{" "}
             <a
-              href={FACEBOOK_URL}
+              href={FACEBOOK_CLINIC_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-brand hover:underline"
@@ -59,7 +65,7 @@ export function LatestClinicUpdates() {
 
 export function CaseHighlightsSection() {
   const t = useTranslations("gallery");
-  const items = buildItems(t, ["case1", "case2", "case3"], "case");
+  const items = buildItems(t, ["case1", "case2", "case3"], "case", GALLERY_CASE_IMAGES);
 
   return (
     <section id="case-highlights" className="bg-muted py-14 sm:py-20">
@@ -86,7 +92,7 @@ export function CaseHighlightsSection() {
 
 export function ClinicGallerySection() {
   const t = useTranslations("gallery");
-  const items = buildItems(t, ["gal1", "gal2", "gal3", "gal4"], "gallery");
+  const items = buildItems(t, ["gal1", "gal2", "gal3", "gal4"], "gallery", GALLERY_CLINIC_IMAGES);
 
   return (
     <section id="gallery" className="bg-white py-14 sm:py-20">

@@ -35,6 +35,14 @@ export function Contact() {
               >
                 {CONTACT.phoneDisplay}
               </a>
+              {CONTACT.phoneSecondary && (
+                <a
+                  href={`tel:${CONTACT.phoneSecondary}`}
+                  className="mt-2 block text-lg font-semibold text-brand hover:underline"
+                >
+                  {CONTACT.phoneSecondaryDisplay}
+                </a>
+              )}
               <p className="mt-1 text-sm text-slate-500">{t("phoneHint")}</p>
             </ContactCard>
 

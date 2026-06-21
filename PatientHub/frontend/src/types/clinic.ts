@@ -29,6 +29,8 @@ export type ContactInfo = {
   city: string;
   phone: string;
   phoneDisplay: string;
+  phoneSecondary?: string;
+  phoneSecondaryDisplay?: string;
   whatsapp: string;
   whatsappDisplay: string;
   whatsappContactName: string;

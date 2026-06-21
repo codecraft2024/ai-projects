@@ -1,15 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { DOCTOR_PORTRAIT } from "@/data/gallery-images";
 
 export function ExecutiveHero() {
   const t = useTranslations("executive");
   const tSite = useTranslations("site");
 
   const stats = [
-    { value: "15+", label: t("stats.experience") },
+    { value: "12+", label: t("stats.experience") },
     { value: "8,000+", label: t("stats.patients") },
     { value: "2,500+", label: t("stats.surgeries") },
     { value: "98%", label: t("stats.satisfaction") },
@@ -62,8 +64,14 @@ export function ExecutiveHero() {
 
           <div className="lg:col-span-5">
             <div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-white/20 bg-white/10 p-8 backdrop-blur-sm lg:mx-0 lg:ms-auto">
-              <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-accent text-5xl font-bold text-[#1a1625] shadow-lg">
-                MM
+              <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border-4 border-white/30 shadow-lg">
+                <Image
+                  src={DOCTOR_PORTRAIT}
+                  alt={t("title")}
+                  fill
+                  className="object-cover object-top"
+                  sizes="144px"
+                />
               </div>
               <p className="mt-6 text-center text-xl font-bold">{t("title")}</p>
               <p className="text-center text-sm text-brand-light">{tSite("roles.leadSurgeon")}</p>

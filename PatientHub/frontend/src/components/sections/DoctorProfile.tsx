@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ShareButtons } from "@/components/social/ShareButtons";
+import { DOCTOR_PORTRAIT } from "@/data/gallery-images";
 import { getDoctorShare } from "@/lib/share-content";
 import type { Locale } from "@/i18n/routing";
 
@@ -43,13 +45,19 @@ export function DoctorProfile({ showShare = false, asPage = false }: DoctorProfi
         <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-4">
             <div className="card-premium mx-auto max-w-sm overflow-hidden lg:mx-0">
-              <div className="flex aspect-[3/4] flex-col items-center justify-center bg-gradient-to-b from-brand-soft to-white p-8">
-                <div className="flex h-32 w-32 items-center justify-center rounded-full bg-brand-gradient text-4xl font-bold text-white shadow-brand">
-                  MM
-                </div>
-                <p className="mt-6 text-lg font-semibold text-slate-900">{t("name")}</p>
+              <div className="relative aspect-[3/4] bg-slate-100">
+                <Image
+                  src={DOCTOR_PORTRAIT}
+                  alt={t("name")}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 384px, 320px"
+                  priority
+                />
+              </div>
+              <div className="border-t border-[var(--border)] p-4 text-center">
+                <p className="text-lg font-semibold text-slate-900">{t("name")}</p>
                 <p className="text-sm font-medium text-brand">{t("title")}</p>
-                <p className="mt-4 text-center text-xs text-slate-500">{t("photoPlaceholder")}</p>
               </div>
             </div>
             <p className="mt-4 rounded-xl bg-accent-soft p-4 text-center text-sm text-slate-600">

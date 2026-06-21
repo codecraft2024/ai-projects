@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GalleryCard } from "@/components/social/GalleryCard";
 import { ShareButtons } from "@/components/social/ShareButtons";
 import { getCasesShare } from "@/lib/share-content";
+import { GALLERY_CASE_IMAGES } from "@/data/gallery-images";
 import type { GalleryItem } from "@/types/social";
 import type { Locale } from "@/i18n/routing";
 
@@ -30,7 +31,7 @@ export function PatientCases({ showShare = true }: { showShare?: boolean }) {
     title: t(`items.${key}.title`),
     caption: t(`items.${key}.caption`),
     date: "2026",
-    imageSrc: "/gallery/placeholder.svg",
+    imageSrc: GALLERY_CASE_IMAGES[key],
     imageAlt: t(`items.${key}.title`),
   }));
 

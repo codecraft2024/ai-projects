@@ -12,7 +12,7 @@ import type {
 /** Portal and clinic branding */
 export const SITE: SiteConfig = {
   portalName: "Tabeeby",
-  clinicName: "Dr. Mina Merzek Clinic",
+  clinicName: "Dr. Mina Eskarous Clinic",
   tagline: "Patient & Doctor Hub",
   description:
     "Tabeeby is the digital gateway to Dr. Mina Merzek Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
@@ -81,10 +81,10 @@ export const SERVICES: ServiceItem[] = [
 ];
 
 export const DOCTOR: DoctorProfile = {
-  name: "Dr. Mina Merzek",
+  name: "Dr. Mina Eskarous",
   title: "Consultant Orthopedic Surgeon",
   introduction:
-    "Dr. Mina Merzek is a highly experienced orthopedic surgeon specializing in bone surgery, joint care, and pediatric orthopedics. With advanced training from Egypt's National Institute for Motor and Nerve System, Dr. Merzek combines surgical excellence with a warm, patient-first approach at the Bone Clinic in Heliopolis, Cairo.",
+    "Dr. Mina Eskarous is a consultant orthopedic surgeon with over 12 years of experience in bone surgery, joint care, and pediatric orthopedics. Master's degree and professional pediatric orthopedic diploma from Egypt's National Institute for Motor and Nerve System.",
   qualifications: [
     {
       title: "Master's Degree in Orthopedic Surgery & Joint Surgery",
@@ -122,11 +122,11 @@ export const DOCTOR: DoctorProfile = {
     "Foot and ankle corrective surgery",
     "Upper limb fracture fixation",
   ],
-  imageAlt: "Dr. Mina Merzek — Consultant Orthopedic Surgeon",
+  imageAlt: "Dr. Mina Eskarous — Consultant Orthopedic Surgeon",
 };
 
 export const CLINIC_STATS: StatItem[] = [
-  { value: "15+", label: "Years of Experience" },
+  { value: "12+", label: "Years of Experience" },
   { value: "8,000+", label: "Patients Treated" },
   { value: "2,500+", label: "Surgeries Performed" },
   { value: "98%", label: "Patient Satisfaction" },
@@ -183,15 +183,17 @@ export const ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const CONTACT: ContactInfo = {
-  clinicName: "Dr. Mina Merzek Clinic",
+  clinicName: "Dr. Mina Eskarous Clinic",
   address: "70 Abdel Aziz Fahmy Street, Saint Fatima Square",
   city: "Heliopolis, Cairo, Egypt",
-  phone: "+201221926646",
-  phoneDisplay: "+20 122 192 6646",
-  whatsapp: "201221926646",
-  whatsappDisplay: "+20 122 192 6646",
-  whatsappContactName: "Mina Clinic",
-  email: "info@drminamerzek.clinic",
+  phone: "+201159060033",
+  phoneDisplay: "+20 115 906 0033",
+  phoneSecondary: "+201010864713",
+  phoneSecondaryDisplay: "+20 101 086 4713",
+  whatsapp: "201159060033",
+  whatsappDisplay: "+20 115 906 0033",
+  whatsappContactName: "Dr. Mina Eskarous Clinic",
+  email: "minamerzekeskarous@gmail.com",
   hours: [
     { days: "Saturday – Thursday", time: "10:00 AM – 8:00 PM" },
     { days: "Friday", time: "Closed" },

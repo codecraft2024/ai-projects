@@ -18,27 +18,31 @@ export const SITE_BASE_URL =
 
 // ─── Profile / page URLs (update when available) ─────────────────────────────
 
-/** Clinic Facebook page — public page reference */
-export const FACEBOOK_URL =
+/** Dr. Mina Eskarous — personal Facebook profile */
+export const FACEBOOK_URL = "https://www.facebook.com/mina.eskarous";
+
+/** Bone Clinic official Facebook page */
+export const FACEBOOK_CLINIC_URL =
   "https://www.facebook.com/Dr.Mina.Eskarous.Bone.Clinic/";
 
-/** Set your Instagram profile URL when ready, e.g. https://www.instagram.com/yourclinic */
-export const INSTAGRAM_URL = "";
+/** Dr. Mina Eskarous — Instagram */
+export const INSTAGRAM_URL = "https://www.instagram.com/dr_mina_eskrous/?hl=en";
 
 /** Set your X (Twitter) profile URL when ready, e.g. https://x.com/yourclinic */
 export const TWITTER_URL = "";
 
 // ─── WhatsApp (official wa.me deep link) ─────────────────────────────────────
 
-export const WHATSAPP_PHONE_E164 = "201221926646";
-export const WHATSAPP_CONTACT_NAME = "Mina Clinic";
-export const WHATSAPP_DEFAULT_MESSAGE = `Hello ${WHATSAPP_CONTACT_NAME}, I would like to inquire about an appointment at Dr. Mina Merzek Clinic.`;
+export const WHATSAPP_PHONE_E164 = "201159060033";
+export const WHATSAPP_CONTACT_NAME = "Dr. Mina Eskarous Clinic";
+export const WHATSAPP_DEFAULT_MESSAGE = `Hello ${WHATSAPP_CONTACT_NAME}, I would like to inquire about an appointment.`;
 
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE_E164}?text=${encodeURIComponent(WHATSAPP_DEFAULT_MESSAGE)}`;
 
 /** Resolved URLs map — convenient for imports that expect a single object. */
 export const SOCIAL_LINKS = {
   facebook: FACEBOOK_URL,
+  facebookClinic: FACEBOOK_CLINIC_URL,
   instagram: INSTAGRAM_URL,
   twitter: TWITTER_URL,
   whatsapp: WHATSAPP_URL,
@@ -60,10 +64,10 @@ export const OG_IMAGES = {
 export const OG_DEFAULT = {
   siteName: "Tabeeby",
   brandTagline: "Patient & Doctor Hub",
-  clinicName: "Dr. Mina Merzek Clinic",
-  title: "Tabeeby | Dr. Mina Merzek Clinic",
+  clinicName: "Dr. Mina Eskarous Clinic",
+  title: "Tabeeby | Dr. Mina Eskarous Clinic",
   description:
-    "Orthopedic & bone clinic in Heliopolis, Cairo. Expert care in pediatric orthopedics, joint replacement, arthroscopy, and sports injuries with Dr. Mina Merzek.",
+    "Orthopedic & bone clinic in Heliopolis, Cairo. Expert care in pediatric orthopedics, joint replacement, arthroscopy, and sports injuries with Dr. Mina Eskarous.",
   locale: "en_EG",
 } as const;
 
