@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CONTACT } from "@/data/clinic";
 import { Container } from "@/components/ui/Container";
+import { Logo } from "@/components/ui/Logo";
 import { SocialLinks } from "@/components/social/SocialLinks";
 
 const NAV_ITEMS = [
@@ -29,13 +30,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-lg font-bold text-white">
-                PH
-              </span>
-              <div>
-                <span className="block font-bold text-white">{tSite("portalName")}</span>
-                <span className="text-xs text-brand-light">{tSite("clinicName")}</span>
-              </div>
+              <Logo height={48} />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
               {tSite("description")}

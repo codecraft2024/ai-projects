@@ -12,4 +12,4 @@ export const routing = defineRouting({
 
 export type Locale = (typeof routing.locales)[number];
 
-export const LOCALE_STORAGE_KEY = "patienthub_preferred_locale";
+export const LOCALE_STORAGE_KEY = "tabeeby_preferred_locale";

@@ -1,9 +1,10 @@
 {
   "site": {
-    "portalName": "PatientHub Portal",
+    "portalName": "Tabeeby",
+    "brandTagline": "Patient & Doctor Hub",
     "clinicName": "Dr. Mina Merzek Clinic",
-    "tagline": "Orthopedic & Bone Care You Can Trust",
-    "description": "PatientHub Portal is the digital gateway to Dr. Mina Merzek Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
+    "tagline": "Patient & Doctor Hub",
+    "description": "Tabeeby is the digital gateway to Dr. Mina Merzek Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
     "mission": "To provide world-class orthopedic care with compassion, precision, and a commitment to every patient's long-term recovery and quality of life.",
     "location": "Heliopolis, Cairo, Egypt",
     "roles": {
@@ -30,7 +31,7 @@
   },
   "hero": {
     "badge": "Premium Orthopedic Center · Cairo",
-    "viaPortal": "via PatientHub Portal",
+    "viaPortal": "via Tabeeby",
     "ctaAppointment": "Request Appointment",
     "ctaWhatsApp": "WhatsApp Us",
     "premiumTitle": "Expert bone, joint & pediatric orthopedic surgery in Heliopolis.",
@@ -156,7 +157,7 @@
       { "year": "2010", "title": "Orthopedic Specialization", "description": "Completed advanced orthopedic and joint surgery training at Egypt's premier motor and nerve institute." },
       { "year": "2014", "title": "Pediatric Orthopedics Diploma", "description": "Earned professional diploma in pediatric orthopedic surgery, expanding care for young patients." },
       { "year": "2016", "title": "Bone Clinic Established", "description": "Opened the Bone Clinic in Heliopolis, Cairo — now Dr. Mina Merzek Clinic." },
-      { "year": "2024", "title": "PatientHub Portal Launch", "description": "Digital patient portal launched to streamline appointments, records, and clinic communication." }
+      { "year": "2024", "title": "Tabeeby Launch", "description": "Digital patient portal launched to streamline appointments, records, and clinic communication." }
     ],
     "achievements": [
       { "title": "Pediatric Orthopedic Excellence", "description": "Recognized expertise in treating congenital bone conditions and pediatric hip disorders across Cairo." },
@@ -194,7 +195,7 @@
       "description": "A glimpse of Dr. Mina Merzek Clinic in Heliopolis."
     },
     "items": {
-      "update1": { "title": "Welcome to PatientHub Portal", "caption": "Our new digital portal makes it easier to book visits and stay connected." },
+      "update1": { "title": "Welcome to Tabeeby", "caption": "Our new digital portal makes it easier to book visits and stay connected." },
       "update2": { "title": "Pediatric Orthopedic Care", "caption": "Specialized care for children with bone and joint conditions." },
       "update3": { "title": "Sports Injury & Arthroscopy", "caption": "Minimally invasive procedures for faster athletic recovery." },
       "case1": { "title": "Pediatric Hip Dysplasia", "caption": "Successful management with a tailored pediatric treatment plan." },
@@ -265,14 +266,14 @@
   },
   "admin": {
     "signIn": "Sign in to dashboard",
-    "demoNote": "Temporary demo access — backend authentication coming soon.",
+    "demoNote": "Sign in with your clinic admin account.",
     "username": "Username",
     "password": "Password",
     "signInButton": "Sign In",
     "signingIn": "Signing in...",
     "invalidCredentials": "Invalid username or password. Please try again.",
     "demoCredentials": "Demo credentials",
-    "backToSite": "Back to PatientHub Portal",
+    "backToSite": "Back to Tabeeby",
     "dashboard": "Clinic Dashboard",
     "dashboardSubtitle": "Overview and quick access to patient management",
     "viewSite": "View Site",
@@ -424,8 +425,8 @@
     }
   },
   "seo": {
-    "homeTitle": "PatientHub Portal | Dr. Mina Merzek Clinic — Orthopedic Surgeon Cairo",
-    "homeDescription": "Dr. Mina Merzek — orthopedic surgeon & bone clinic in Heliopolis, Cairo. Joint replacement, sports injuries, pediatric orthopedics, knee surgery. Book via PatientHub Portal.",
+    "homeTitle": "Tabeeby | Dr. Mina Merzek Clinic — Orthopedic Surgeon Cairo",
+    "homeDescription": "Dr. Mina Merzek — orthopedic surgeon & bone clinic in Heliopolis, Cairo. Joint replacement, sports injuries, pediatric orthopedics, knee surgery. Book via Tabeeby.",
     "doctorTitle": "Dr. Mina Merzek — Orthopedic Surgeon | Consultant Cairo",
     "doctorDescription": "Meet Dr. Mina Merzek: founder, lead orthopedic surgeon. Qualifications, awards, surgical expertise at Dr. Mina Merzek Clinic, Heliopolis.",
     "casesTitle": "Orthopedic Case Highlights | Dr. Mina Merzek Clinic",

@@ -9,13 +9,13 @@ import type {
   StatItem,
 } from "@/types/clinic";
 
-/** Portal and clinic branding — keep portal name exactly as specified. */
+/** Portal and clinic branding */
 export const SITE: SiteConfig = {
-  portalName: "PatientHub Portal",
+  portalName: "Tabeeby",
   clinicName: "Dr. Mina Merzek Clinic",
-  tagline: "Orthopedic & Bone Care You Can Trust",
+  tagline: "Patient & Doctor Hub",
   description:
-    "PatientHub Portal is the digital gateway to Dr. Mina Merzek Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
+    "Tabeeby is the digital gateway to Dr. Mina Merzek Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
   mission:
     "To provide world-class orthopedic care with compassion, precision, and a commitment to every patient's long-term recovery and quality of life.",
   careApproach: [
@@ -153,7 +153,7 @@ export const MILESTONES: Milestone[] = [
   },
   {
     year: "2024",
-    title: "PatientHub Portal Launch",
+    title: "Tabeeby Launch",
     description:
       "Digital patient portal launched to streamline appointments, records, and clinic communication.",
   },

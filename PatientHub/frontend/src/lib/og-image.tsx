@@ -40,11 +40,11 @@ export function renderOgImage({ title, subtitle, badge }: OgImageOptions) {
               fontWeight: 700,
             }}
           >
-            PH
+              Tabeeby
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: 22, opacity: 0.95 }}>{OG_DEFAULT.siteName}</span>
-            <span style={{ fontSize: 18, opacity: 0.8 }}>{OG_DEFAULT.clinicName}</span>
+            <span style={{ fontSize: 18, opacity: 0.8 }}>{OG_DEFAULT.brandTagline}</span>
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>

@@ -1,16 +1,31 @@
 package com.patienthub.config;
 
 import com.patienthub.model.*;
+import com.patienthub.repository.AdminUserRepository;
 import com.patienthub.repository.PatientRepository;
 import com.patienthub.repository.VisitHistoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 
 @Configuration
 public class DataSeeder {
+
+    @Bean
+    CommandLineRunner seedAdminUser(AdminUserRepository adminUserRepository, PasswordEncoder passwordEncoder) {
+        return args -> {
+            if (adminUserRepository.existsByUsername("admin")) {
+                return;
+            }
+            AdminUser admin = new AdminUser();
+            admin.setUsername("admin");
+            admin.setPasswordHash(passwordEncoder.encode("admin"));
+            adminUserRepository.save(admin);
+        };
+    }
 
     @Bean
     CommandLineRunner seedPatients(PatientRepository patientRepository, VisitHistoryRepository visitHistoryRepository) {

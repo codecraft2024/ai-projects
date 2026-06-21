@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
+import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/utils/cn";
 
 type AdminShellProps = {
@@ -30,12 +31,7 @@ export function AdminShell({ children, title, subtitle, activeNav }: AdminShellP
         <div className="mx-auto flex h-14 max-w-7xl flex-wrap items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center gap-3">
             <Link href="/" className="flex shrink-0 items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand text-sm font-bold text-white">
-                PH
-              </span>
-              <span className="hidden truncate text-sm font-bold text-slate-900 sm:block">
-                {tSite("portalName")}
-              </span>
+              <Logo height={36} />
             </Link>
             <span className="text-slate-300">|</span>
             <span className="truncate text-sm font-medium text-slate-600">{t("adminLabel")}</span>

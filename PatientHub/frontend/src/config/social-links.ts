@@ -1,5 +1,5 @@
 /**
- * Central social media configuration for PatientHub Portal.
+ * Central social media configuration for Tabeeby.
  *
  * UPDATE LINKS HERE — all components read from this file.
  * Leave a URL empty string to hide that platform until it is ready.
@@ -54,13 +54,14 @@ export const OG_IMAGES = {
   /** Patient cases / gallery share card */
   cases: "/og/patient-cases.png",
   /** Clinic logo (square, for structured data) */
-  logo: "/og/clinic-logo.png",
+  logo: "/tabeeby-logo.png",
 } as const;
 
 export const OG_DEFAULT = {
-  siteName: "PatientHub Portal",
+  siteName: "Tabeeby",
+  brandTagline: "Patient & Doctor Hub",
   clinicName: "Dr. Mina Merzek Clinic",
-  title: "PatientHub Portal | Dr. Mina Merzek Clinic",
+  title: "Tabeeby | Dr. Mina Merzek Clinic",
   description:
     "Orthopedic & bone clinic in Heliopolis, Cairo. Expert care in pediatric orthopedics, joint replacement, arthroscopy, and sports injuries with Dr. Mina Merzek.",
   locale: "en_EG",

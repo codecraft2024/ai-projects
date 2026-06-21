@@ -61,5 +61,6 @@ export type AuthCredentials = {
 
 export type AuthSession = {
   username: string;
+  token: string;
   loggedInAt: string;
 };

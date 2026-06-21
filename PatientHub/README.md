@@ -1,6 +1,6 @@
-# PatientHub Portal
+# Tabeeby
 
-PatientHub Portal is a monorepo-style project with a **Next.js** frontend and a **Spring Boot** backend. Each application lives in its own folder and can be developed, built, and run independently — or together via **Docker Compose**.
+Tabeeby is a monorepo-style project with a **Next.js** frontend and a **Spring Boot** backend. Each application lives in its own folder and can be developed, built, and run independently — or together via **Docker Compose**.
 
 ## Project structure
 
@@ -16,7 +16,7 @@ PatientHub/
 ### Frontend (`frontend/`)
 
 - **Stack:** Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, next-intl
-- **Purpose:** PatientHub Portal for **Dr. Mina Merzek Clinic** (orthopedic & bone clinic, Heliopolis, Cairo)
+- **Purpose:** Tabeeby — Patient & Doctor Hub for **Dr. Mina Merzek Clinic** (orthopedic & bone clinic, Heliopolis, Cairo)
 - **Features:** Responsive landing page, WhatsApp integration, admin login (demo), admin dashboard (mock data)
 - **Key folders:**
   - `src/app/` — routes (`/`, `/doctor`, `/cases`, `/admin/login`, `/admin/dashboard`)
@@ -32,7 +32,7 @@ PatientHub/
 ### Backend (`backend/`)
 
 - **Stack:** Java 17, Spring Boot 3.4, Maven
-- **Purpose:** REST API for PatientHub Portal (extensible)
+- **Purpose:** REST API for Tabeeby (extensible)
 - **Package layout (`com.patienthub`):**
   - `controller` — HTTP endpoints
   - `service` — business logic
@@ -166,7 +166,7 @@ Example response:
 ```json
 {
   "status": "UP",
-  "message": "PatientHub API is running"
+  "message": "Tabeeby API is running"
 }
 ```
 
@@ -175,7 +175,7 @@ Example response:
 ```bash
 mvn test              # run unit tests
 mvn package           # build JAR
-java -jar target/patienthub-backend-0.0.1-SNAPSHOT.jar
+java -jar target/tabeeby-backend-0.0.1-SNAPSHOT.jar
 ```
 
 Run with the `dev` profile:
@@ -195,8 +195,8 @@ SPRING_PROFILES_ACTIVE=prod mvn spring-boot:run
 ### Build images individually
 
 ```bash
-docker build -t patienthub-backend ./backend
-docker build -t patienthub-frontend \
+docker build -t tabeeby-backend ./backend
+docker build -t tabeeby-frontend \
   --build-arg NEXT_PUBLIC_SITE_URL=http://localhost:3000 \
   --build-arg NEXT_PUBLIC_API_URL=http://localhost:8080 \
   ./frontend
@@ -207,19 +207,19 @@ docker build -t patienthub-frontend \
 ```bash
 export DOCKERHUB_USER=yourusername
 
-docker tag patienthub-backend  $DOCKERHUB_USER/patienthub-backend:latest
-docker tag patienthub-frontend $DOCKERHUB_USER/patienthub-frontend:latest
+docker tag tabeeby-backend  $DOCKERHUB_USER/tabeeby-backend:latest
+docker tag tabeeby-frontend $DOCKERHUB_USER/tabeeby-frontend:latest
 
 docker login
-docker push $DOCKERHUB_USER/patienthub-backend:latest
-docker push $DOCKERHUB_USER/patienthub-frontend:latest
+docker push $DOCKERHUB_USER/tabeeby-backend:latest
+docker push $DOCKERHUB_USER/tabeeby-frontend:latest
 ```
 
 On a VPS, pull and run:
 
 ```bash
-docker pull $DOCKERHUB_USER/patienthub-backend:latest
-docker pull $DOCKERHUB_USER/patienthub-frontend:latest
+docker pull $DOCKERHUB_USER/tabeeby-backend:latest
+docker pull $DOCKERHUB_USER/tabeeby-frontend:latest
 # Update docker-compose.yml image: fields or use compose with pre-built images
 FRONTEND_PUBLIC_URL=https://your-domain.com \
 BACKEND_PUBLIC_URL=https://api.your-domain.com \

@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { SocialLinks } from "@/components/social/SocialLinks";
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import { cn } from "@/utils/cn";
+import { Logo } from "@/components/ui/Logo";
 
 const NAV_ITEMS = [
   { href: "/", key: "home" as const },
@@ -29,15 +30,10 @@ export function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between gap-2 sm:h-[4.5rem]">
           <Link href="/" className="flex min-w-0 shrink items-center gap-2 sm:gap-2.5">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-sm font-bold text-white shadow-brand sm:h-10 sm:w-10">
-              PH
-            </span>
-            <div className="min-w-0 leading-tight">
-              <span className="block truncate text-sm font-bold text-slate-900 sm:text-base">
+            <Logo height={40} priority className="shrink-0" />
+            <div className="min-w-0 leading-tight sm:hidden">
+              <span className="block truncate text-sm font-bold text-slate-900">
                 {tSite("portalName")}
-              </span>
-              <span className="hidden truncate text-xs text-brand sm:block">
-                {tSite("clinicName")}
               </span>
             </div>
           </Link>

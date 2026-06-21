@@ -76,7 +76,7 @@ public class PatientController {
     public MedicalNoteResponse addNote(
             @PathVariable Long id,
             @Valid @RequestBody MedicalNoteRequest request,
-            @RequestHeader(value = "X-Admin-User", defaultValue = "admin") String adminUser) {
+            @RequestAttribute("adminUser") String adminUser) {
         return patientService.addNote(id, request, adminUser);
     }
 
@@ -84,7 +84,7 @@ public class PatientController {
     public VisitHistoryResponse addVisit(
             @PathVariable Long id,
             @RequestBody Map<String, String> body,
-            @RequestHeader(value = "X-Admin-User", defaultValue = "admin") String adminUser) {
+            @RequestAttribute("adminUser") String adminUser) {
         LocalDate visitDate = body.get("visitDate") != null ? LocalDate.parse(body.get("visitDate")) : null;
         return patientService.addVisit(id, visitDate, body.get("notes"), body.get("diagnosis"), adminUser);
     }
@@ -99,7 +99,7 @@ public class PatientController {
             @PathVariable Long id,
             @RequestParam MedicalFileType fileType,
             @RequestParam("file") MultipartFile file,
-            @RequestHeader(value = "X-Admin-User", defaultValue = "admin") String adminUser) {
+            @RequestAttribute("adminUser") String adminUser) {
         return medicalFileService.upload(id, fileType, file, adminUser);
     }
 

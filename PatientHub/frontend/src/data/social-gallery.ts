@@ -10,12 +10,12 @@ export const CLINIC_UPDATES: ClinicUpdate[] = [
   {
     id: "update-1",
     category: "update",
-    title: "Welcome to PatientHub Portal",
+    title: "Welcome to Tabeeby",
     caption:
       "Our new digital portal makes it easier to book visits and stay connected with the clinic.",
     date: "2026-06-01",
     imageSrc: "/gallery/placeholder.svg",
-    imageAlt: "PatientHub Portal launch announcement",
+    imageAlt: "Tabeeby launch announcement",
   },
   {
     id: "update-2",

@@ -5,10 +5,9 @@ import type { AuthCredentials, AuthSession } from "@/types/admin";
 import {
   subscribeAuth,
   getSession,
-  saveSession,
   clearSession,
-  validateCredentials,
   initSession,
+  loginWithApi,
 } from "@/services/auth.service";
 
 if (typeof window !== "undefined") {
@@ -17,28 +16,28 @@ if (typeof window !== "undefined") {
 
 export function useAuth() {
   const session = useSyncExternalStore(
-      subscribeAuth,
-      getSession,
-      () => null as AuthSession | null
+    subscribeAuth,
+    getSession,
+    () => null as AuthSession | null,
   );
 
-  const login = useCallback((credentials: AuthCredentials): boolean => {
-    const isValid = validateCredentials(credentials);
-
-    if (isValid) {
-      saveSession(credentials.username); // already notifies internally
+  const login = useCallback(async (credentials: AuthCredentials): Promise<boolean> => {
+    clearSession();
+    try {
+      await loginWithApi(credentials);
+      return true;
+    } catch {
+      return false;
     }
-
-    return isValid;
   }, []);
 
   const logout = useCallback(() => {
-    clearSession(); // already notifies internally
+    clearSession();
   }, []);
 
   return {
     session,
-    isAuthenticated: !!session,
+    isAuthenticated: !!session?.token,
     isLoading: false,
     login,
     logout,

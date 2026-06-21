@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public class HealthService {
 
     public HealthStatus getStatus() {
-        return new HealthStatus("UP", "PatientHub API is running");
+        return new HealthStatus("UP", "Tabeeby API is running");
     }
 }
