@@ -30,7 +30,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3">
-              <Logo variant="icon" height={44} withShadow className="shrink-0" />
+              <Logo variant="icon" height={44} withWhiteBadge className="shrink-0" />
               <div className="min-w-0">
                 <span className="block font-bold text-white">{tSite("portalName")}</span>
                 <span className="text-xs text-brand-light">{tSite("brandTagline")}</span>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import { ApiError } from "@/services/api.client";
 import type { AuthCredentials, AuthSession } from "@/types/admin";
 import {
   subscribeAuth,
@@ -14,6 +15,13 @@ if (typeof window !== "undefined") {
   initSession();
 }
 
+export type LoginResult = "success" | "invalid" | "network";
+
+export type LoginResponse =
+  | { result: "success" }
+  | { result: "invalid" }
+  | { result: "network"; message?: string };
+
 export function useAuth() {
   const session = useSyncExternalStore(
     subscribeAuth,
@@ -21,13 +29,22 @@ export function useAuth() {
     () => null as AuthSession | null,
   );
 
-  const login = useCallback(async (credentials: AuthCredentials): Promise<boolean> => {
+  const login = useCallback(async (credentials: AuthCredentials): Promise<LoginResponse> => {
     clearSession();
     try {
-      await loginWithApi(credentials);
-      return true;
-    } catch {
-      return false;
+      await loginWithApi({
+        username: credentials.username.trim(),
+        password: credentials.password.trim(),
+      });
+      return { result: "success" };
+    } catch (err) {
+      if (err instanceof ApiError && err.status === 401) {
+        return { result: "invalid" };
+      }
+      if (err instanceof ApiError) {
+        return { result: "network", message: err.message };
+      }
+      return { result: "network" };
     }
   }, []);
 

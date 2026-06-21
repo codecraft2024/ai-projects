@@ -65,6 +65,9 @@ export function Header() {
           </div>
 
           <div className="flex items-center gap-1 lg:hidden">
+            <Button href="/admin/login" variant="outline" size="sm" className="!px-2.5 !text-xs sm:!text-sm">
+              {t("admin")}
+            </Button>
             <LanguageSwitcher />
             <button
               type="button"
@@ -109,6 +112,9 @@ export function Header() {
               <SocialLinks variant="contact" className="justify-center" />
               <Button href="/#contact" variant="primary" className="w-full" onClick={closeMenu}>
                 {t("bookVisit")}
+              </Button>
+              <Button href="/admin/login" variant="outline" className="w-full" onClick={closeMenu}>
+                {t("admin")}
               </Button>
             </li>
           </ul>

@@ -22,6 +22,11 @@ public class WebConfig {
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(allowedOrigins);
+        config.setAllowedOriginPatterns(List.of(
+                "https://*.ngrok-free.dev",
+                "https://*.ngrok-free.app",
+                "https://*.ngrok.io"
+        ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

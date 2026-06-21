@@ -28,11 +28,15 @@ export default function AdminLoginPage() {
     setError(null);
     setSubmitting(true);
 
-    const success = await login({ username, password });
-    if (success) {
+    const outcome = await login({ username, password });
+    if (outcome.result === "success") {
       router.push("/admin/patients");
     } else {
-      setError(t("invalidCredentials"));
+      setError(
+        outcome.result === "network"
+          ? (outcome.message ?? t("connectionError"))
+          : t("invalidCredentials"),
+      );
       setSubmitting(false);
     }
   };
@@ -46,7 +50,7 @@ export default function AdminLoginPage() {
         <div className="w-full max-w-md">
           <div className="mb-8 text-center">
             <Link href="/" className="inline-flex justify-center">
-              <Logo variant="full" height={96} priority withShadow />
+              <Logo variant="full" height={88} priority withWhiteBadge />
             </Link>
             <p className="mt-4 text-brand-light">{t("signIn")}</p>
           </div>

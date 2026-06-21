@@ -272,6 +272,7 @@
     "signInButton": "دخول",
     "signingIn": "جاري الدخول...",
     "invalidCredentials": "بيانات الدخول غير صحيحة. حاول مرة أخرى.",
+    "connectionError": "تعذر الاتصال بالخادم. تحقق من الاتصال وحاول مرة أخرى.",
     "demoCredentials": "بيانات تجريبية",
     "backToSite": "العودة لTabeeby",
     "dashboard": "لوحة العيادة",
