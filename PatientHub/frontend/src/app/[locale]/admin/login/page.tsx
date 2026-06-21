@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
                   onChange={(e) => setUsername(e.target.value)}
                   required
                   autoComplete="off"
-                  className="mt-1.5 w-full rounded-xl border border-[var(--border)] px-4 py-3 focus:border-brand focus:ring-2 focus:ring-brand/20"
+                  className="mt-1.5 w-full rounded-xl border border-[var(--border)] px-4 py-3 text-base focus:border-brand focus:ring-2 focus:ring-brand/20 sm:text-sm"
                 />
               </label>
               <label className="block">
@@ -88,7 +88,7 @@ export default function AdminLoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   autoComplete="off"
-                  className="mt-1.5 w-full rounded-xl border border-[var(--border)] px-4 py-3 focus:border-brand focus:ring-2 focus:ring-brand/20"
+                  className="mt-1.5 w-full rounded-xl border border-[var(--border)] px-4 py-3 text-base focus:border-brand focus:ring-2 focus:ring-brand/20 sm:text-sm"
                 />
               </label>
               <Button type="submit" variant="primary" size="lg" className="w-full" disabled={submitting}>

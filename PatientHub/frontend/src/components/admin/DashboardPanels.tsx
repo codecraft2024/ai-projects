@@ -69,7 +69,7 @@ export function PatientSearchPanel() {
           placeholder={t("searchPlaceholder")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="w-full max-w-xs rounded-lg border border-[var(--border)] px-3 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 sm:w-56"
+          className="w-full min-h-[44px] rounded-lg border border-[var(--border)] px-3 py-2 text-base focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 sm:w-56 sm:text-sm"
           aria-label={t("searchPatients")}
         />
       }
@@ -97,7 +97,37 @@ function PatientsTable({
 }) {
   const t = useTranslations("admin");
   return (
-    <div className="overflow-x-auto -mx-4 sm:mx-0">
+    <>
+    <div className="space-y-3 md:hidden">
+      {patients.length === 0 ? (
+        <p className="py-8 text-center text-sm text-slate-500">{t("noPatients")}</p>
+      ) : (
+        patients.map((p) => (
+          <article key={p.id} className="rounded-xl border border-[var(--border)] bg-white p-4">
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <p className="font-semibold text-slate-900">{p.name}</p>
+                <p className="font-mono text-xs text-slate-500">{p.id}</p>
+              </div>
+              <span
+                className={cn(
+                  "shrink-0 rounded-full px-2.5 py-0.5 text-xs font-medium capitalize",
+                  statusStyles[p.status],
+                )}
+              >
+                {p.status.replace("-", " ")}
+              </span>
+            </div>
+            <p className="mt-2 text-sm text-slate-600">{p.condition}</p>
+            <p className="mt-1 text-xs text-slate-500">
+              {!compact && `${p.age} · `}
+              {p.lastVisit}
+            </p>
+          </article>
+        ))
+      )}
+    </div>
+    <div className="hidden overflow-x-auto md:block">
       <table className="min-w-full text-start text-sm">
         <thead>
           <tr className="border-b border-slate-200 text-xs uppercase tracking-wide text-slate-500">
@@ -144,6 +174,7 @@ function PatientsTable({
         </tbody>
       </table>
     </div>
+    </>
   );
 }
 

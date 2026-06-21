@@ -27,12 +27,12 @@ export default function AdminDashboardPage() {
     <AdminAuthGuard>
       <AdminShell title={t("dashboard")} subtitle={t("dashboardSubtitle")} activeNav="dashboard">
         <div className="space-y-6">
-          <div className="flex flex-col gap-4 rounded-2xl border border-brand/20 bg-brand-soft p-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-4 rounded-2xl border border-brand/20 bg-brand-soft p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
             <div>
-              <h2 className="text-lg font-semibold text-slate-900">{t("patientsHubTitle")}</h2>
+              <h2 className="text-base font-semibold text-slate-900 sm:text-lg">{t("patientsHubTitle")}</h2>
               <p className="mt-1 text-sm text-slate-600">{t("patientsHubDesc")}</p>
             </div>
-            <Button href="/admin/patients" variant="primary">
+            <Button href="/admin/patients" variant="primary" className="w-full sm:w-auto">
               {t("openPatients")}
             </Button>
           </div>
