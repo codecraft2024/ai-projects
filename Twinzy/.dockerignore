@@ -1,0 +1,11 @@
+**/.DS_Store
+**/.idea
+**/.next
+**/node_modules
+**/target
+**/dist
+**/build
+**/.env.local
+
+database/generated
+database/legacy

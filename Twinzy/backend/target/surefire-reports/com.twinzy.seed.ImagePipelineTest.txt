@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: com.twinzy.seed.ImagePipelineTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.604 s <<< FAILURE! -- in com.twinzy.seed.ImagePipelineTest
+com.twinzy.seed.ImagePipelineTest.downloadsResolvedWikipediaThumbnail -- Time elapsed: 2.510 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: download failed for https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/LeoPTABFI191125-28_%28cropped%29.jpg/500px-LeoPTABFI191125-28_%28cropped%29.jpg ==> expected: not <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertNotNull.failNull(AssertNotNull.java:49)
+	at org.junit.jupiter.api.AssertNotNull.assertNotNull(AssertNotNull.java:35)
+	at org.junit.jupiter.api.Assertions.assertNotNull(Assertions.java:312)
+	at com.twinzy.seed.ImagePipelineTest.downloadsResolvedWikipediaThumbnail(ImagePipelineTest.java:22)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

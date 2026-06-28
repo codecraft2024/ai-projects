@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ghost Talk</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Stay Anonymous</string>
+    <string name="onboarding_desc_1">Chat without revealing your real identity. Your ghost persona protects you.</string>
+    <string name="onboarding_title_2">Connect in Shadows</string>
+    <string name="onboarding_desc_2">Discover other ghosts and start conversations in a mysterious, secure space.</string>
+    <string name="onboarding_title_3">Encrypted Future</string>
+    <string name="onboarding_desc_3">Built for end-to-end encryption. Your messages will stay between you and them.</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+
+    <!-- Auth -->
+    <string name="login_title">Enter the Shadows</string>
+    <string name="login_subtitle">Choose how you want to appear</string>
+    <string name="mobile_login">Mobile Number</string>
+    <string name="anonymous_login">Anonymous Nickname</string>
+    <string name="phone_hint">Phone number</string>
+    <string name="otp_hint">Enter OTP</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="verify_otp">Verify &amp; Enter</string>
+    <string name="invalid_phone">Please enter a valid phone number</string>
+    <string name="nickname_hint">Choose your ghost name</string>
+    <string name="select_avatar">Select your ghost avatar</string>
+    <string name="continue_btn">Continue as Ghost</string>
+
+    <!-- Home -->
+    <string name="welcome_ghost">Welcome, %1$s</string>
+    <string name="chats">Chats</string>
+    <string name="discover">Discover</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+
+    <!-- Chat -->
+    <string name="no_chats">No conversations yet.\nDiscover ghosts to start chatting.</string>
+    <string name="search_ghosts">Search ghosts…</string>
+    <string name="message_hint">Type a message…</string>
+    <string name="typing">typing…</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
+    <string name="send">Send</string>
+
+    <!-- Profile -->
+    <string name="your_ghost_identity">Your Ghost Identity</string>
+    <string name="ghost_id">Ghost ID</string>
+    <string name="nickname">Nickname</string>
+
+    <!-- Settings -->
+    <string name="logout">Logout</string>
+    <string name="logout_confirm">Are you sure you want to vanish into the shadows?</string>
+    <string name="cancel">Cancel</string>
+    <string name="notifications">Notifications</string>
+    <string name="privacy">Privacy</string>
+    <string name="about">About Ghost Talk</string>
+    <string name="version">Version 1.0.0</string>
+</resources>

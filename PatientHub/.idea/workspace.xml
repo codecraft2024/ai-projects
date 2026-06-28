@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9793f725-9dd0-41f0-aa74-bce497b596aa" name="Changes" comment="feat(patient): implement patient management features including forms, detail views, and file uploads">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/PatientHubApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/config/AuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/config/DataSeeder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/config/PasswordConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/config/StorageProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/controller/HealthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/controller/PatientController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/LoginRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/MedicalFileResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/MedicalNoteRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/MedicalNoteResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/PageResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/PatientRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/PatientResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/PatientSummaryResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/dto/VisitHistoryResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/exception/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/exception/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/exception/UnauthorizedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/AdminUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/CaseStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/Gender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/HealthStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/MedicalFile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/MedicalFileType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/MedicalNote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/Patient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/model/VisitHistory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/repository/AdminUserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/repository/MedicalFileRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/repository/MedicalNoteRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/repository/PatientRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/repository/PatientSpecifications.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/repository/VisitHistoryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/service/AuthTokenStore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/service/HealthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/service/MedicalFileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/patienthub/service/PatientService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application-dev.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application-prod.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/patienthub/controller/AuthControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/patienthub/controller/HealthControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/AGENTS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/CLAUDE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/eslint.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/next-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/next.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/postcss.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/cases/case-clubfoot-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/cases/case-hip-dislocation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/cases/case-pediatric-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/cases/case-pediatric-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/cases/case-surgery-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/clinic/clinic-about.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/doctor/dr-mina-clinic-page.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/doctor/dr-mina-portrait.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/doctor/dr-mina-profile.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/doctor/dr-mina-vezeeta.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/gallery/placeholder.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/tabeeby-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/tabeeby-logo-old.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/tabeeby-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/admin/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/admin/login/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/admin/patients/[id]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/admin/patients/new/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/admin/patients/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/cases/opengraph-image.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/cases/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/doctor/opengraph-image.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/doctor/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/opengraph-image.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/[locale]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/api-proxy/[...path]/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/api/health/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/manifest.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/robots.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/sitemap.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/AdminAuthGuard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/AdminShell.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/DashboardPanels.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/patients/PatientDetailView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/patients/PatientForm.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/patients/PatientSearchPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/admin/patients/patient-styles.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/icons/ServiceIcons.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/icons/SocialIcons.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/icons/WhatsAppIcon.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Footer.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/Header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/HomePageExtras.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/LanguageSwitcher.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/layout/SiteChrome.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/About.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/ClinicSocialGallery.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/Contact.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/DoctorProfile.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/ExecutiveHero.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/FaqSection.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/Hero.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/PatientCases.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/Services.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/sections/SurgeryHistory.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/seo/AnalyticsScripts.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/seo/JsonLd.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/social/GalleryCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/social/ShareButtons.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/social/SocialLinks.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Container.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/FloatingWhatsApp.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/Logo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/SectionHeading.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ui/WhatsAppButton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/config/social-links.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/data/admin-mock.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/data/clinic.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/data/gallery-images.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/data/social-gallery.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useAuth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/navigation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/request.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/lib/metadata.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/lib/og-image.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/lib/share-content.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/messages/ar.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/messages/en.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/api.client.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/auth.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/patient.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/types/admin.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/types/clinic.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/types/patient.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/types/social.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/cn.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/locale-persistence.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/social.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/utils/whatsapp.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/PatientHub" value="3EaYWAWJoVZ654R725t0yueEuQ8" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;codecraft2024&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/codecraft2024/ai-projects.git&quot;,
+    &quot;accountId&quot;: &quot;53224dc1-f3a2-458e-bce7-3f6b0c7fed24&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3EaYWAWJoVZ654R725t0yueEuQ8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.PatientHubApplication.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/PatientHub/frontend/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/minaanwer/Desktop/githup-repo/ai-projects/ai-projects/PatientHub/frontend/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/public" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="PatientHubApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="patienthub-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.patienthub.PatientHubApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.patienthub.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TabeebyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="patienthub-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.tabeeby.TabeebyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+        <item itemvalue="Spring Boot.PatientHubApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9793f725-9dd0-41f0-aa74-bce497b596aa" name="Changes" comment="" />
+      <created>1780418176903</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780418176903</updated>
+      <workItem from="1780418178627" duration="783000" />
+      <workItem from="1780474166785" duration="2931000" />
+      <workItem from="1780486002075" duration="2081000" />
+      <workItem from="1780496371077" duration="86000" />
+      <workItem from="1781368071182" duration="2228000" />
+      <workItem from="1781437661422" duration="1457000" />
+      <workItem from="1782042146665" duration="6521000" />
+      <workItem from="1782050568345" duration="19000" />
+      <workItem from="1782051118406" duration="1474000" />
+    </task>
+    <task id="LOCAL-00001" summary="update site">
+      <option name="closed" value="true" />
+      <created>1780478083467</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1780478083467</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add initial implementation of routing, localization, and WhatsApp integration">
+      <option name="closed" value="true" />
+      <created>1780486524844</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1780486524844</updated>
+    </task>
+    <task id="LOCAL-00003" summary="refactor(auth.service): improve session type definition and ensure emitChange consistency">
+      <option name="closed" value="true" />
+      <created>1780486737626</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1780486737626</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add(.env.example): create example environment file with site URL configuration">
+      <option name="closed" value="true" />
+      <created>1780486778181</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1780486778181</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: enhance admin dashboard with navigation and API URL configuration">
+      <option name="closed" value="true" />
+      <created>1781438726488</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1781438726488</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat(twinzy): add patient management features including data seeding, file handling, and exception handling">
+      <option name="closed" value="true" />
+      <created>1782042186013</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1782042186013</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat(tabeeby): update branding and enhance authentication session management">
+      <option name="closed" value="true" />
+      <created>1782044832820</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1782044832820</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat(branding): update logo variants and enhance branding elements across header, footer, and admin shell">
+      <option name="closed" value="true" />
+      <created>1782045610712</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1782045610712</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat(branding): update clinic name and doctor details to reflect new branding for Dr. Mina Eskarous">
+      <option name="closed" value="true" />
+      <created>1782047826968</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1782047826968</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat(auth): enhance login error handling and add connection error messages">
+      <option name="closed" value="true" />
+      <created>1782050582673</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1782050582673</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat(auth): enhance login error handling and add connection error messages">
+      <option name="closed" value="true" />
+      <created>1782051129169</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1782051129169</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat(patient): implement patient management features including forms, detail views, and file uploads">
+      <option name="closed" value="true" />
+      <created>1782056300411</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1782056300411</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update site" />
+    <MESSAGE value="add initial implementation of routing, localization, and WhatsApp integration" />
+    <MESSAGE value="refactor(auth.service): improve session type definition and ensure emitChange consistency" />
+    <MESSAGE value="feat: enhance admin dashboard with navigation and API URL configuration" />
+    <MESSAGE value="feat(twinzy): add patient management features including data seeding, file handling, and exception handling" />
+    <MESSAGE value="feat(tabeeby): update branding and enhance authentication session management" />
+    <MESSAGE value="feat(branding): update logo variants and enhance branding elements across header, footer, and admin shell" />
+    <MESSAGE value="feat(branding): update clinic name and doctor details to reflect new branding for Dr. Mina Eskarous" />
+    <MESSAGE value="feat(auth): enhance login error handling and add connection error messages" />
+    <MESSAGE value="feat(init): add initial project structure and configuration files" />
+    <MESSAGE value="feat(patient): implement patient management features including forms, detail views, and file uploads" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(patient): implement patient management features including forms, detail views, and file uploads" />
+  </component>
+</project>

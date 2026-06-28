@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: twinzy-postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: twinzy
+      POSTGRES_USER: twinzy
+      POSTGRES_PASSWORD: twinzy
+    volumes:
+      - twinzy_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U twinzy -d twinzy"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  twinzy_pg_data:

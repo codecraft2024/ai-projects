@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/chatListFragment">
+
+    <fragment
+        android:id="@+id/chatListFragment"
+        android:name="com.ghosttalk.presentation.chat.ChatListFragment"
+        android:label="@string/chats" />
+
+    <fragment
+        android:id="@+id/discoveryFragment"
+        android:name="com.ghosttalk.presentation.chat.DiscoveryFragment"
+        android:label="@string/discover" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.ghosttalk.presentation.profile.ProfileFragment"
+        android:label="@string/profile" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ghosttalk.presentation.settings.SettingsFragment"
+        android:label="@string/settings" />
+
+</navigation>

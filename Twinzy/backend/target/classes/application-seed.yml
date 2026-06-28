@@ -1,0 +1,14 @@
+spring:
+  main:
+    web-application-type: none
+
+twinzy:
+  seed:
+    total-profiles: ${TWINZY_SEED_TOTAL:20000}
+    funny-count: ${TWINZY_SEED_FUNNY:20}
+  database:
+    seed-path: ${TWINZY_SEED_PATH:../database/seed}
+
+logging:
+  level:
+    com.twinzy.seed: INFO

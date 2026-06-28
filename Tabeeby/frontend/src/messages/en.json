@@ -1,0 +1,452 @@
+{
+  "site": {
+    "portalName": "Tabeeby",
+    "brandTagline": "Patient & Doctor Hub",
+    "clinicName": "Dr. Mina Eskarous Clinic",
+    "tagline": "Patient & Doctor Hub",
+    "description": "Tabeeby is the digital gateway to Dr. Mina Eskarous Clinic — a specialized orthopedic and bone clinic dedicated to restoring mobility, relieving pain, and delivering personalized surgical and non-surgical care.",
+    "mission": "To provide world-class orthopedic care with compassion, precision, and a commitment to every patient's long-term recovery and quality of life.",
+    "location": "Heliopolis, Cairo, Egypt",
+    "roles": {
+      "founder": "Founder & Lead Consultant",
+      "leadSurgeon": "Lead Orthopedic Surgeon",
+      "faceOfClinic": "Face of the Clinic"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "doctor": "Dr. Mina",
+    "cases": "Cases",
+    "contact": "Contact",
+    "bookVisit": "Book Visit",
+    "admin": "Admin",
+    "adminLogin": "Admin Login"
+  },
+  "lang": {
+    "en": "English",
+    "ar": "العربية",
+    "switch": "Language"
+  },
+  "hero": {
+    "badge": "Premium Orthopedic Center · Cairo",
+    "viaPortal": "via Tabeeby",
+    "ctaAppointment": "Request Appointment",
+    "ctaWhatsApp": "WhatsApp Us",
+    "premiumTitle": "Expert bone, joint & pediatric orthopedic surgery in Heliopolis.",
+    "accepting": "Accepting new patients"
+  },
+  "executive": {
+    "eyebrow": "Lead Surgeon",
+    "title": "Dr. Mina Eskarous",
+    "subtitle": "Founder · Lead Consultant · Lead Orthopedic Surgeon",
+    "bio": "The central figure of our clinic — combining advanced surgical skill with a warm, patient-first philosophy trusted by thousands of families across Egypt.",
+    "ctaProfile": "View Full Doctor Profile",
+    "ctaCases": "Featured Treatment Cases",
+    "stats": {
+      "experience": "Years of Experience",
+      "patients": "Patients Treated",
+      "surgeries": "Surgeries Performed",
+      "satisfaction": "Patient Satisfaction"
+    }
+  },
+  "about": {
+    "eyebrow": "About the Clinic",
+    "title": "Mission & patient-centered care",
+    "careApproach": [
+      "Patient-centered consultations with clear treatment plans",
+      "Advanced orthopedic and pediatric bone surgery expertise",
+      "Minimally invasive and arthroscopic techniques when appropriate",
+      "Continuous follow-up and rehabilitation guidance"
+    ]
+  },
+  "services": {
+    "eyebrow": "Our Services",
+    "title": "Orthopedic & bone clinic services",
+    "description": "Comprehensive surgical and non-surgical care for bones, joints, and musculoskeletal conditions for adults and children.",
+    "items": {
+      "pediatric": {
+        "title": "Pediatric Orthopedic Surgery",
+        "description": "Specialized diagnosis and treatment for bone and joint conditions in children, including congenital deformities and growth-related disorders."
+      },
+      "joint": {
+        "title": "Joint Replacement",
+        "description": "Comprehensive hip, knee, and joint replacement procedures designed to restore function and reduce chronic pain."
+      },
+      "sports": {
+        "title": "Arthroscopy & Sports Injuries",
+        "description": "Minimally invasive arthroscopic surgery for ligament tears, meniscus injuries, and athletic trauma recovery."
+      },
+      "bone": {
+        "title": "Bone Deformities",
+        "description": "Corrective treatment for limb alignment issues, hip dysplasia, and structural bone abnormalities."
+      },
+      "foot": {
+        "title": "Foot & Ankle Orthopedics",
+        "description": "Expert care for foot and ankle fractures, instability, and chronic conditions affecting mobility."
+      },
+      "hand": {
+        "title": "Hand & Upper Limb Surgery",
+        "description": "Precision surgical care for hand, wrist, and upper limb injuries, fractures, and nerve-related conditions."
+      }
+    }
+  },
+  "doctor": {
+    "eyebrow": "Meet Your Surgeon",
+    "pageTitle": "Complete Doctor Profile",
+    "name": "Dr. Mina Eskarous",
+    "title": "Consultant Orthopedic Surgeon",
+    "introduction": "Dr. Mina Eskarous is a consultant orthopedic surgeon with over 12 years of experience in bone surgery, joint care, and pediatric orthopedics. With a Master's degree and professional diploma from Egypt's National Institute for Motor and Nerve System, Dr. Eskarous combines surgical excellence with a warm, patient-first approach at the Bone Clinic in Heliopolis, Cairo.",
+    "photoPlaceholder": "Professional photo placeholder — replace with clinic asset",
+    "qualificationsTitle": "Qualifications",
+    "specializationsTitle": "Specializations",
+    "experienceTitle": "Professional Experience",
+    "expertiseTitle": "Areas of Expertise",
+    "awardsTitle": "Awards & Recognition",
+    "certificationsTitle": "Certifications",
+    "biographyTitle": "Professional Biography",
+    "biography": "As founder and lead consultant, Dr. Eskarous has built Dr. Mina Eskarous Clinic into a trusted destination for orthopedic excellence in Cairo — from pediatric hip conditions and clubfoot to complex joint surgery and sports injury recovery. Rated 4.5/5 by patients on Vezeeta.",
+    "qualifications": [
+      { "title": "Master's Degree in Orthopedic Surgery & Joint Surgery", "institution": "National Institute for Motor and Nerve System, Egypt" },
+      { "title": "Professional Diploma in Pediatric Orthopedic Surgery", "institution": "National Institute for Motor and Nerve System, Egypt" },
+      { "title": "Consultant Orthopedic Surgeon", "institution": "Dr. Mina Eskarous Clinic — Bone Clinic, Heliopolis" }
+    ],
+    "specializations": [
+      "Pediatric Orthopedic Surgery",
+      "Arthroscopy & Sports Injuries",
+      "Bone Deformities",
+      "Foot & Ankle Orthopedics",
+      "Joint Replacement",
+      "Hand & Upper Limb Surgery",
+      "Adult Orthopedic Surgery"
+    ],
+    "experience": [
+      "Extensive experience in orthopedic trauma and fracture management",
+      "Specialized practice in pediatric hip conditions and congenital bone disorders",
+      "Performing arthroscopic knee and shoulder procedures",
+      "Long-standing private practice serving patients across Cairo and Egypt"
+    ],
+    "expertise": [
+      "Pediatric hip dysplasia & congenital dislocation",
+      "Knee arthroscopy & ligament reconstruction",
+      "Joint replacement & arthritis management",
+      "Sports injury rehabilitation planning",
+      "Foot and ankle corrective surgery",
+      "Upper limb fracture fixation"
+    ],
+    "awards": [
+      { "title": "Excellence in Pediatric Orthopedics", "description": "Recognized for advanced care in congenital and developmental bone conditions." },
+      { "title": "Leading Private Orthopedic Practice", "description": "Trusted by patients across Greater Cairo for surgical outcomes and follow-up care." }
+    ],
+    "certifications": [
+      "Board-level training — National Institute for Motor and Nerve System",
+      "Pediatric Orthopedic Surgery Professional Diploma",
+      "Advanced Arthroscopy & Sports Medicine procedures"
+    ],
+    "videosComingSoon": "Procedure and educational videos — coming soon"
+  },
+  "experience": {
+    "eyebrow": "Experience & Achievements",
+    "title": "Surgical excellence & clinic milestones",
+    "description": "A trusted record of orthopedic care, successful outcomes, and dedication to patient recovery.",
+    "milestonesTitle": "Clinic Milestones",
+    "highlightsTitle": "Patient Care Highlights",
+    "highlights": "Every treatment plan is tailored to the individual — from first consultation through surgery, rehabilitation, and long-term follow-up. Our clinic prioritizes clear communication, minimally invasive options when possible, and outcomes that restore mobility and confidence.",
+    "milestones": [
+      { "year": "2010", "title": "Orthopedic Specialization", "description": "Completed advanced orthopedic and joint surgery training at Egypt's premier motor and nerve institute." },
+      { "year": "2014", "title": "Pediatric Orthopedics Diploma", "description": "Earned professional diploma in pediatric orthopedic surgery, expanding care for young patients." },
+      { "year": "2016", "title": "Bone Clinic Established", "description": "Opened the Bone Clinic in Heliopolis, Cairo — now Dr. Mina Eskarous Clinic." },
+      { "year": "2024", "title": "Tabeeby Launch", "description": "Digital patient portal launched to streamline appointments, records, and clinic communication." }
+    ],
+    "achievements": [
+      { "title": "Pediatric Orthopedic Excellence", "description": "Recognized expertise in treating congenital bone conditions and pediatric hip disorders across Cairo." },
+      { "title": "Advanced Arthroscopic Surgery", "description": "Minimally invasive joint procedures enabling faster recovery for sports and trauma patients." },
+      { "title": "Comprehensive Bone Care", "description": "Full-spectrum orthopedic services from diagnosis through surgery and long-term follow-up." },
+      { "title": "Trusted Community Practice", "description": "An established Heliopolis clinic known for attentive care and clear patient communication." }
+    ],
+    "stats": {
+      "experience": "12+",
+      "experienceLabel": "Years of Experience",
+      "patients": "8,000+",
+      "patientsLabel": "Patients Treated",
+      "surgeries": "2,500+",
+      "surgeriesLabel": "Surgeries Performed",
+      "satisfaction": "98%",
+      "satisfactionLabel": "Patient Satisfaction"
+    }
+  },
+  "gallery": {
+    "updates": {
+      "eyebrow": "Latest Clinic Updates",
+      "title": "News from Dr. Mina Eskarous Clinic",
+      "description": "Stay informed about services, care tips, and clinic announcements.",
+      "facebookMore": "More updates on Facebook"
+    },
+    "cases": {
+      "eyebrow": "Case Highlights",
+      "title": "Treatment success stories",
+      "description": "Representative orthopedic outcomes from our practice.",
+      "cta": "View All Patient Cases"
+    },
+    "clinic": {
+      "eyebrow": "Clinic Gallery",
+      "title": "Our clinic & care environment",
+      "description": "A glimpse of Dr. Mina Eskarous Clinic in Heliopolis."
+    },
+    "items": {
+      "update1": { "title": "Welcome to Tabeeby", "caption": "Our new digital portal makes it easier to book visits and stay connected." },
+      "update2": { "title": "Pediatric Orthopedic Care", "caption": "Specialized treatment for children's bone and joint deformities — over 12 years of experience." },
+      "update3": { "title": "Successful Surgeries", "caption": "Real outcomes from pediatric orthopedic and joint procedures at our Heliopolis clinic." },
+      "case1": { "title": "Developmental Hip Dislocation", "caption": "Early diagnosis and treatment of congenital hip dislocation in infants and children." },
+      "case2": { "title": "Clubfoot Correction", "caption": "Successful clubfoot treatment using modern pediatric orthopedic techniques." },
+      "case3": { "title": "Pediatric Orthopedic Surgery", "caption": "Specialized surgical care for lower-limb deformities in children." },
+      "case4": { "title": "Pediatric Case Follow-up", "caption": "Structured monitoring and rehabilitation after corrective bone procedures." },
+      "case5": { "title": "Lower Limb Deformity Care", "caption": "Comprehensive management of leg alignment and growth-related conditions." },
+      "case6": { "title": "Bone Clinic — Heliopolis", "caption": "Dr. Mina Eskarous Clinic at Saint Fatima Square, Cairo." },
+      "gal1": { "title": "About the Clinic", "caption": "Trusted orthopedic and pediatric bone care in Heliopolis, Cairo." },
+      "gal2": { "title": "Dr. Mina Eskarous", "caption": "Consultant orthopedic surgeon — Master's degree and pediatric orthopedic diploma." },
+      "gal3": { "title": "Surgical Excellence", "caption": "Advanced procedures for pediatric and adult orthopedic conditions." },
+      "gal4": { "title": "Patient-Centered Care", "caption": "Compassionate consultations with clear treatment planning." }
+    }
+  },
+  "cases": {
+    "pageTitle": "Featured Treatment Cases",
+    "eyebrow": "Patient Cases",
+    "title": "Featured Treatment Cases",
+    "description": "Highlights illustrating the scope of surgical and non-surgical care at our clinic — from pediatric orthopedics to joint replacement and sports injuries. Individual results vary; consult Dr. Eskarous for personal assessment."
+  },
+  "contact": {
+    "eyebrow": "Contact Us",
+    "title": "Book your visit today",
+    "description": "Reach Dr. Mina Eskarous Clinic by WhatsApp, phone, or appointment request.",
+    "addressLine1": "70 Abdel Aziz Fahmy Street, Saint Fatima Square",
+    "city": "Heliopolis, Cairo, Egypt",
+    "addressTitle": "Clinic Address",
+    "phoneTitle": "Phone",
+    "phoneHint": "Tap to call the clinic",
+    "whatsappTitle": "WhatsApp — Mina Clinic",
+    "whatsappCta": "Open WhatsApp Chat",
+    "hoursTitle": "Working Hours",
+    "socialTitle": "Social Media",
+    "socialDescription": "Connect with us for updates, case highlights, and clinic news.",
+    "formTitle": "Request an appointment",
+    "formDescription": "Submit your details and we will contact you to confirm.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "reason": "Reason for visit",
+    "selectService": "Select a service",
+    "consultation": "General Consultation",
+    "pediatric": "Pediatric Orthopedics",
+    "sports": "Sports Injury / Arthroscopy",
+    "joint": "Joint Replacement",
+    "followUp": "Follow-up Visit",
+    "message": "Message",
+    "submitWhatsApp": "Send via WhatsApp",
+    "formNote": "Demo form — opens WhatsApp. Backend integration coming soon.",
+    "hours": [
+      { "days": "Saturday – Thursday", "time": "10:00 AM – 8:00 PM" },
+      { "days": "Friday", "time": "Closed" },
+      { "days": "Emergency", "time": "Contact via WhatsApp" }
+    ]
+  },
+  "share": {
+    "label": "Share",
+    "copied": "Copied!",
+    "instagramHint": "Link copied — paste in Instagram."
+  },
+  "footer": {
+    "followUs": "Follow us",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "hours": "Hours",
+    "tagline": "Orthopedic & Bone Clinic · Heliopolis, Cairo",
+    "rights": "All rights reserved."
+  },
+  "admin": {
+    "signIn": "Sign in to dashboard",
+    "demoNote": "Sign in with your clinic admin account.",
+    "username": "Username",
+    "password": "Password",
+    "signInButton": "Sign In",
+    "signingIn": "Signing in...",
+    "invalidCredentials": "Invalid username or password. Please try again.",
+    "connectionError": "Could not reach the server. Check your connection and try again.",
+    "demoCredentials": "Demo credentials",
+    "backToSite": "Back to Tabeeby",
+    "dashboard": "Clinic Dashboard",
+    "dashboardSubtitle": "Overview and quick access to patient management",
+    "viewSite": "View Site",
+    "logout": "Logout",
+    "loading": "Loading...",
+    "searchPatients": "Search Patients",
+    "searchPlaceholder": "Name, ID, condition...",
+    "patientsList": "Patients List",
+    "appointments": "Appointments",
+    "patientHistory": "Patient History",
+    "medicalRecords": "Patient Medical Records",
+    "recentActivities": "Recent Activities",
+    "noPatients": "No patients found.",
+    "adminLabel": "Admin",
+    "patientsHubTitle": "Patient Management",
+    "patientsHubDesc": "Search, register, and manage patient medical records, files, and visit history.",
+    "openPatients": "Open Patient Management",
+    "nav": {
+      "dashboard": "Dashboard",
+      "patients": "Patients"
+    },
+    "patients": {
+      "title": "Patient Management",
+      "subtitle": "Search, filter, and manage all patient medical records",
+      "detailTitle": "Patient Record",
+      "createTitle": "Add New Patient",
+      "createSubtitle": "Register a new patient with basic and medical information",
+      "searchTitle": "Advanced Search",
+      "resultsTitle": "Search Results",
+      "addNew": "Add New Patient",
+      "searchButton": "Search",
+      "resetButton": "Reset Filters",
+      "totalResults": "{count} patients found",
+      "noResults": "No patients match your search criteria.",
+      "loadError": "Failed to load patients. Ensure the backend API is running.",
+      "saveError": "Failed to save patient. Please check the form and try again.",
+      "uploadError": "File upload failed. Check file type and size (max 25 MB).",
+      "uploadSuccess": "File uploaded successfully.",
+      "sessionExpired": "Your session expired. Please sign in again.",
+      "notFound": "Patient not found.",
+      "invalidId": "Invalid patient ID.",
+      "backToList": "Back to patients",
+      "createPatient": "Create Patient",
+      "creating": "Creating...",
+      "saveChanges": "Save Changes",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "cancelEdit": "Cancel Edit",
+      "editProfile": "Edit Profile",
+      "lastVisitLabel": "Last visit",
+      "qrTitle": "Patient QR Code",
+      "qrHint": "Scan to open this patient's record. Shown on the detail page only.",
+      "qrPatientId": "System ID",
+      "scanDocument": "Scan with camera",
+      "filesTitle": "Medical Files",
+      "visitsTitle": "Visit History",
+      "notesTitle": "Medical Notes",
+      "fileType": "File category",
+      "chooseFile": "Upload file",
+      "uploading": "Uploading...",
+      "noFiles": "No medical files uploaded yet.",
+      "noVisits": "No visit history recorded.",
+      "noNotes": "No medical notes yet.",
+      "download": "Download",
+      "delete": "Delete",
+      "confirmDeleteFile": "Delete this file permanently?",
+      "addNote": "Add Note",
+      "notePlaceholder": "Enter clinical note...",
+      "prevPage": "Previous",
+      "nextPage": "Next",
+      "pageInfo": "Page {current} of {total}",
+      "filters": {
+        "name": "Patient Name",
+        "namePlaceholder": "Search by name",
+        "mobile": "Mobile Number",
+        "age": "Age",
+        "mrn": "Medical Record Number",
+        "caseStatus": "Case Status",
+        "allStatuses": "All statuses",
+        "diagnosis": "Diagnosis",
+        "surgeryType": "Surgery Type",
+        "lastVisitFrom": "Last Visit From",
+        "lastVisitTo": "Last Visit To"
+      },
+      "table": {
+        "id": "Patient ID",
+        "name": "Name",
+        "age": "Age",
+        "mobile": "Mobile",
+        "diagnosis": "Diagnosis",
+        "surgery": "Surgery",
+        "lastVisit": "Last Visit",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "actions": {
+        "view": "View",
+        "edit": "Edit",
+        "upload": "Upload",
+        "scan": "Scan"
+      },
+      "sections": {
+        "basic": "Basic Information",
+        "medical": "Medical Information"
+      },
+      "form": {
+        "fullName": "Full Name",
+        "gender": "Gender",
+        "dateOfBirth": "Date of Birth",
+        "age": "Age",
+        "ageHint": "Or enter age if DOB unknown",
+        "mobile": "Mobile Number",
+        "address": "Address",
+        "emergencyContact": "Emergency Contact",
+        "diagnosis": "Diagnosis",
+        "medicalHistory": "Medical History",
+        "medications": "Current Medications",
+        "allergies": "Allergies",
+        "surgeryDetails": "Surgery Details",
+        "surgeryType": "Surgery Type",
+        "notes": "Notes",
+        "caseStatus": "Case Status",
+        "lastVisit": "Last Visit Date"
+      },
+      "gender": {
+        "MALE": "Male",
+        "FEMALE": "Female",
+        "OTHER": "Other"
+      },
+      "status": {
+        "ACTIVE": "Active",
+        "FOLLOW_UP": "Follow-up",
+        "DISCHARGED": "Discharged",
+        "UNDER_TREATMENT": "Under Treatment",
+        "SCHEDULED_SURGERY": "Scheduled Surgery"
+      },
+      "fileTypes": {
+        "RADIOLOGY": "Radiology (X-ray / MRI)",
+        "LABORATORY": "Laboratory Results",
+        "MEDICAL_REPORT": "Medical Report",
+        "PRESCRIPTION": "Prescription",
+        "SURGERY": "Surgery Documents",
+        "OTHER": "Other Attachments"
+      },
+      "tabs": {
+        "profile": "Profile",
+        "files": "Files",
+        "visits": "Visits",
+        "notes": "Notes"
+      },
+      "validation": {
+        "fullNameRequired": "Full name is required",
+        "mobileRequired": "Mobile number is required",
+        "dobOrAgeRequired": "Date of birth or age is required"
+      }
+    }
+  },
+  "seo": {
+    "homeTitle": "Tabeeby | Dr. Mina Eskarous Clinic — Orthopedic Surgeon Cairo",
+    "homeDescription": "Dr. Mina Eskarous — orthopedic surgeon & bone clinic in Heliopolis, Cairo. Joint replacement, sports injuries, pediatric orthopedics, knee surgery. Book via Tabeeby.",
+    "doctorTitle": "Dr. Mina Eskarous — Orthopedic Surgeon | Consultant Cairo",
+    "doctorDescription": "Meet Dr. Mina Eskarous: founder, lead orthopedic surgeon. Qualifications, awards, surgical expertise at Dr. Mina Eskarous Clinic, Heliopolis.",
+    "casesTitle": "Orthopedic Case Highlights | Dr. Mina Eskarous Clinic",
+    "casesDescription": "Patient case highlights: joint replacement, sports injuries, pediatric orthopedics. Dr. Mina Eskarous bone clinic, Cairo.",
+    "keywords": "Dr Mina Eskarous, orthopedic doctor, orthopedic surgeon, bone clinic, joint replacement, sports injuries, pediatric orthopedics, Cairo, Heliopolis, دكتور مينا اسكاروس"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      { "question": "What conditions does Dr. Mina Eskarous treat?", "answer": "Orthopedic and bone conditions including joint replacement, sports injuries, pediatric hip disorders, fractures, and foot and ankle surgery." },
+      { "question": "Where is the clinic located?", "answer": "70 Abdel Aziz Fahmy Street, Saint Fatima Square, Heliopolis, Cairo, Egypt." },
+      { "question": "How can I book an appointment?", "answer": "Contact us via WhatsApp at +20 115 906 0033 or call 010 1086 4713. You can also use the appointment form on this portal." }
+    ]
+  }
+}

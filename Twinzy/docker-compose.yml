@@ -1,0 +1,84 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: twinzy-postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: twinzy
+      POSTGRES_USER: twinzy
+      POSTGRES_PASSWORD: twinzy
+    volumes:
+      - twinzy_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U twinzy -d twinzy"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: twinzy-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/twinzy
+      POSTGRES_USER: twinzy
+      POSTGRES_PASSWORD: twinzy
+      TWINZY_DB_MIGRATIONS: /app/database/migrations
+      TWINZY_SEED_PATH: /app/database/seed
+      TWINZY_MEDIA_PATH: /app/database/images
+      TWINZY_MEDIA_BASE_URL: http://localhost:8081
+      FACE_PROVIDER: analysis
+    volumes:
+      - ./database/images:/app/database/images
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8081
+        NEXT_PUBLIC_SITE_URL: http://localhost:3001
+    container_name: twinzy-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "3001:3001"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8081
+      NEXT_PUBLIC_SITE_URL: http://localhost:3001
+
+  seed:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    profiles:
+      - seed
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres:5432/twinzy
+      POSTGRES_USER: twinzy
+      POSTGRES_PASSWORD: twinzy
+      TWINZY_DB_MIGRATIONS: /app/database/migrations
+      TWINZY_SEED_PATH: /app/database/seed
+      TWINZY_MEDIA_PATH: /app/database/images
+      TWINZY_MEDIA_BASE_URL: http://localhost:8081
+      TWINZY_SEED_TOTAL: ${TWINZY_SEED_TOTAL:-500}
+      TWINZY_SEED_FUNNY: ${TWINZY_SEED_FUNNY:-20}
+    volumes:
+      - ./database/images:/app/database/images
+    command: ["--spring.profiles.active=seed"]
+
+volumes:
+  twinzy_pg_data:
