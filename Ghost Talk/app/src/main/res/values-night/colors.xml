@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode palette -->
+    <color name="ghost_background">#FF0A0A0F</color>
+    <color name="ghost_surface">#FF12121A</color>
+    <color name="ghost_input_bg">#FF1A1A24</color>
+    <color name="ghost_black">#FF0A0A0F</color>
+    <color name="ghost_dark_gray">#FF1A1A24</color>
+    <color name="ghost_purple">#FF7C3AED</color>
+    <color name="ghost_purple_light">#FF9F67FF</color>
+    <color name="ghost_purple_dark">#FF5B21B6</color>
+    <color name="ghost_text_primary">#FFF5F5F7</color>
+    <color name="ghost_text_secondary">#FF9CA3AF</color>
+    <color name="ghost_text_hint">#FF6B7280</color>
+    <color name="ghost_on_primary">#FFFFFFFF</color>
+    <color name="ghost_online">#FF22C55E</color>
+    <color name="ghost_offline">#FF6B7280</color>
+    <color name="ghost_message_sent">#FF2D1B4E</color>
+    <color name="ghost_message_received">#FF1F1F2E</color>
+    <color name="ghost_error">#FFEF4444</color>
+    <color name="ghost_divider">#FF2A2A3A</color>
+    <color name="ic_launcher_background">#FF0A0A0F</color>
+</resources>

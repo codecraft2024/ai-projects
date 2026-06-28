@@ -16,8 +16,9 @@
     <!-- Auth -->
     <string name="login_title">Enter the Shadows</string>
     <string name="login_subtitle">Choose how you want to appear</string>
-    <string name="mobile_login">Mobile Number</string>
-    <string name="anonymous_login">Anonymous Nickname</string>
+    <string name="create_identity">Create New Identity</string>
+    <string name="return_as_ghost">Return as Ghost</string>
+    <string name="register_title">Create Your Ghost</string>
     <string name="phone_hint">Phone number</string>
     <string name="otp_hint">Enter OTP</string>
     <string name="send_otp">Send OTP</string>

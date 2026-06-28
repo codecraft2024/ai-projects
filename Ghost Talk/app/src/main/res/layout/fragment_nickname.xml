@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:text="@string/anonymous_login"
+            android:text="@string/register_title"
             android:textColor="@color/ghost_text_primary"
             android:textSize="24sp"
             android:textStyle="bold"

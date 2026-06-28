@@ -5,12 +5,12 @@ data class GhostUser(
     val nickname: String,
     val avatarResId: String,
     val isOnline: Boolean = false,
-    val lastSeen: Long? = null
+    val lastSeen: Long? = null,
+    val accountCreatedAt: String? = null
 )
 
 enum class AuthType {
-    MOBILE,
-    ANONYMOUS
+    DEVICE
 }
 
 sealed class AuthResult {

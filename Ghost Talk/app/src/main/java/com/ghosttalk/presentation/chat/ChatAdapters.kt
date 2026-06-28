@@ -120,7 +120,7 @@ class MessageAdapter(
     }
 
     private fun getStatusIcon(status: MessageStatus): Int = when (status) {
-        MessageStatus.SENDING -> R.drawable.ic_status_sending
+        MessageStatus.PENDING, MessageStatus.SENDING -> R.drawable.ic_status_sending
         MessageStatus.SENT -> R.drawable.ic_status_sent
         MessageStatus.DELIVERED -> R.drawable.ic_status_delivered
         MessageStatus.READ -> R.drawable.ic_status_read

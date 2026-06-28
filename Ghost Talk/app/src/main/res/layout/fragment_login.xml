@@ -52,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_marginTop="48dp"
-            android:text="@string/mobile_login"
+            android:text="@string/create_identity"
             app:icon="@drawable/ic_phone"
             app:iconGravity="textStart"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,12 +65,23 @@
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_marginTop="16dp"
-            android:text="@string/anonymous_login"
+            android:text="@string/return_as_ghost"
             app:icon="@drawable/ic_ghost_1"
             app:iconGravity="textStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btnMobileLogin" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/ghost_purple"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

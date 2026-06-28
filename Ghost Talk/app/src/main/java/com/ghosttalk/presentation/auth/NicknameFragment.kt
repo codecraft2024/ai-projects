@@ -25,7 +25,7 @@ class NicknameFragment : Fragment() {
 
     private var _binding: FragmentNicknameBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: NicknameViewModel by viewModels()
+    private val viewModel: RegisterViewModel by viewModels()
     private lateinit var avatarAdapter: AvatarAdapter
 
     override fun onCreateView(
@@ -39,9 +39,7 @@ class NicknameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        avatarAdapter = AvatarAdapter(AvatarProvider.allAvatars()) { avatarId ->
-            viewModel.selectAvatar(avatarId)
-        }
+        avatarAdapter = AvatarAdapter(AvatarProvider.allAvatars()) { viewModel.selectAvatar(it) }
         binding.rvAvatars.apply {
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = avatarAdapter
@@ -53,15 +51,13 @@ class NicknameFragment : Fragment() {
                 Snackbar.make(binding.root, error, Snackbar.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            viewModel.loginWithNickname(nickname)
+            viewModel.register(nickname)
         }
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect { state ->
                     binding.progressBar.isVisible = state.isLoading
-                    state.error?.let {
-                        Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
-                    }
+                    state.error?.let { Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show() }
                     if (state.loginSuccess) {
                         findNavController().navigate(R.id.action_nickname_to_home)
                     }

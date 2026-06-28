@@ -45,20 +45,10 @@
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_login_to_mobile"
-            app:destination="@id/mobileLoginFragment" />
-        <action
             android:id="@+id/action_login_to_nickname"
             app:destination="@id/nicknameFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/mobileLoginFragment"
-        android:name="com.ghosttalk.presentation.auth.MobileLoginFragment"
-        android:label="Mobile Login"
-        tools:layout="@layout/fragment_mobile_login">
         <action
-            android:id="@+id/action_mobile_to_home"
+            android:id="@+id/action_login_to_home"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />

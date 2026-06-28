@@ -1,38 +1,28 @@
 package com.ghosttalk.domain.usecase
 
 import com.ghosttalk.domain.model.AuthResult
+import com.ghosttalk.domain.model.GhostUser
 import com.ghosttalk.domain.repository.AuthRepository
 import javax.inject.Inject
 
-class SendOtpUseCase @Inject constructor(
-    private val authRepository: AuthRepository
-) {
-    suspend operator fun invoke(phoneNumber: String): Result<Unit> =
-        authRepository.sendOtp(phoneNumber)
+class RegisterUseCase @Inject constructor(private val authRepository: AuthRepository) {
+    suspend operator fun invoke(username: String, avatarId: String): AuthResult =
+        authRepository.register(username, avatarId)
 }
 
-class LoginWithMobileUseCase @Inject constructor(
-    private val authRepository: AuthRepository
-) {
-    suspend operator fun invoke(phoneNumber: String, otp: String): AuthResult =
-        authRepository.loginWithMobile(phoneNumber, otp)
+class LoginWithDeviceUseCase @Inject constructor(private val authRepository: AuthRepository) {
+    suspend operator fun invoke(): AuthResult = authRepository.loginWithDevice()
 }
 
-class LoginWithNicknameUseCase @Inject constructor(
-    private val authRepository: AuthRepository
-) {
-    suspend operator fun invoke(nickname: String, avatarId: String): AuthResult =
-        authRepository.loginWithNickname(nickname, avatarId)
-}
-
-class LogoutUseCase @Inject constructor(
-    private val authRepository: AuthRepository
-) {
+class LogoutUseCase @Inject constructor(private val authRepository: AuthRepository) {
     suspend operator fun invoke() = authRepository.logout()
 }
 
-class GetCurrentUserUseCase @Inject constructor(
-    private val authRepository: AuthRepository
-) {
+class GetCurrentUserUseCase @Inject constructor(private val authRepository: AuthRepository) {
     operator fun invoke() = authRepository.getCurrentUser()
+}
+
+class UpdateProfileUseCase @Inject constructor(private val authRepository: AuthRepository) {
+    suspend operator fun invoke(username: String?, avatarId: String?): Result<GhostUser> =
+        authRepository.updateProfile(username, avatarId)
 }

@@ -49,5 +49,9 @@ fun ChatEntity.toDomain(participant: GhostUser, lastMessage: Message?): Chat = C
     participant = participant,
     lastMessage = lastMessage,
     unreadCount = unreadCount,
-    updatedAt = updatedAt
+    updatedAt = updatedAt,
+    isPinned = isPinned,
+    isMuted = isMuted,
+    isArchived = isArchived,
+    type = type
 )

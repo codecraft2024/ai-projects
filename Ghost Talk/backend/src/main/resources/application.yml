@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: ghost-talk-server
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/ghosttalk}
+    username: ${DATABASE_USER:ghosttalk}
+    password: ${DATABASE_PASSWORD:ghosttalk}
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 25MB
+      max-request-size: 30MB
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /api/v1
+
+ghosttalk:
+  jwt:
+    secret: ${JWT_SECRET:ghosttalk-dev-secret-change-in-production-min-256-bits-long-key-here}
+    access-token-expiration-ms: 900000
+    refresh-token-expiration-ms: 604800000
+  device:
+    max-accounts-per-fingerprint: 1
+    allow-account-transfer: false
+  cors:
+    allowed-origins: "*"
+  rate-limit:
+    requests-per-minute: 120
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+
+springdoc:
+  api-docs:
+    path: /docs/api
+  swagger-ui:
+    path: /docs/swagger
+
+logging:
+  level:
+    com.ghosttalk: INFO
+    org.springframework.security: WARN

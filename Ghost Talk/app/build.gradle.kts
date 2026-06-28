@@ -14,9 +14,11 @@ android {
         applicationId = "com.ghosttalk"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "1.0.0"
+        versionCode = 2
+        versionName = "2.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_BASE_URL", "\"http://10.0.2.2:8080/api/v1/\"")
+        buildConfigField("String", "WS_BASE_URL", "\"http://10.0.2.2:8080/api/v1/ws\"")
     }
 
     buildTypes {
@@ -77,6 +79,8 @@ dependencies {
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
     implementation(libs.datastore.preferences)
+    implementation(libs.security.crypto)
+    implementation(libs.work.runtime.ktx)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

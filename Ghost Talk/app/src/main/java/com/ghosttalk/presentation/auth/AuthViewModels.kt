@@ -3,10 +3,9 @@ package com.ghosttalk.presentation.auth
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ghosttalk.domain.model.AuthResult
-import com.ghosttalk.domain.usecase.LoginWithMobileUseCase
-import com.ghosttalk.domain.usecase.LoginWithNicknameUseCase
+import com.ghosttalk.domain.usecase.LoginWithDeviceUseCase
 import com.ghosttalk.domain.usecase.LogoutUseCase
-import com.ghosttalk.domain.usecase.SendOtpUseCase
+import com.ghosttalk.domain.usecase.RegisterUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,49 +16,24 @@ import javax.inject.Inject
 data class AuthUiState(
     val isLoading: Boolean = false,
     val error: String? = null,
-    val otpSent: Boolean = false,
     val loginSuccess: Boolean = false
 )
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val sendOtpUseCase: SendOtpUseCase,
-    private val loginWithMobileUseCase: LoginWithMobileUseCase,
+    private val loginWithDeviceUseCase: LoginWithDeviceUseCase,
     private val logoutUseCase: LogoutUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AuthUiState())
     val uiState: StateFlow<AuthUiState> = _uiState.asStateFlow()
 
-    fun sendOtp(phoneNumber: String) {
+    fun loginWithDevice() {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-            sendOtpUseCase(phoneNumber)
-                .onSuccess {
-                    _uiState.value = _uiState.value.copy(isLoading = false, otpSent = true)
-                }
-                .onFailure {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = it.message ?: "Failed to send OTP"
-                    )
-                }
-        }
-    }
-
-    fun loginWithMobile(phoneNumber: String, otp: String) {
-        viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-            when (val result = loginWithMobileUseCase(phoneNumber, otp)) {
-                is AuthResult.Success -> {
-                    _uiState.value = _uiState.value.copy(isLoading = false, loginSuccess = true)
-                }
-                is AuthResult.Error -> {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = result.message
-                    )
-                }
+            when (val result = loginWithDeviceUseCase()) {
+                is AuthResult.Success -> _uiState.value = AuthUiState(loginSuccess = true)
+                is AuthResult.Error -> _uiState.value = AuthUiState(error = result.message)
                 AuthResult.Loading -> Unit
             }
         }
@@ -68,15 +42,11 @@ class LoginViewModel @Inject constructor(
     fun logout() {
         viewModelScope.launch { logoutUseCase() }
     }
-
-    fun clearError() {
-        _uiState.value = _uiState.value.copy(error = null)
-    }
 }
 
 @HiltViewModel
-class NicknameViewModel @Inject constructor(
-    private val loginWithNicknameUseCase: LoginWithNicknameUseCase
+class RegisterViewModel @Inject constructor(
+    private val registerUseCase: RegisterUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(AuthUiState())
@@ -89,63 +59,12 @@ class NicknameViewModel @Inject constructor(
         _selectedAvatar.value = avatarId
     }
 
-    fun loginWithNickname(nickname: String) {
+    fun register(username: String) {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-            when (val result = loginWithNicknameUseCase(nickname, _selectedAvatar.value)) {
-                is AuthResult.Success -> {
-                    _uiState.value = _uiState.value.copy(isLoading = false, loginSuccess = true)
-                }
-                is AuthResult.Error -> {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = result.message
-                    )
-                }
-                AuthResult.Loading -> Unit
-            }
-        }
-    }
-}
-
-@HiltViewModel
-class MobileLoginViewModel @Inject constructor(
-    private val sendOtpUseCase: SendOtpUseCase,
-    private val loginWithMobileUseCase: LoginWithMobileUseCase
-) : ViewModel() {
-
-    private val _uiState = MutableStateFlow(AuthUiState())
-    val uiState: StateFlow<AuthUiState> = _uiState.asStateFlow()
-
-    fun sendOtp(phoneNumber: String) {
-        viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-            sendOtpUseCase(phoneNumber)
-                .onSuccess {
-                    _uiState.value = _uiState.value.copy(isLoading = false, otpSent = true)
-                }
-                .onFailure {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = it.message
-                    )
-                }
-        }
-    }
-
-    fun verifyOtp(phoneNumber: String, otp: String) {
-        viewModelScope.launch {
-            _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-            when (val result = loginWithMobileUseCase(phoneNumber, otp)) {
-                is AuthResult.Success -> {
-                    _uiState.value = _uiState.value.copy(isLoading = false, loginSuccess = true)
-                }
-                is AuthResult.Error -> {
-                    _uiState.value = _uiState.value.copy(
-                        isLoading = false,
-                        error = result.message
-                    )
-                }
+            when (val result = registerUseCase(username, _selectedAvatar.value)) {
+                is AuthResult.Success -> _uiState.value = AuthUiState(loginSuccess = true)
+                is AuthResult.Error -> _uiState.value = AuthUiState(error = result.message)
                 AuthResult.Loading -> Unit
             }
         }

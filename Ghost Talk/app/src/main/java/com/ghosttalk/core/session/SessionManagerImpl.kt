@@ -28,30 +28,45 @@ class SessionManagerImpl @Inject constructor(
     private val dataStore = context.sessionDataStore
 
     override val currentUser: Flow<GhostUser?> = dataStore.data.map { prefs ->
-        val ghostId = prefs[KEY_GHOST_ID] ?: return@map null
+        val userId = prefs[KEY_USER_ID] ?: return@map null
         GhostUser(
-            ghostId = ghostId,
+            ghostId = userId,
             nickname = prefs[KEY_NICKNAME] ?: "",
             avatarResId = prefs[KEY_AVATAR_RES] ?: "ghost_1",
-            isOnline = true
+            isOnline = true,
+            accountCreatedAt = prefs[KEY_ACCOUNT_CREATED]
         )
     }
 
     override val isLoggedIn: Flow<Boolean> = dataStore.data.map { prefs ->
-        prefs[KEY_AUTH_TOKEN] != null && prefs[KEY_GHOST_ID] != null
+        prefs[KEY_ACCESS_TOKEN] != null && prefs[KEY_USER_ID] != null
     }
 
     override val hasCompletedOnboarding: Flow<Boolean> = dataStore.data.map { prefs ->
         prefs[KEY_ONBOARDING_COMPLETED] ?: false
     }
 
-    override suspend fun saveSession(user: GhostUser, authType: AuthType, token: String) {
+    override suspend fun saveSession(
+        user: GhostUser,
+        authType: AuthType,
+        accessToken: String,
+        refreshToken: String
+    ) {
         dataStore.edit { prefs ->
-            prefs[KEY_GHOST_ID] = user.ghostId
+            prefs[KEY_USER_ID] = user.ghostId
             prefs[KEY_NICKNAME] = user.nickname
             prefs[KEY_AVATAR_RES] = user.avatarResId
             prefs[KEY_AUTH_TYPE] = authType.name
-            prefs[KEY_AUTH_TOKEN] = token
+            prefs[KEY_ACCESS_TOKEN] = accessToken
+            prefs[KEY_REFRESH_TOKEN] = refreshToken
+            user.accountCreatedAt?.let { prefs[KEY_ACCOUNT_CREATED] = it }
+        }
+    }
+
+    override suspend fun updateTokens(accessToken: String, refreshToken: String) {
+        dataStore.edit { prefs ->
+            prefs[KEY_ACCESS_TOKEN] = accessToken
+            prefs[KEY_REFRESH_TOKEN] = refreshToken
         }
     }
 
@@ -60,20 +75,20 @@ class SessionManagerImpl @Inject constructor(
     }
 
     override suspend fun setOnboardingCompleted(completed: Boolean) {
-        dataStore.edit { prefs ->
-            prefs[KEY_ONBOARDING_COMPLETED] = completed
-        }
+        dataStore.edit { prefs -> prefs[KEY_ONBOARDING_COMPLETED] = completed }
     }
 
-    override suspend fun getAuthToken(): String? =
-        dataStore.data.first()[KEY_AUTH_TOKEN]
+    override suspend fun getAccessToken(): String? = dataStore.data.first()[KEY_ACCESS_TOKEN]
+    override suspend fun getRefreshToken(): String? = dataStore.data.first()[KEY_REFRESH_TOKEN]
 
     companion object {
-        private val KEY_GHOST_ID = stringPreferencesKey("ghost_id")
+        private val KEY_USER_ID = stringPreferencesKey("user_id")
         private val KEY_NICKNAME = stringPreferencesKey("nickname")
         private val KEY_AVATAR_RES = stringPreferencesKey("avatar_res")
         private val KEY_AUTH_TYPE = stringPreferencesKey("auth_type")
-        private val KEY_AUTH_TOKEN = stringPreferencesKey("auth_token")
+        private val KEY_ACCESS_TOKEN = stringPreferencesKey("access_token")
+        private val KEY_REFRESH_TOKEN = stringPreferencesKey("refresh_token")
         private val KEY_ONBOARDING_COMPLETED = booleanPreferencesKey("onboarding_completed")
+        private val KEY_ACCOUNT_CREATED = stringPreferencesKey("account_created_at")
     }
 }

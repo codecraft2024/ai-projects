@@ -9,8 +9,15 @@ interface SessionManager {
     val isLoggedIn: Flow<Boolean>
     val hasCompletedOnboarding: Flow<Boolean>
 
-    suspend fun saveSession(user: GhostUser, authType: AuthType, token: String)
+    suspend fun saveSession(
+        user: GhostUser,
+        authType: AuthType,
+        accessToken: String,
+        refreshToken: String
+    )
+    suspend fun updateTokens(accessToken: String, refreshToken: String)
     suspend fun clearSession()
     suspend fun setOnboardingCompleted(completed: Boolean)
-    suspend fun getAuthToken(): String?
+    suspend fun getAccessToken(): String?
+    suspend fun getRefreshToken(): String?
 }

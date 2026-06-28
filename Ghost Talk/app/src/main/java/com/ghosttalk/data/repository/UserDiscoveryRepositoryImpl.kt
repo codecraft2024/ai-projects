@@ -1,11 +1,10 @@
 package com.ghosttalk.data.repository
 
 import com.ghosttalk.data.local.dao.UserDao
-import com.ghosttalk.data.local.entity.UserEntity
 import com.ghosttalk.data.local.toDomain
 import com.ghosttalk.data.local.toEntity
-import com.ghosttalk.data.remote.api.UserApi
-import com.ghosttalk.data.remote.toDomain
+import com.ghosttalk.data.remote.api.ConversationApi
+import com.ghosttalk.data.remote.toGhostUser
 import com.ghosttalk.domain.model.GhostUser
 import com.ghosttalk.domain.repository.UserDiscoveryRepository
 import kotlinx.coroutines.flow.Flow
@@ -16,45 +15,23 @@ import javax.inject.Singleton
 
 @Singleton
 class UserDiscoveryRepositoryImpl @Inject constructor(
-    private val userApi: UserApi,
+    private val conversationApi: ConversationApi,
     private val userDao: UserDao
 ) : UserDiscoveryRepository {
 
     override fun discoverUsers(query: String): Flow<List<GhostUser>> {
-        val userFlow = if (query.isBlank()) {
-            userDao.getAllUsers()
-        } else {
-            userDao.searchUsers(query)
-        }
-        return userFlow
-            .map { list -> list.map { it.toDomain() } }
-            .onStart { syncUsersFromRemote(query) }
+        val flow = if (query.isBlank()) userDao.getAllUsers() else userDao.searchUsers(query)
+        return flow.map { list -> list.map { it.toDomain() } }
+            .onStart { syncUsers(query) }
     }
 
-    override suspend fun getUserById(userId: String): GhostUser? {
-        val local = userDao.getUserById(userId)?.toDomain()
-        if (local != null) return local
-        val response = userApi.getUser(userId)
-        if (response.isSuccessful && response.body() != null) {
-            val user = response.body()!!.toDomain()
-            userDao.insertUser(user.toEntity())
-            return user
-        }
-        return null
-    }
+    override suspend fun getUserById(userId: String): GhostUser? =
+        userDao.getUserById(userId)?.toDomain()
 
-    private suspend fun syncUsersFromRemote(query: String) {
-        val response = userApi.discoverUsers(query)
-        if (response.isSuccessful) {
-            response.body()?.forEach { userDao.insertUser(it.toUserEntity()) }
-        }
+    private suspend fun syncUsers(query: String) {
+        val response = conversationApi.searchUsers(query)
+        val body = response.body() ?: return
+        if (!body.success || body.data == null) return
+        body.data!!.forEach { userDao.insertUser(it.toGhostUser().toEntity()) }
     }
 }
-
-private fun com.ghosttalk.data.remote.dto.UserDto.toUserEntity() = UserEntity(
-    ghostId = ghostId,
-    nickname = nickname,
-    avatarResId = avatarId,
-    isOnline = isOnline,
-    lastSeen = lastSeen
-)
