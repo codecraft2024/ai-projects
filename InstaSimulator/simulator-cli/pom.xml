@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.instasimulator</groupId>
+        <artifactId>mobile-simulator</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>simulator-cli</artifactId>
+    <name>Simulator CLI</name>
+    <description>Command-line interface for running scenarios and stress tests</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.instasimulator</groupId>
+            <artifactId>simulator-engine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.instasimulator</groupId>
+            <artifactId>simulator-stress</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.instasimulator</groupId>
+            <artifactId>simulator-reports</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli-spring-boot-starter</artifactId>
+            <version>4.7.6</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

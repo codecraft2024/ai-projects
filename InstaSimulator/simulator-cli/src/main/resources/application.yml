@@ -1,0 +1,11 @@
+spring:
+  main:
+    web-application-type: none
+
+simulator:
+  base-url: http://localhost:8080
+  reports-dir: reports
+
+logging:
+  level:
+    com.instasimulator: INFO

@@ -1,0 +1,9 @@
+{
+  "platformName": "Android",
+  "appium:automationName": "UiAutomator2",
+  "appium:deviceName": "Android Emulator",
+  "appium:appPackage": "com.instasimulator.demo",
+  "appium:appActivity": ".ui.LoginActivity",
+  "appium:noReset": true,
+  "appium:newCommandTimeout": 120
+}

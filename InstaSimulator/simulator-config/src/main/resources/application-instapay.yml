@@ -1,0 +1,24 @@
+simulator:
+  instapay:
+    api-base-url: https://instapaystaging.egyptianbanks.com:5443
+    domain: instapayqc.egyptianbanks.com
+    cert-hash-sha256: sha256/cyLYqFigYmyDcPcyATlTzFegqhEqawr0ofZRoRckjQo=
+    handler: "@qnbpay"
+    device-id: "4404f62d1ca7ae83"
+    host: qr.instapayqc.egyptianbanks.com
+    firebase-special-logging: "y"
+    app-id: com.olive.ebc
+    health-check-path: /v1/healthCheck/84f7f743-722f-4683-8919-3f95e1f88af5
+    device:
+      app-id: com.olive.ebc
+      app-name: EBCPSP
+      app-version: "1.12.1"
+      device-id: "4404f62d1ca7ae83"
+      gcm-id: "c4n_NM9cTO-_aavEmEWrog:APA91bEVs5JQoKssJna9ZMNjum2GYY8biCuMss-Gj38oQbkFs3likY5_dZSOV7qafapn960qfCvPW0OsJdrDQ599bqDzFip1GEK7OGyn292wN7rRnHEjEq8"
+      geo-code: "26.8206,30.8025"
+      ip: "10.0.2.15"
+      language: en
+      location: Cairo
+      mobile-number: "00201000000000"
+      os: Android16
+      type: sdk_gphone16k_arm64
