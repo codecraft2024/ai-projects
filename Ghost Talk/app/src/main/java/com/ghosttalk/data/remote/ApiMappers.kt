@@ -13,9 +13,13 @@ fun UserDto.toGhostUser() = GhostUser(
     ghostId = id,
     nickname = username,
     avatarResId = avatarId,
+    displayName = displayName ?: username,
+    bio = bio,
+    mobile = mobile,
     isOnline = online,
     lastSeen = lastSeen?.let { parseInstant(it) },
-    accountCreatedAt = accountCreatedAt
+    accountCreatedAt = accountCreatedAt,
+    verified = verified
 )
 
 fun ConversationSummaryDto.toDomain(currentUserId: String): Chat? {
@@ -25,6 +29,7 @@ fun ConversationSummaryDto.toDomain(currentUserId: String): Chat? {
             id = it.id,
             chatId = id,
             senderId = it.senderId,
+            senderUsername = it.senderUsername.orEmpty(),
             content = it.content ?: "",
             timestamp = parseInstant(it.timestamp),
             status = MessageStatus.READ
@@ -47,6 +52,7 @@ fun MessageDto.toDomain(): Message = Message(
     id = id,
     chatId = conversationId,
     senderId = senderId,
+    senderUsername = senderUsername.orEmpty(),
     content = content ?: "",
     timestamp = parseInstant(timestamp),
     status = MessageStatus.SENT,

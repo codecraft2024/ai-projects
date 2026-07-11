@@ -11,7 +11,21 @@ data class ApiResponse<T>(
 
 data class RegisterRequestDto(
     @SerializedName("username") val username: String,
+    @SerializedName("mobile") val mobile: String? = null,
+    @SerializedName("pin") val pin: String,
+    @SerializedName("displayName") val displayName: String? = null,
+    @SerializedName("bio") val bio: String? = null,
     @SerializedName("avatarId") val avatarId: String,
+    @SerializedName("fingerprintHash") val fingerprintHash: String,
+    @SerializedName("deviceModel") val deviceModel: String,
+    @SerializedName("manufacturer") val manufacturer: String,
+    @SerializedName("osVersion") val osVersion: String,
+    @SerializedName("appVersion") val appVersion: String
+)
+
+data class LoginPinRequestDto(
+    @SerializedName("identifier") val identifier: String,
+    @SerializedName("pin") val pin: String,
     @SerializedName("fingerprintHash") val fingerprintHash: String,
     @SerializedName("deviceModel") val deviceModel: String,
     @SerializedName("manufacturer") val manufacturer: String,
@@ -21,10 +35,34 @@ data class RegisterRequestDto(
 
 data class LoginRequestDto(
     @SerializedName("fingerprintHash") val fingerprintHash: String,
+    @SerializedName("username") val username: String? = null,
     @SerializedName("deviceModel") val deviceModel: String,
     @SerializedName("manufacturer") val manufacturer: String,
     @SerializedName("osVersion") val osVersion: String,
     @SerializedName("appVersion") val appVersion: String
+)
+
+data class DeviceAccountsRequestDto(
+    @SerializedName("fingerprintHash") val fingerprintHash: String
+)
+
+data class DeviceAccountsResponseDto(
+    @SerializedName("accounts") val accounts: List<SavedAccountDto>,
+    @SerializedName("maxAccounts") val maxAccounts: Int,
+    @SerializedName("remainingSlots") val remainingSlots: Int
+)
+
+data class SavedAccountDto(
+    @SerializedName("id") val id: String,
+    @SerializedName("username") val username: String,
+    @SerializedName("mobile") val mobile: String?,
+    @SerializedName("displayName") val displayName: String?,
+    @SerializedName("avatarId") val avatarId: String,
+    @SerializedName("lastSeen") val lastSeen: String?
+)
+
+data class UsernameCheckResponseDto(
+    @SerializedName("available") val available: Boolean
 )
 
 data class RefreshTokenRequestDto(
@@ -41,14 +79,21 @@ data class AuthResponseDto(
 data class UserDto(
     @SerializedName("id") val id: String,
     @SerializedName("username") val username: String,
+    @SerializedName("mobile") val mobile: String? = null,
+    @SerializedName("displayName") val displayName: String? = null,
+    @SerializedName("bio") val bio: String? = null,
     @SerializedName("avatarId") val avatarId: String,
     @SerializedName("accountCreatedAt") val accountCreatedAt: String?,
     @SerializedName("online") val online: Boolean = false,
-    @SerializedName("lastSeen") val lastSeen: String? = null
+    @SerializedName("lastSeen") val lastSeen: String? = null,
+    @SerializedName("verified") val verified: Boolean = false
 )
 
 data class UpdateProfileRequestDto(
     @SerializedName("username") val username: String?,
+    @SerializedName("mobile") val mobile: String? = null,
+    @SerializedName("displayName") val displayName: String? = null,
+    @SerializedName("bio") val bio: String? = null,
     @SerializedName("avatarId") val avatarId: String?
 )
 
@@ -69,6 +114,7 @@ data class MessagePreviewDto(
     @SerializedName("id") val id: String,
     @SerializedName("content") val content: String?,
     @SerializedName("senderId") val senderId: String,
+    @SerializedName("senderUsername") val senderUsername: String?,
     @SerializedName("timestamp") val timestamp: String,
     @SerializedName("messageType") val messageType: String
 )
@@ -89,6 +135,7 @@ data class MessageDto(
     @SerializedName("id") val id: String,
     @SerializedName("conversationId") val conversationId: String,
     @SerializedName("senderId") val senderId: String,
+    @SerializedName("senderUsername") val senderUsername: String?,
     @SerializedName("content") val content: String?,
     @SerializedName("messageType") val messageType: String,
     @SerializedName("replyToId") val replyToId: String?,

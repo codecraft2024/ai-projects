@@ -22,7 +22,13 @@ class UserDiscoveryRepositoryImpl @Inject constructor(
     override fun discoverUsers(query: String): Flow<List<GhostUser>> {
         val flow = if (query.isBlank()) userDao.getAllUsers() else userDao.searchUsers(query)
         return flow.map { list -> list.map { it.toDomain() } }
-            .onStart { syncUsers(query) }
+            .onStart {
+                try {
+                    syncUsers(query)
+                } catch (_: Exception) {
+                    // Show cached users when offline
+                }
+            }
     }
 
     override suspend fun getUserById(userId: String): GhostUser? =

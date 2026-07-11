@@ -37,7 +37,7 @@ ghosttalk:
     access-token-expiration-ms: 900000
     refresh-token-expiration-ms: 604800000
   device:
-    max-accounts-per-fingerprint: 1
+    max-accounts-per-fingerprint: 3
     allow-account-transfer: false
   cors:
     allowed-origins: "*"

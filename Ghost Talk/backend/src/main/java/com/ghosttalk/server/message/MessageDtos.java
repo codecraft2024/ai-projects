@@ -21,6 +21,7 @@ public final class MessageDtos {
             String id,
             String conversationId,
             String senderId,
+            String senderUsername,
             String content,
             String messageType,
             String replyToId,

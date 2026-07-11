@@ -5,11 +5,20 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface AuthApi {
+    @GET("auth/check-username")
+    suspend fun checkUsername(@Query("username") username: String): Response<ApiResponse<UsernameCheckResponseDto>>
+
     @POST("auth/register")
     suspend fun register(@Body request: RegisterRequestDto): Response<ApiResponse<AuthResponseDto>>
 
+    @POST("auth/login-pin")
+    suspend fun loginWithPin(@Body request: LoginPinRequestDto): Response<ApiResponse<AuthResponseDto>>
+
     @POST("auth/login")
     suspend fun login(@Body request: LoginRequestDto): Response<ApiResponse<AuthResponseDto>>
+
+    @POST("auth/device-accounts")
+    suspend fun getDeviceAccounts(@Body request: DeviceAccountsRequestDto): Response<ApiResponse<DeviceAccountsResponseDto>>
 
     @POST("auth/refresh")
     suspend fun refresh(@Body request: RefreshTokenRequestDto): Response<ApiResponse<AuthResponseDto>>

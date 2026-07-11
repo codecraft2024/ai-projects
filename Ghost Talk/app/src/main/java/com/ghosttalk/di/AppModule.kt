@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.ghosttalk.BuildConfig
 import com.ghosttalk.core.encryption.*
 import com.ghosttalk.core.network.AuthInterceptor
+import com.ghosttalk.core.network.NgrokSkipBrowserWarningInterceptor
 import com.ghosttalk.core.network.TokenAuthenticator
 import com.ghosttalk.core.session.SessionManager
 import com.ghosttalk.core.session.SessionManagerImpl
@@ -50,6 +51,7 @@ object NetworkModule {
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .authenticator(tokenAuthenticator)
+            .addInterceptor(NgrokSkipBrowserWarningInterceptor())
             .addInterceptor(authInterceptor)
 
         if (BuildConfig.DEBUG) {

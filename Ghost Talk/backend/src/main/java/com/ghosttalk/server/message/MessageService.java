@@ -188,6 +188,7 @@ public class MessageService {
                 message.getId().toString(),
                 message.getConversation().getId().toString(),
                 message.getSender().getId().toString(),
+                message.getSender().getUsername(),
                 message.getContent(),
                 message.getMessageType(),
                 message.getReplyToId() != null ? message.getReplyToId().toString() : null,

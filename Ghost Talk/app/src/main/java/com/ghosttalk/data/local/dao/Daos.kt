@@ -16,7 +16,7 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE ghostId = :id")
     suspend fun getUserById(id: String): UserEntity?
 
-    @Query("SELECT * FROM users WHERE nickname LIKE '%' || :query || '%' OR ghostId LIKE '%' || :query || '%'")
+    @Query("SELECT * FROM users WHERE nickname LIKE '%' || :query || '%'")
     fun searchUsers(query: String): Flow<List<UserEntity>>
 
     @Query("SELECT * FROM users")

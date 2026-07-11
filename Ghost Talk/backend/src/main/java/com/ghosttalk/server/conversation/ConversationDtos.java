@@ -18,15 +18,19 @@ public final class ConversationDtos {
     public record UserSummary(
             String id,
             String username,
+            String displayName,
+            String bio,
             String avatarId,
             boolean online,
-            String lastSeen
+            String lastSeen,
+            boolean verified
     ) {}
 
     public record MessagePreview(
             String id,
             String content,
             String senderId,
+            String senderUsername,
             String timestamp,
             String messageType
     ) {}

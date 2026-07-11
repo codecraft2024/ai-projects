@@ -17,14 +17,31 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @GetMapping("/check-username")
+    public ApiResponse<AuthDtos.UsernameCheckResponse> checkUsername(@RequestParam String username) {
+        return ApiResponse.ok(authService.checkUsername(username));
+    }
+
     @PostMapping("/register")
     public ApiResponse<AuthDtos.AuthResponse> register(@Valid @RequestBody AuthDtos.RegisterRequest request) {
         return ApiResponse.ok(authService.register(request));
     }
 
+    @PostMapping("/login-pin")
+    public ApiResponse<AuthDtos.AuthResponse> loginWithPin(@Valid @RequestBody AuthDtos.LoginPinRequest request) {
+        return ApiResponse.ok(authService.loginWithPin(request));
+    }
+
     @PostMapping("/login")
     public ApiResponse<AuthDtos.AuthResponse> login(@Valid @RequestBody AuthDtos.LoginRequest request) {
         return ApiResponse.ok(authService.login(request));
+    }
+
+    @PostMapping("/device-accounts")
+    public ApiResponse<AuthDtos.DeviceAccountsResponse> deviceAccounts(
+            @Valid @RequestBody AuthDtos.DeviceAccountsRequest request
+    ) {
+        return ApiResponse.ok(authService.listDeviceAccounts(request));
     }
 
     @PostMapping("/refresh")

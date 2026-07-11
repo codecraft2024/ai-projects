@@ -32,7 +32,9 @@ class SessionManagerImpl @Inject constructor(
         GhostUser(
             ghostId = userId,
             nickname = prefs[KEY_NICKNAME] ?: "",
-            avatarResId = prefs[KEY_AVATAR_RES] ?: "ghost_1",
+            avatarResId = prefs[KEY_AVATAR_RES] ?: "modern_01",
+            displayName = prefs[KEY_DISPLAY_NAME] ?: prefs[KEY_NICKNAME] ?: "",
+            mobile = prefs[KEY_MOBILE],
             isOnline = true,
             accountCreatedAt = prefs[KEY_ACCOUNT_CREATED]
         )
@@ -55,6 +57,8 @@ class SessionManagerImpl @Inject constructor(
         dataStore.edit { prefs ->
             prefs[KEY_USER_ID] = user.ghostId
             prefs[KEY_NICKNAME] = user.nickname
+            prefs[KEY_DISPLAY_NAME] = user.displayName
+            prefs[KEY_MOBILE] = user.mobile ?: ""
             prefs[KEY_AVATAR_RES] = user.avatarResId
             prefs[KEY_AUTH_TYPE] = authType.name
             prefs[KEY_ACCESS_TOKEN] = accessToken
@@ -71,7 +75,25 @@ class SessionManagerImpl @Inject constructor(
     }
 
     override suspend fun clearSession() {
-        dataStore.edit { it.clear() }
+        dataStore.edit { prefs ->
+            val onboarding = prefs[KEY_ONBOARDING_COMPLETED]
+            prefs.clear()
+            onboarding?.let { prefs[KEY_ONBOARDING_COMPLETED] = it }
+        }
+    }
+
+    override suspend fun clearActiveSession() {
+        dataStore.edit { prefs ->
+            prefs.remove(KEY_USER_ID)
+            prefs.remove(KEY_NICKNAME)
+            prefs.remove(KEY_DISPLAY_NAME)
+            prefs.remove(KEY_MOBILE)
+            prefs.remove(KEY_AVATAR_RES)
+            prefs.remove(KEY_AUTH_TYPE)
+            prefs.remove(KEY_ACCESS_TOKEN)
+            prefs.remove(KEY_REFRESH_TOKEN)
+            prefs.remove(KEY_ACCOUNT_CREATED)
+        }
     }
 
     override suspend fun setOnboardingCompleted(completed: Boolean) {
@@ -84,6 +106,8 @@ class SessionManagerImpl @Inject constructor(
     companion object {
         private val KEY_USER_ID = stringPreferencesKey("user_id")
         private val KEY_NICKNAME = stringPreferencesKey("nickname")
+        private val KEY_DISPLAY_NAME = stringPreferencesKey("display_name")
+        private val KEY_MOBILE = stringPreferencesKey("mobile")
         private val KEY_AVATAR_RES = stringPreferencesKey("avatar_res")
         private val KEY_AUTH_TYPE = stringPreferencesKey("auth_type")
         private val KEY_ACCESS_TOKEN = stringPreferencesKey("access_token")

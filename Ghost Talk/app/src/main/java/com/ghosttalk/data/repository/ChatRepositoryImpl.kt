@@ -55,12 +55,24 @@ class ChatRepositoryImpl @Inject constructor(
                 entity.toDomain(participant, lastMessage)
             }
         }
-        .onStart { syncConversations() }
+        .onStart {
+            try {
+                syncConversations()
+            } catch (_: Exception) {
+                // Offline or server unreachable — show cached chats only
+            }
+        }
 
     override fun getMessages(chatId: String): Flow<List<Message>> =
         messageDao.getMessagesForChat(chatId)
             .map { list -> list.map { it.toDomain() } }
-            .onStart { syncMessages(chatId) }
+            .onStart {
+                try {
+                    syncMessages(chatId)
+                } catch (_: Exception) {
+                    // Use cached messages when offline
+                }
+            }
 
     override suspend fun sendMessage(chatId: String, content: String): Result<Message> {
         val clientId = UUID.randomUUID().toString()
@@ -89,7 +101,7 @@ class ChatRepositoryImpl @Inject constructor(
             pendingMessageDao.delete(clientId)
             Result.success(message)
         } catch (e: Exception) {
-            Result.failure(e)
+            Result.failure(Exception(com.ghosttalk.core.network.NetworkErrorMapper.toUserMessage(e)))
         }
     }
 
@@ -104,11 +116,15 @@ class ChatRepositoryImpl @Inject constructor(
         cacheConversation(chat)
         Result.success(chat)
     } catch (e: Exception) {
-        Result.failure(e)
+        Result.failure(Exception(com.ghosttalk.core.network.NetworkErrorMapper.toUserMessage(e)))
     }
 
     override suspend fun markAsRead(chatId: String) {
-        conversationApi.markAsRead(chatId)
+        try {
+            conversationApi.markAsRead(chatId)
+        } catch (_: Exception) {
+            // Best-effort when offline
+        }
         chatDao.markAsRead(chatId)
     }
 
@@ -116,7 +132,11 @@ class ChatRepositoryImpl @Inject constructor(
         typingFlows.getOrPut(chatId) { MutableStateFlow(null) }
 
     override suspend fun setTyping(chatId: String, isTyping: Boolean) {
-        messageApi.setTyping(chatId, TypingRequestDto(isTyping))
+        try {
+            messageApi.setTyping(chatId, TypingRequestDto(isTyping))
+        } catch (_: Exception) {
+            // Ignore typing errors when offline
+        }
         typingFlows.getOrPut(chatId) { MutableStateFlow(null) }.value =
             TypingState(chatId, sessionManager.currentUser.first()?.ghostId ?: "", isTyping)
     }

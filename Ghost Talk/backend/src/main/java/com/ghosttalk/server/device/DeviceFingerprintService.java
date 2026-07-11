@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class DeviceFingerprintService {
@@ -56,23 +58,48 @@ public class DeviceFingerprintService {
     }
 
     public void validateRegistrationAllowed(DeviceFingerprint device) {
-        if (device.getAccountCount() >= maxAccountsPerFingerprint && !allowAccountTransfer) {
+        int activeAccounts = countActiveAccounts(device);
+        if (activeAccounts >= maxAccountsPerFingerprint && !allowAccountTransfer) {
             throw new BusinessException(
-                    "An account already exists for this device. Account recovery is required.", 409);
+                    "Maximum of " + maxAccountsPerFingerprint + " accounts allowed per device.", 409);
         }
     }
 
-    public Optional<User> findExistingUser(DeviceFingerprint device) {
-        return userRepository.findAll().stream()
-                .filter(u -> u.getDeviceFingerprint() != null
-                        && u.getDeviceFingerprint().getId().equals(device.getId())
-                        && "ACTIVE".equals(u.getStatus()))
-                .findFirst();
+    public List<User> findActiveUsersOnDevice(DeviceFingerprint device) {
+        return userRepository.findByDeviceFingerprint_IdAndStatus(device.getId(), "ACTIVE");
+    }
+
+    public List<String> listUsernamesOnDevice(DeviceFingerprint device) {
+        return findActiveUsersOnDevice(device).stream()
+                .map(User::getUsername)
+                .toList();
+    }
+
+    public Optional<User> findUserOnDevice(DeviceFingerprint device, String username) {
+        if (username == null || username.isBlank()) {
+            List<User> users = findActiveUsersOnDevice(device);
+            if (users.size() == 1) {
+                return Optional.of(users.getFirst());
+            }
+            return Optional.empty();
+        }
+        return userRepository.findByUsernameAndDeviceFingerprint_IdAndStatus(
+                username, device.getId(), "ACTIVE");
+    }
+
+    public int countActiveAccounts(DeviceFingerprint device) {
+        return findActiveUsersOnDevice(device).size();
+    }
+
+    @Transactional
+    public void syncAccountCount(DeviceFingerprint device) {
+        device.setAccountCount(countActiveAccounts(device));
+        repository.save(device);
     }
 
     @Transactional
     public void incrementAccountCount(DeviceFingerprint device) {
-        device.setAccountCount(device.getAccountCount() + 1);
+        syncAccountCount(device);
         device.setLastLogin(Instant.now());
         repository.save(device);
     }

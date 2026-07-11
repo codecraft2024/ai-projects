@@ -38,6 +38,18 @@ public class User {
     @Column(name = "fcm_token", length = 512)
     private String fcmToken;
 
+    @Column(length = 20)
+    private String mobile;
+
+    @Column(name = "pin_hash", length = 72)
+    private String pinHash;
+
+    @Column(name = "display_name", length = 64)
+    private String displayName;
+
+    @Column(length = 280)
+    private String bio;
+
     @Column(name = "created_at", nullable = false)
     private Instant createdAt = Instant.now();
 
@@ -62,6 +74,14 @@ public class User {
     public void setStatus(String status) { this.status = status; }
     public String getFcmToken() { return fcmToken; }
     public void setFcmToken(String fcmToken) { this.fcmToken = fcmToken; }
+    public String getMobile() { return mobile; }
+    public void setMobile(String mobile) { this.mobile = mobile; }
+    public String getPinHash() { return pinHash; }
+    public void setPinHash(String pinHash) { this.pinHash = pinHash; }
+    public String getDisplayName() { return displayName; }
+    public void setDisplayName(String displayName) { this.displayName = displayName; }
+    public String getBio() { return bio; }
+    public void setBio(String bio) { this.bio = bio; }
     public Instant getCreatedAt() { return createdAt; }
     public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
     public Instant getUpdatedAt() { return updatedAt; }

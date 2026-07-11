@@ -78,10 +78,16 @@ public class ConversationController {
     public ApiResponse<List<ConversationDtos.UserSummary>> searchUsers(
             @RequestParam(defaultValue = "") String q
     ) {
-        var users = userRepository.findByUsernameContainingIgnoreCaseAndStatus(q, "ACTIVE").stream()
+        var users = userRepository.searchActiveUsers(q).stream()
                 .map(u -> new ConversationDtos.UserSummary(
-                        u.getId().toString(), u.getUsername(), u.getAvatarId(),
-                        u.isOnline(), u.getLastSeen() != null ? u.getLastSeen().toString() : null))
+                        u.getId().toString(),
+                        u.getUsername(),
+                        u.getDisplayName(),
+                        u.getBio(),
+                        u.getAvatarId(),
+                        u.isOnline(),
+                        u.getLastSeen() != null ? u.getLastSeen().toString() : null,
+                        false))
                 .toList();
         return ApiResponse.ok(users);
     }

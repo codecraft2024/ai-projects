@@ -145,9 +145,12 @@ public class ConversationService {
                     .map(m -> new ConversationDtos.UserSummary(
                             m.getUser().getId().toString(),
                             m.getUser().getUsername(),
+                            m.getUser().getDisplayName(),
+                            m.getUser().getBio(),
                             m.getUser().getAvatarId(),
                             m.getUser().isOnline(),
-                            m.getUser().getLastSeen() != null ? m.getUser().getLastSeen().toString() : null
+                            m.getUser().getLastSeen() != null ? m.getUser().getLastSeen().toString() : null,
+                            false
                     ))
                     .orElse(null);
         }
@@ -161,6 +164,7 @@ public class ConversationService {
                     lastMessage.getId().toString(),
                     lastMessage.getContent(),
                     lastMessage.getSender().getId().toString(),
+                    lastMessage.getSender().getUsername(),
                     lastMessage.getCreatedAt().toString(),
                     lastMessage.getMessageType()
             );

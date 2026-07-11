@@ -17,6 +17,7 @@ interface SessionManager {
     )
     suspend fun updateTokens(accessToken: String, refreshToken: String)
     suspend fun clearSession()
+    suspend fun clearActiveSession()
     suspend fun setOnboardingCompleted(completed: Boolean)
     suspend fun getAccessToken(): String?
     suspend fun getRefreshToken(): String?

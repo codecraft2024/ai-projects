@@ -1,18 +1,28 @@
 package com.ghosttalk.presentation
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.ghosttalk.databinding.ActivityMainBinding
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
+import com.ghosttalk.ui.navigation.GhostTalkNavHost
+import com.ghosttalk.ui.theme.GhostTalkTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContent {
+            GhostTalkTheme {
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    GhostTalkNavHost(modifier = Modifier.fillMaxSize())
+                }
+            }
+        }
     }
 }

@@ -4,18 +4,18 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ghosttalk.domain.model.Chat
-import com.ghosttalk.domain.model.GhostUser
 import com.ghosttalk.domain.model.Message
 import com.ghosttalk.domain.model.OnlineStatus
 import com.ghosttalk.domain.model.TypingState
-import com.ghosttalk.domain.usecase.CreateChatUseCase
-import com.ghosttalk.domain.usecase.DiscoverUsersUseCase
+import android.net.Uri
 import com.ghosttalk.domain.usecase.GetChatsUseCase
+import com.ghosttalk.domain.usecase.GetCurrentUserUseCase
 import com.ghosttalk.domain.usecase.GetMessagesUseCase
 import com.ghosttalk.domain.usecase.MarkChatAsReadUseCase
 import com.ghosttalk.domain.usecase.ObserveOnlineStatusUseCase
 import com.ghosttalk.domain.usecase.ObserveTypingUseCase
 import com.ghosttalk.domain.usecase.SendMessageUseCase
+import com.ghosttalk.core.network.NetworkErrorMapper
 import com.ghosttalk.domain.usecase.SetTypingUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -23,12 +23,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ChatListViewModel @Inject constructor(
-    private val getChatsUseCase: GetChatsUseCase
+    private val getChatsUseCase: GetChatsUseCase,
+    private val getCurrentUserUseCase: GetCurrentUserUseCase
 ) : ViewModel() {
 
     private val _chats = MutableStateFlow<List<Chat>>(emptyList())
@@ -37,7 +39,15 @@ class ChatListViewModel @Inject constructor(
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
+    private val _currentUserId = MutableStateFlow("")
+    val currentUserId: StateFlow<String> = _currentUserId.asStateFlow()
+
     init {
+        viewModelScope.launch {
+            getCurrentUserUseCase().collect { user ->
+                _currentUserId.value = user?.ghostId ?: ""
+            }
+        }
         viewModelScope.launch {
             getChatsUseCase().collect {
                 _chats.value = it
@@ -55,15 +65,23 @@ class ChatDetailViewModel @Inject constructor(
     private val markChatAsReadUseCase: MarkChatAsReadUseCase,
     private val setTypingUseCase: SetTypingUseCase,
     private val observeTypingUseCase: ObserveTypingUseCase,
-    private val observeOnlineStatusUseCase: ObserveOnlineStatusUseCase
+    private val observeOnlineStatusUseCase: ObserveOnlineStatusUseCase,
+    private val getCurrentUserUseCase: GetCurrentUserUseCase
 ) : ViewModel() {
 
     val chatId: String = savedStateHandle.get<String>("chatId") ?: ""
-    val participantName: String = savedStateHandle.get<String>("participantName") ?: ""
+    val participantName: String = savedStateHandle.get<String>("participantName")
+        ?.let { Uri.decode(it) } ?: ""
     val participantId: String = savedStateHandle.get<String>("participantId") ?: ""
 
     private val _messages = MutableStateFlow<List<Message>>(emptyList())
     val messages: StateFlow<List<Message>> = _messages.asStateFlow()
+
+    private val _currentUserId = MutableStateFlow("")
+    val currentUserId: StateFlow<String> = _currentUserId.asStateFlow()
+
+    private val _currentUserNickname = MutableStateFlow("")
+    val currentUserNickname: StateFlow<String> = _currentUserNickname.asStateFlow()
 
     private val _typingState = MutableStateFlow<TypingState?>(null)
     val typingState: StateFlow<TypingState?> = _typingState.asStateFlow()
@@ -71,9 +89,18 @@ class ChatDetailViewModel @Inject constructor(
     private val _onlineStatus = MutableStateFlow<OnlineStatus?>(null)
     val onlineStatus: StateFlow<OnlineStatus?> = _onlineStatus.asStateFlow()
 
+    private val _sendError = MutableStateFlow<String?>(null)
+    val sendError: StateFlow<String?> = _sendError.asStateFlow()
+
     private var typingJob: Job? = null
 
     init {
+        viewModelScope.launch {
+            getCurrentUserUseCase().collect { user ->
+                _currentUserId.value = user?.ghostId ?: ""
+                _currentUserNickname.value = user?.nickname ?: ""
+            }
+        }
         viewModelScope.launch {
             getMessagesUseCase(chatId).collect { _messages.value = it }
         }
@@ -94,7 +121,12 @@ class ChatDetailViewModel @Inject constructor(
         if (content.isBlank()) return
         viewModelScope.launch {
             sendMessageUseCase(chatId, content.trim())
+                .onFailure { _sendError.value = NetworkErrorMapper.toUserMessage(it) }
         }
+    }
+
+    fun clearSendError() {
+        _sendError.value = null
     }
 
     fun onTypingChanged(isTyping: Boolean) {
@@ -111,46 +143,3 @@ class ChatDetailViewModel @Inject constructor(
     }
 }
 
-@HiltViewModel
-class DiscoveryViewModel @Inject constructor(
-    private val discoverUsersUseCase: DiscoverUsersUseCase,
-    private val createChatUseCase: CreateChatUseCase
-) : ViewModel() {
-
-    private val _users = MutableStateFlow<List<GhostUser>>(emptyList())
-    val users: StateFlow<List<GhostUser>> = _users.asStateFlow()
-
-    private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
-
-    private val _chatCreated = MutableStateFlow<Chat?>(null)
-    val chatCreated: StateFlow<Chat?> = _chatCreated.asStateFlow()
-
-    init {
-        search("")
-    }
-
-    fun search(query: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            discoverUsersUseCase(query).collect {
-                _users.value = it
-                _isLoading.value = false
-            }
-        }
-    }
-
-    fun startChat(userId: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            createChatUseCase(userId)
-                .onSuccess { _chatCreated.value = it }
-                .onFailure { _isLoading.value = false }
-        }
-    }
-
-    fun clearChatCreated() {
-        _chatCreated.value = null
-        _isLoading.value = false
-    }
-}
