@@ -12,25 +12,24 @@
 
     <artifactId>simulator-calls</artifactId>
     <name>Simulator Calls</name>
-    <description>Independent API call implementations for mobile simulation</description>
+    <description>Reusable call services — health check</description>
 
     <dependencies>
         <dependency>
             <groupId>com.instasimulator</groupId>
-            <artifactId>simulator-core</artifactId>
+            <artifactId>simulator-config</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

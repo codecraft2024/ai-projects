@@ -16,21 +16,15 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Mobile App Simulation Framework</name>
-    <description>Professional multi-module framework for simulating real mobile application behavior, stress testing, and Appium UI automation</description>
+    <name>Mobile Simulator Framework</name>
+    <description>Reusable mobile simulator framework — health-check foundation</description>
 
     <modules>
         <module>simulator-common</module>
         <module>simulator-config</module>
-        <module>simulator-core</module>
         <module>simulator-calls</module>
-        <module>simulator-business-scenarios</module>
-        <module>simulator-engine</module>
-        <module>simulator-stress</module>
-        <module>simulator-reports</module>
         <module>simulator-api</module>
-        <module>simulator-cli</module>
-        <module>automation-sample</module>
+        <module>simulator-ui</module>
     </modules>
 
     <properties>
@@ -38,13 +32,8 @@
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <spring-retry.version>2.0.10</spring-retry.version>
         <httpclient5.version>5.3.1</httpclient5.version>
-        <commons-lang3.version>3.17.0</commons-lang3.version>
-        <appium.version>9.3.0</appium.version>
-        <testng.version>7.10.2</testng.version>
-        <jackson.version>2.17.2</jackson.version>
+        <javafx.version>21.0.6</javafx.version>
     </properties>
 
     <dependencyManagement>
@@ -61,32 +50,7 @@
             </dependency>
             <dependency>
                 <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
                 <artifactId>simulator-calls</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-business-scenarios</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-engine</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-stress</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-reports</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -96,34 +60,23 @@
             </dependency>
             <dependency>
                 <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-cli</artifactId>
+                <artifactId>simulator-ui</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.httpcomponents.client5</groupId>
                 <artifactId>httpclient5</artifactId>
                 <version>${httpclient5.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-controls</artifactId>
+                <version>${javafx.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.springframework.retry</groupId>
-                <artifactId>spring-retry</artifactId>
-                <version>${spring-retry.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.appium</groupId>
-                <artifactId>java-client</artifactId>
-                <version>${appium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>${testng.version}</version>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-fxml</artifactId>
+                <version>${javafx.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
