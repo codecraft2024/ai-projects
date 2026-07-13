@@ -23,6 +23,7 @@
         <module>simulator-common</module>
         <module>simulator-config</module>
         <module>simulator-calls</module>
+        <module>simulator-scenarios</module>
         <module>simulator-api</module>
         <module>simulator-ui</module>
     </modules>
@@ -51,6 +52,11 @@
             <dependency>
                 <groupId>com.instasimulator</groupId>
                 <artifactId>simulator-calls</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.instasimulator</groupId>
+                <artifactId>simulator-scenarios</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.instasimulator</groupId>
-            <artifactId>simulator-calls</artifactId>
+            <artifactId>simulator-scenarios</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>

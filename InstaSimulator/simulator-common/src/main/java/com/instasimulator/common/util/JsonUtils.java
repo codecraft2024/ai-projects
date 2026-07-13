@@ -18,6 +18,14 @@ public final class JsonUtils {
         }
     }
 
+    public static String toCompactJson(ObjectMapper mapper, Object value) {
+        try {
+            return mapper.writeValueAsString(value);
+        } catch (Exception e) {
+            throw new IllegalStateException("Failed to serialize JSON", e);
+        }
+    }
+
     public static <T> T fromJson(ObjectMapper mapper, String json, Class<T> type) {
         try {
             return mapper.readValue(json, type);

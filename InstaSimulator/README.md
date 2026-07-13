@@ -1,35 +1,34 @@
 # Mobile Simulator Framework
 
-Minimal reusable simulator foundation. Only **Calls / Health Check** is implemented.
+Reusable simulator foundation with **Calls** and first **Scenario**.
 
 ## Modules
 
 | Module | Responsibility |
 |--------|----------------|
 | `simulator-common` | Shared DTOs, exceptions, constants, utilities |
-| `simulator-config` | Properties, Jackson, RestTemplate — no business logic |
-| `simulator-calls` | Reusable `HealthCheckService` + `HealthCheckClient` |
-| `simulator-api` | Thin REST controllers only |
-| `simulator-ui` | JavaFX Health Check screen |
+| `simulator-config` | Properties, Jackson, RestTemplate |
+| `simulator-calls` | HealthCheck, Bind1, Register1 services/clients |
+| `simulator-scenarios` | Binding scenario (Health → Bind1 → Register1) |
+| `simulator-api` | Thin REST controllers |
+| `simulator-ui` | JavaFX screens |
 
-```
-UI / Tests / future Scenarios & Stress
-                │
-                ▼
-        HealthCheckService   (simulator-calls)
-                │
-                ▼
-        HealthCheckController (simulator-api)
-```
+## Calls
 
-## Endpoints
+| Method | Path | Notes |
+|--------|------|-------|
+| `GET` | `/health/success` | Local healthy response |
+| `GET` | `/health/failure` | Local failure response |
+| `GET` | `/bind1/success` | Live InstaPay bind1 |
+| `GET` | `/bind1/failure` | Live bind1 without `encString` |
+| `GET` | `/register1/success` | Live InstaPay register1 |
+| `GET` | `/register1/failure` | Live register1 without `appPin` (`code=100`) |
 
-| Method | Path | Body |
-|--------|------|------|
-| `GET` | `/health/success` | `{"success":true,"message":"Service is healthy"}` |
-| `GET` | `/health/failure` | `{"success":false,"message":"Service unavailable"}` |
+## Scenarios
 
-Set `simulator.health-check.failure-throws=true` to throw on failure instead.
+| Method | Path | Steps |
+|--------|------|-------|
+| `GET` | `/scenarios/binding` | Health Check → Bind1 → Register1 |
 
 ## Run
 
@@ -37,13 +36,6 @@ Set `simulator.health-check.failure-throws=true` to throw on failure instead.
 export JAVA_HOME=/path/to/jdk-21
 mvn clean install
 
-# API
 cd simulator-api && mvn spring-boot:run
-
-# UI (calls HealthCheckService in-process)
 cd simulator-ui && mvn javafx:run
 ```
-
-## Future
-
-`simulator-scenarios` and `simulator-stress` can depend on `simulator-calls` without changing this layout.
