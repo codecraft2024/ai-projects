@@ -1,56 +1,50 @@
 # InstaSimulator
 
-Enterprise mobile simulator platform.
+Enterprise InstaPay mobile simulator platform.
 
-## Modules
+## Backend modules
 
-### Backend (Maven)
+| Module | Purpose |
+|--------|---------|
+| `simulator-common` | DTOs, exceptions, utilities |
+| `simulator-config` | Configuration, HTTP clients |
+| `simulator-calls` | Health Check, Bind1, Register1 |
+| `simulator-scenarios` | Binding scenario (Health → Bind1 → Register1) |
+| `simulator-api` | REST controllers |
 
-- `simulator-common` — shared DTOs and utilities
-- `simulator-config` — configuration and HTTP clients
-- `simulator-calls` — business logic for simulator calls
-- `simulator-api` — thin Spring Boot REST controllers
+## Frontend
 
-### Frontend
+`simulator-web` — Next.js App Router, TypeScript, Tailwind, shadcn/ui
 
-- `simulator-web` — Next.js App Router UI (TypeScript, Tailwind, shadcn/ui)
+### Navigation
+
+- **Dashboard** — overview of calls and scenarios
+- **Calls** — Health Check, Bind1, Register1
+- **Scenarios** — Binding scenario
+- **Settings** — backend URL
 
 ## Run
 
-### API
-
 ```bash
+# API
 export JAVA_HOME=/path/to/jdk-21
 mvn -pl simulator-api -am spring-boot:run
+
+# Web
+cd simulator-web && npm install && npm run dev
 ```
 
-API: http://localhost:8080
+- API: http://localhost:8080  
+- UI: http://localhost:3000  
 
-Health endpoints:
+## API endpoints
 
-- `GET /health/success`
-- `GET /health/failure`
-
-### Web UI
-
-```bash
-cd simulator-web
-npm install
-npm run dev
-```
-
-UI: http://localhost:3000
-
-Set backend URL in `simulator-web/.env.local`:
-
-```
-NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
-```
-
-## Current scope
-
-- Dashboard with scenario cards
-- Health Check scenario page with React Flow runtime visualization
-- UI Automation → Health Check
-- Light / dark theme
-- Expandable navigation for Calls, Business Scenarios, Stress Testing, Settings
+| Endpoint | Description |
+|----------|-------------|
+| `GET /health/success` | Health check success |
+| `GET /health/failure` | Health check failure |
+| `GET /bind1/success` | Bind1 success path |
+| `GET /bind1/failure` | Bind1 failure path |
+| `GET /register1/success` | Register1 success path |
+| `GET /register1/failure` | Register1 failure path |
+| `GET /scenarios/binding` | Run binding scenario |
