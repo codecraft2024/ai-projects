@@ -1,12 +1,12 @@
 package com.instasimulator.api;
 
-import com.instasimulator.scenarios.ScenariosAutoConfiguration;
+import com.instasimulator.calls.CallsAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import(ScenariosAutoConfiguration.class)
+@Import(CallsAutoConfiguration.class)
 public class SimulatorApiApplication {
 
     public static void main(String[] args) {

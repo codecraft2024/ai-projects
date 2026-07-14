@@ -1,41 +1,56 @@
-# Mobile Simulator Framework
+# InstaSimulator
 
-Reusable simulator foundation with **Calls** and first **Scenario**.
+Enterprise mobile simulator platform.
 
 ## Modules
 
-| Module | Responsibility |
-|--------|----------------|
-| `simulator-common` | Shared DTOs, exceptions, constants, utilities |
-| `simulator-config` | Properties, Jackson, RestTemplate |
-| `simulator-calls` | HealthCheck, Bind1, Register1 services/clients |
-| `simulator-scenarios` | Binding scenario (Health → Bind1 → Register1) |
-| `simulator-api` | Thin REST controllers |
-| `simulator-ui` | JavaFX screens |
+### Backend (Maven)
 
-## Calls
+- `simulator-common` — shared DTOs and utilities
+- `simulator-config` — configuration and HTTP clients
+- `simulator-calls` — business logic for simulator calls
+- `simulator-api` — thin Spring Boot REST controllers
 
-| Method | Path | Notes |
-|--------|------|-------|
-| `GET` | `/health/success` | Local healthy response |
-| `GET` | `/health/failure` | Local failure response |
-| `GET` | `/bind1/success` | Live InstaPay bind1 |
-| `GET` | `/bind1/failure` | Live bind1 without `encString` |
-| `GET` | `/register1/success` | Live InstaPay register1 |
-| `GET` | `/register1/failure` | Live register1 without `appPin` (`code=100`) |
+### Frontend
 
-## Scenarios
-
-| Method | Path | Steps |
-|--------|------|-------|
-| `GET` | `/scenarios/binding` | Health Check → Bind1 → Register1 |
+- `simulator-web` — Next.js App Router UI (TypeScript, Tailwind, shadcn/ui)
 
 ## Run
 
+### API
+
 ```bash
 export JAVA_HOME=/path/to/jdk-21
-mvn clean install
-
-cd simulator-api && mvn spring-boot:run
-cd simulator-ui && mvn javafx:run
+mvn -pl simulator-api -am spring-boot:run
 ```
+
+API: http://localhost:8080
+
+Health endpoints:
+
+- `GET /health/success`
+- `GET /health/failure`
+
+### Web UI
+
+```bash
+cd simulator-web
+npm install
+npm run dev
+```
+
+UI: http://localhost:3000
+
+Set backend URL in `simulator-web/.env.local`:
+
+```
+NEXT_PUBLIC_API_BASE_URL=http://localhost:8080
+```
+
+## Current scope
+
+- Dashboard with scenario cards
+- Health Check scenario page with React Flow runtime visualization
+- UI Automation → Health Check
+- Light / dark theme
+- Expandable navigation for Calls, Business Scenarios, Stress Testing, Settings

@@ -12,3 +12,6 @@ automation-reports/
 *.class
 .mvn/wrapper/maven-wrapper.jar
 dependency-reduced-pom.xml
+simulator-web/node_modules/
+simulator-web/.next/
+simulator-web/dist/

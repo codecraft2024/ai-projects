@@ -17,15 +17,13 @@
     <packaging>pom</packaging>
 
     <name>Mobile Simulator Framework</name>
-    <description>Reusable mobile simulator framework — health-check foundation</description>
+    <description>Enterprise mobile simulator platform</description>
 
     <modules>
         <module>simulator-common</module>
         <module>simulator-config</module>
         <module>simulator-calls</module>
-        <module>simulator-scenarios</module>
         <module>simulator-api</module>
-        <module>simulator-ui</module>
     </modules>
 
     <properties>
@@ -34,7 +32,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <httpclient5.version>5.3.1</httpclient5.version>
-        <javafx.version>21.0.6</javafx.version>
     </properties>
 
     <dependencyManagement>
@@ -56,33 +53,13 @@
             </dependency>
             <dependency>
                 <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-scenarios</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
                 <artifactId>simulator-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.instasimulator</groupId>
-                <artifactId>simulator-ui</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents.client5</groupId>
                 <artifactId>httpclient5</artifactId>
                 <version>${httpclient5.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-controls</artifactId>
-                <version>${javafx.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-fxml</artifactId>
-                <version>${javafx.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
