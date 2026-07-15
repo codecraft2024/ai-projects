@@ -54,16 +54,16 @@ class BindingScenarioFailureTest {
 
     private static CallExecution<HealthCheckRequest, HealthCheckResponse> health(boolean ok, String message) {
         Instant now = Instant.now();
-        return new CallExecution<>(null, new HealthCheckResponse(ok, message), now, now, 0, List.of());
+        return new CallExecution<>(null, new HealthCheckResponse(ok, message), now, now, 0, List.of(), null);
     }
 
     private static CallExecution<Bind1Request, Bind1Response> bind1(String code, String result) {
         Instant now = Instant.now();
-        return new CallExecution<>(null, new Bind1Response(code, result, null, null, null), now, now, 0, List.of());
+        return new CallExecution<>(null, new Bind1Response(code, result, null, null, null), now, now, 0, List.of(), null);
     }
 
     private static CallExecution<Register1Request, Register1Response> register1(String code, String result) {
         Instant now = Instant.now();
-        return new CallExecution<>(null, new Register1Response(code, result, null, null, null), now, now, 0, List.of());
+        return new CallExecution<>(null, new Register1Response(code, result, null, null, null), now, now, 0, List.of(), null);
     }
 }

@@ -1,32 +1,29 @@
-import { apiClient } from "@/services/api-client";
-import type { Bind1Response, CallExecution, HealthCheckResponse, Register1Response } from "@/types";
+import { getWithTrace } from "@/services/api-client";
+import type { Bind1Response, Register1Response } from "@/types";
+import type { CallExecution, TracedResult } from "@/types/network";
 
-export async function fetchHealthSuccess() {
-  const res = await apiClient.get<HealthCheckResponse>("/health/success");
-  return { data: res.data, status: res.status };
+export function fetchHealthSuccess() {
+  return getWithTrace<CallExecution<{ success: boolean; message: string }>>("/health/success");
 }
 
-export async function fetchHealthFailure() {
-  const res = await apiClient.get<HealthCheckResponse>("/health/failure");
-  return { data: res.data, status: res.status };
+export function fetchHealthFailure() {
+  return getWithTrace<CallExecution<{ success: boolean; message: string }>>("/health/failure");
 }
 
-export async function fetchBind1Success() {
-  const res = await apiClient.get<CallExecution<Bind1Response>>("/bind1/success");
-  return { data: res.data, status: res.status };
+export function fetchBind1Success() {
+  return getWithTrace<CallExecution<Bind1Response>>("/bind1/success");
 }
 
-export async function fetchBind1Failure() {
-  const res = await apiClient.get<CallExecution<Bind1Response>>("/bind1/failure");
-  return { data: res.data, status: res.status };
+export function fetchBind1Failure() {
+  return getWithTrace<CallExecution<Bind1Response>>("/bind1/failure");
 }
 
-export async function fetchRegister1Success() {
-  const res = await apiClient.get<CallExecution<Register1Response>>("/register1/success");
-  return { data: res.data, status: res.status };
+export function fetchRegister1Success() {
+  return getWithTrace<CallExecution<Register1Response>>("/register1/success");
 }
 
-export async function fetchRegister1Failure() {
-  const res = await apiClient.get<CallExecution<Register1Response>>("/register1/failure");
-  return { data: res.data, status: res.status };
+export function fetchRegister1Failure() {
+  return getWithTrace<CallExecution<Register1Response>>("/register1/failure");
 }
+
+export type { TracedResult };

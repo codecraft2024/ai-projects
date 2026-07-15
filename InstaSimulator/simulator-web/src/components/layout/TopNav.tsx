@@ -4,7 +4,6 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Moon, RefreshCw, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { API_BASE_URL } from "@/lib/catalog";
 import { fetchBackendStatus } from "@/services/status.service";
 import { cn } from "@/lib/utils";
@@ -21,27 +20,27 @@ export function TopNav() {
   const status = statusQuery.data ?? "checking";
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-border bg-background/80 px-6 backdrop-blur">
+    <header className="flex h-14 items-center justify-between border-b border-border/70 bg-surface/70 px-6 backdrop-blur-md md:px-9">
       <div className="flex items-center gap-3">
-        <Badge
-          variant="outline"
+        <div
           className={cn(
-            "gap-2 rounded-full px-3 py-1",
-            status === "online" && "border-emerald-500/40 text-emerald-600 dark:text-emerald-400",
-            status === "offline" && "border-red-500/40 text-red-600 dark:text-red-400",
+            "inline-flex items-center gap-2 rounded-lg border px-2.5 py-1 text-xs font-medium",
+            status === "online" && "border-emerald-500/30 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300",
+            status === "offline" && "border-red-500/30 bg-red-500/10 text-red-700 dark:text-red-300",
+            status === "checking" && "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-300",
           )}
         >
           <span
             className={cn(
-              "size-2 rounded-full",
+              "size-1.5 rounded-full",
               status === "online" && "bg-emerald-500",
               status === "offline" && "bg-red-500",
               status === "checking" && "animate-pulse bg-amber-400",
             )}
           />
-          Simulator {status === "checking" ? "Checking" : status === "online" ? "Online" : "Offline"}
-        </Badge>
-        <div className="hidden rounded-full border border-border bg-muted/50 px-3 py-1 font-mono text-xs text-muted-foreground md:block">
+          {status === "checking" ? "Checking" : status === "online" ? "Online" : "Offline"}
+        </div>
+        <div className="hidden rounded-lg border border-border/60 bg-muted/40 px-2.5 py-1 font-mono text-[11px] text-muted-foreground md:block">
           {API_BASE_URL}
         </div>
       </div>
@@ -50,7 +49,7 @@ export function TopNav() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full"
+          className="rounded-xl border-border/70"
           onClick={() => queryClient.invalidateQueries()}
           aria-label="Refresh"
         >
@@ -59,7 +58,7 @@ export function TopNav() {
         <Button
           variant="outline"
           size="icon"
-          className="rounded-full"
+          className="relative rounded-xl border-border/70"
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           aria-label="Toggle theme"
         >

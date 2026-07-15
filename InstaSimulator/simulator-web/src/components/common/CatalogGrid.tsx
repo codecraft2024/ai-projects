@@ -3,41 +3,40 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Lock } from "lucide-react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import type { CatalogItem } from "@/types";
 import { cn } from "@/lib/utils";
 
 export function CatalogGrid({ items }: { items: CatalogItem[] }) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
       {items.map((item, index) => (
         <motion.div
           key={item.id}
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.05 }}
-          whileHover={item.status === "ready" ? { y: -3 } : undefined}
+          transition={{ delay: index * 0.04, duration: 0.35 }}
+          whileHover={item.status === "ready" ? { y: -2 } : undefined}
         >
-          <Card className="group h-full overflow-hidden rounded-2xl border-border/60 bg-card/80 shadow-sm backdrop-blur transition-shadow hover:shadow-md">
-            <div className="h-1 bg-gradient-to-r from-sky-500 via-violet-500 to-emerald-500 opacity-0 transition-opacity group-hover:opacity-100" />
-            <CardHeader>
-              <div className="flex items-start justify-between gap-3">
-                <CardTitle className="text-lg">{item.name}</CardTitle>
-                {item.status === "ready" ? (
-                  <Badge className="rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300">
-                    Ready
-                  </Badge>
-                ) : (
-                  <Badge variant="secondary" className="rounded-full">
-                    Coming Soon
-                  </Badge>
-                )}
+          <article className="panel-glass group flex h-full flex-col overflow-hidden rounded-2xl transition-[border-color,transform] duration-200 hover:border-signal/35">
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-signal/50 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+            <div className="flex flex-1 flex-col p-5">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <h3 className="font-heading text-lg font-semibold tracking-tight">{item.name}</h3>
+                <span
+                  className={cn(
+                    "rounded-md px-2 py-0.5 text-[11px] font-medium tracking-wide uppercase",
+                    item.status === "ready"
+                      ? "bg-emerald-500/12 text-emerald-700 dark:text-emerald-300"
+                      : "bg-muted text-muted-foreground",
+                  )}
+                >
+                  {item.status === "ready" ? "Ready" : "Soon"}
+                </span>
               </div>
-              <CardDescription className="leading-relaxed">{item.description}</CardDescription>
-            </CardHeader>
-            <CardFooter>
+              <p className="mb-5 flex-1 text-sm leading-relaxed text-muted-foreground">
+                {item.description}
+              </p>
               {item.status === "ready" ? (
                 <Link
                   href={item.href}
@@ -57,8 +56,8 @@ export function CatalogGrid({ items }: { items: CatalogItem[] }) {
                   Unavailable
                 </span>
               )}
-            </CardFooter>
-          </Card>
+            </div>
+          </article>
         </motion.div>
       ))}
     </div>

@@ -25,15 +25,6 @@ export interface Register1Response {
   data?: unknown;
 }
 
-export interface CallExecution<T = unknown> {
-  request: unknown;
-  response: T;
-  startedAt: string;
-  finishedAt: string;
-  durationMs: number;
-  timeline?: unknown[];
-}
-
 export interface ScenarioStepResult {
   stepName: string;
   status: string;
